@@ -3364,9 +3364,19 @@
 		)
 		(uuid "34586ae3-369f-45b0-9ed9-48dbc909b0e8")
 	)
+	(text "Neads to be isolated :)\n"
+		(exclude_from_sim no)
+		(at 223.266 136.144 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "378a6905-7535-442f-83a4-90f20a5f3b95")
+	)
 	(text "Break Sensor to ADC"
 		(exclude_from_sim no)
-		(at 177.038 116.078 0)
+		(at 183.134 117.348 0)
 		(effects
 			(font
 				(size 2 2)
@@ -4209,6 +4219,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDPWR")
+		(at 166.37 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2e145fdd-f074-48c8-828c-3a1df0786af9")
+		(property "Reference" "#PWR09"
+			(at 166.37 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDPWR"
+			(at 166.243 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 166.37 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
+			(at 166.37 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ac6fcd1f-9426-4476-b913-f4a70814602c")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 66.04 130.81 270)
 		(unit 1)
@@ -4980,6 +5056,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDPWR")
+		(at 173.99 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "54df2377-7721-4928-8800-35a22b9a4e85")
+		(property "Reference" "#PWR010"
+			(at 173.99 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDPWR"
+			(at 173.863 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 173.99 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
+			(at 173.99 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "267952bf-a1f0-42a0-be74-586c6aaf92f1")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+5V")
 		(at 92.71 125.73 0)
 		(unit 1)
@@ -5039,72 +5181,6 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
 					(reference "#PWR018")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 195.58 143.51 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "56beb7bb-db45-491e-bd6a-d22567e72ca2")
-		(property "Reference" "#PWR013"
-			(at 195.58 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 195.58 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 195.58 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 195.58 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 195.58 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fa7e2c4e-0f48-4c16-aa3d-714c9ffb751f")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -5693,17 +5769,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 166.37 140.97 0)
+		(lib_id "power:GNDPWR")
+		(at 195.58 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a2647e35-257a-4d75-985b-265a127398f8")
-		(property "Reference" "#PWR09"
-			(at 166.37 147.32 0)
+		(uuid "a170e2a1-0504-4502-bbe8-25e35ed8481a")
+		(property "Reference" "#PWR013"
+			(at 195.58 148.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5711,8 +5787,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 166.37 146.05 0)
+		(property "Value" "GNDPWR"
+			(at 195.453 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5720,7 +5796,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 166.37 140.97 0)
+			(at 195.58 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5729,7 +5805,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 166.37 140.97 0)
+			(at 195.58 144.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5737,8 +5813,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 166.37 140.97 0)
+		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
+			(at 195.58 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5747,12 +5823,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5473207d-6560-43e8-bff8-63671d3122d7")
+			(uuid "1abf6ca1-ac1a-4aa9-b6d6-dde97b02e7ba")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR09")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -5889,6 +5965,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GNDPWR")
+		(at 184.15 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b0837c56-fa19-42e1-aca1-89b85b7b34b7")
+		(property "Reference" "#PWR011"
+			(at 184.15 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDPWR"
+			(at 184.023 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 184.15 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 184.15 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
+			(at 184.15 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d038dc41-ce9d-4e2e-8c46-f25d6e5b13c3")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:D")
 		(at 92.71 137.16 270)
 		(unit 1)
@@ -6010,7 +6152,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://kulite.com//assets/media/2017/06/ETL-200-375.pdf"
 			(at 161.29 138.43 0)
 			(effects
 				(font
@@ -6400,72 +6542,6 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 173.99 143.51 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d8af6034-b5c6-44ee-b96f-04d709334f1a")
-		(property "Reference" "#PWR010"
-			(at 173.99 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 173.99 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 173.99 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 173.99 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 173.99 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5f1e0bf6-c465-41ef-83c3-3a17d629c05d")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
 		(at 92.71 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6792,72 +6868,6 @@
 			(project ""
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
 					(reference "#PWR028")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 184.15 143.51 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ee71425f-3f79-434d-abc9-c28aed2a68b8")
-		(property "Reference" "#PWR011"
-			(at 184.15 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 184.15 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 184.15 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 184.15 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 184.15 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "62ffab32-2543-404d-b128-c866c422ab65")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR011")
 					(unit 1)
 				)
 			)
