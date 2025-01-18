@@ -3491,6 +3491,44 @@
 			)
 		)
 	)
+	(sheet
+		(at 33.02 73.152)
+		(size 36.576 61.214)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "79a9d287-440d-4a9e-b55f-1bdcdd2de2e3")
+		(property "Sheetname" "Pedals"
+			(at 33.02 72.4404 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Pedals.kicad_sch"
+			(at 33.02 134.9506 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(page "2")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
