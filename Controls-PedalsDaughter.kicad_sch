@@ -7555,7 +7555,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 134.3152 57.15 0)
 			(effects
 				(font
@@ -7564,7 +7564,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/396/taiyo_yuden_12132018_mlcc11_hq_e-1510082.pdf"
 			(at 133.35 53.34 0)
 			(effects
 				(font
@@ -8386,7 +8386,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 121.6152 57.15 0)
 			(effects
 				(font
@@ -8395,7 +8395,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.mouser.com/datasheet/2/396/taiyo_yuden_12132018_mlcc11_hq_e-1510082.pdf"
 			(at 120.65 53.34 0)
 			(effects
 				(font
@@ -9981,7 +9981,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "SMD_805"
+		(property "Value" "SMD_0805"
 			(at 129.54 87.9474 90)
 			(effects
 				(font
@@ -9990,7 +9990,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 125.73 85.09 0)
 			(effects
 				(font
@@ -10826,7 +10826,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 126.746 77.724 90)
 			(effects
 				(font
@@ -10835,7 +10835,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
 			(at 125.73 77.47 0)
 			(effects
 				(font
