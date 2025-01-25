@@ -5693,7 +5693,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 106.9848 135.89 0)
 			(effects
 				(font
@@ -5763,7 +5763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 188.9252 163.83 0)
 			(effects
 				(font
@@ -6114,7 +6114,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 229.5652 163.83 0)
 			(effects
 				(font
@@ -6248,7 +6248,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-1200_2x06_P3.00mm_Horizontal"
 			(at 57.15 133.35 0)
 			(effects
 				(font
@@ -6481,7 +6481,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 237.49 125.73 0)
 			(effects
 				(font
@@ -7415,7 +7415,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 75.946 134.366 90)
 			(effects
 				(font
@@ -7485,7 +7485,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 82.296 138.684 90)
 			(effects
 				(font
@@ -7889,7 +7889,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 93.98 126.6952 0)
 			(effects
 				(font
@@ -8289,7 +8289,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 116.84 139.7 0)
 			(effects
 				(font
@@ -8456,7 +8456,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 164.846 157.734 90)
 			(effects
 				(font
@@ -9363,7 +9363,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 182.5752 163.83 0)
 			(effects
 				(font
@@ -9692,7 +9692,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
 			(at 151.13 156.21 0)
 			(effects
 				(font
@@ -9762,7 +9762,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 237.49 118.11 0)
 			(effects
 				(font
@@ -10060,7 +10060,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 239.7252 163.83 0)
 			(effects
 				(font
@@ -10197,7 +10197,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric"
 			(at 116.84 132.08 0)
 			(effects
 				(font
@@ -10293,7 +10293,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "UTSVT_Passive:C_2220_5750Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 58.1152 74.93 0)
 			(effects
 				(font
@@ -10625,7 +10625,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 225.7552 129.54 0)
 			(effects
 				(font
