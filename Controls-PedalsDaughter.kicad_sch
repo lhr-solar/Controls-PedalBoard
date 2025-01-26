@@ -261,42 +261,8 @@
 						(type none)
 					)
 				)
-				(pin output line
-					(at 33.02 0 180)
-					(length 7.62)
-					(name "OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 33.02 -2.54 180)
-					(length 7.62)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
+			)
+			(symbol "TLV70130DBVR_1_1"
 				(pin input line
 					(at 0 0 0)
 					(length 7.62)
@@ -307,7 +273,7 @@
 							)
 						)
 					)
-					(number "3"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -325,7 +291,7 @@
 							)
 						)
 					)
-					(number "4"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -337,6 +303,42 @@
 					(at 0 -5.08 0)
 					(length 7.62)
 					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 33.02 -2.54 180)
+					(length 7.62)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 33.02 0 180)
+					(length 7.62)
+					(name "OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3873,6 +3875,12 @@
 		(uuid "891a7c11-f64c-468b-b61c-bf5c34095de3")
 	)
 	(junction
+		(at 190.5 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "943f9d59-649d-4772-b739-1c25255b56b7")
+	)
+	(junction
 		(at 127 57.15)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4810,7 +4818,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 119.38) (xy 193.04 119.38)
+			(xy 187.96 119.38) (xy 190.5 119.38)
 		)
 		(stroke
 			(width 0)
@@ -4917,6 +4925,16 @@
 			(type default)
 		)
 		(uuid "d6e37081-5746-489c-808a-c60c03b44f8e")
+	)
+	(wire
+		(pts
+			(xy 190.5 119.38) (xy 193.04 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d803c1a8-fa0d-4e8f-b200-2acb5eac7293")
 	)
 	(wire
 		(pts
@@ -5157,6 +5175,16 @@
 			)
 		)
 		(uuid "1cdfe2d9-5a74-46bc-b487-ad895d39242b")
+	)
+	(text "Break sensor gives current\nreading 4ma - 20ma"
+		(exclude_from_sim no)
+		(at 154.178 170.434 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "26dce8cd-443d-4856-b038-1fab8f726427")
 	)
 	(text "Based on:\nhttps://www.akao.co.uk/manuals/Link%20G4+%20Manual/nissan_vq35.htm"
 		(exclude_from_sim no)
@@ -6604,7 +6632,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29308d86-43e1-4170-bf03-050e48f25d81")
-		(property "Reference" "TP3"
+		(property "Reference" "+5V1"
 			(at 104.3432 61.722 0)
 			(effects
 				(font
@@ -6655,7 +6683,7 @@
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "TP3")
+					(reference "+5V1")
 					(unit 1)
 				)
 			)
@@ -7895,7 +7923,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4ed8a13c-dbd1-49da-b488-35f6b958b0a2")
-		(property "Reference" "TP1"
+		(property "Reference" "+12V1"
 			(at 46.99 55.88 0)
 			(effects
 				(font
@@ -7946,7 +7974,7 @@
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "TP1")
+					(reference "+12V1")
 					(unit 1)
 				)
 			)
@@ -8624,7 +8652,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "63d4265f-fe2e-47ad-9cb5-c88290a36261")
-		(property "Reference" "TP4"
+		(property "Reference" "GND1"
 			(at 104.3432 79.4258 0)
 			(effects
 				(font
@@ -8675,7 +8703,7 @@
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "TP4")
+					(reference "GND1")
 					(unit 1)
 				)
 			)
@@ -8812,7 +8840,7 @@
 				)
 			)
 		)
-		(property "Footprint" "UTSVT_Power:TLV70130DBVR"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-353_SC-70-5"
 			(at 158.496 102.362 0)
 			(effects
 				(font
@@ -8950,7 +8978,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "76127d18-19b2-4611-b4cd-b31748ce2920")
-		(property "Reference" "TP2"
+		(property "Reference" "GNDPWR1"
 			(at 48.4632 78.1558 0)
 			(effects
 				(font
@@ -9001,7 +9029,7 @@
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "TP2")
+					(reference "GNDPWR1")
 					(unit 1)
 				)
 			)
@@ -9667,6 +9695,72 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
 					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 190.5 119.38 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9d3bc973-c91a-4109-9378-af5c99854c06")
+		(property "Reference" "TP_3V3PWR1"
+			(at 189.0268 118.6942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "+3V3PWR"
+			(at 189.0268 116.3828 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.5x1.5mm"
+			(at 195.58 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 195.58 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 190.5 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "eef90d1d-0f1c-4c21-a4ce-840ed58ece3b")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "TP_3V3PWR1")
 					(unit 1)
 				)
 			)
