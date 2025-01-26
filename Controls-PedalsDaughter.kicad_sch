@@ -5720,6 +5720,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "pickle"
+			(at 107.95 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5f29eff7-bdc4-457a-9c10-f903af76b250")
 		)
@@ -5782,6 +5791,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 187.96 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 187.96 160.02 0)
 			(effects
 				(font
@@ -6053,6 +6071,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "AMC1300BDWV"
+			(at 210.82 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "8"
 			(uuid "73f721cc-39ea-4dd2-864e-4f3d9a05d731")
 		)
@@ -6133,6 +6160,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 228.6 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 228.6 160.02 0)
 			(effects
 				(font
@@ -6248,7 +6284,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-1200_2x06_P3.00mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0612_2x03_P3.00mm_Vertical"
 			(at 57.15 133.35 0)
 			(effects
 				(font
@@ -6267,6 +6303,15 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x03, top/bottom pin numbering scheme (row 1: 1...pins_per_row, row2: pins_per_row+1 ... num_pins), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 57.15 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "430450626"
 			(at 57.15 133.35 0)
 			(effects
 				(font
@@ -7208,6 +7253,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "RI3-1205S"
+			(at 78.74 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6ad88c0c-a359-4f25-b957-5edd9646cf6d")
 		)
@@ -7284,6 +7338,15 @@
 			)
 		)
 		(property "Mfg" "C0805C102J5HACAUTO"
+			(at 193.04 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 193.04 123.19 0)
 			(effects
 				(font
@@ -7442,6 +7505,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "ERA-3ARB822V"
+			(at 76.2 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "27d02f54-e509-4c57-8d31-736ddd7bd655")
 		)
@@ -7512,6 +7584,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "pickle"
+			(at 81.28 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0978df07-f819-4007-86c4-5e98e8512a9c")
 		)
@@ -7574,6 +7655,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 133.35 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 133.35 53.34 0)
 			(effects
 				(font
@@ -7908,6 +7998,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 97.79 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 97.79 125.73 0)
 			(effects
 				(font
@@ -8413,6 +8512,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "pickle"
+			(at 120.65 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2bd398f4-e330-4a54-9cf5-b6fc88fa05bb")
 		)
@@ -8475,6 +8583,15 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
+			(at 163.83 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "ERJ-UP6D20R0V"
 			(at 163.83 157.48 0)
 			(effects
 				(font
@@ -8627,7 +8744,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "C0805C104M5RACTU"
+		(property "P/N" "pickle"
 			(at 151.13 125.73 0)
 			(effects
 				(font
@@ -9114,6 +9231,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "TLV9301xDCK"
+			(at 93.98 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "250af87b-afd0-4d2d-b3be-af149cb823bd")
 		)
@@ -9382,6 +9508,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 181.61 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 181.61 160.02 0)
 			(effects
 				(font
@@ -9692,7 +9827,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0200_2x01_P3.00mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43045-0212_2x01_P3.00mm_Vertical"
 			(at 151.13 156.21 0)
 			(effects
 				(font
@@ -9711,6 +9846,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 151.13 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "430450200"
 			(at 151.13 156.21 0)
 			(effects
 				(font
@@ -10017,6 +10161,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "pickle"
+			(at 125.73 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2d98230f-9cfe-413f-aedb-0188b6024f9f")
 		)
@@ -10079,6 +10232,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 238.76 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 238.76 160.02 0)
 			(effects
 				(font
@@ -10312,6 +10474,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 57.15 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 57.15 71.12 0)
 			(effects
 				(font
@@ -10652,6 +10823,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "pickle"
+			(at 224.79 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5b4dc4e3-4820-4ceb-806e-da7438da51d2")
 		)
@@ -10845,6 +11025,15 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
+			(at 125.73 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
 			(at 125.73 77.47 0)
 			(effects
 				(font
