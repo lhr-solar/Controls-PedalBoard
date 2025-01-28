@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.0,
+          "height": 1.8,
+          "width": 0.55
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -216,13 +216,7 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [
-      "power_pin_not_driven|1816100|520700|5c12604c-63e6-4cc1-92a5-fbbdbd29a006|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|",
-      "power_pin_not_driven|1879600|1460500|e735e962-ad29-48fb-88d3-be9a3700a512|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|",
-      "power_pin_not_driven|2019300|1498600|28a39703-90ab-4231-a9a3-d96034ce3369|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|",
-      "power_pin_not_driven|2374900|1143000|e1153705-32bf-4a90-92e9-1e06d2d2e7f3|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|",
-      "power_pin_not_driven|2387600|1460500|20f3f082-d21e-45e3-bb3f-a1606c23cf08|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|"
-    ],
+    "erc_exclusions": [],
     "meta": {
       "version": 0
     },
