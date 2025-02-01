@@ -216,7 +216,12 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      "lib_symbol_issues|1333500|1028700|d141c336-7fc6-4371-a552-d02bd4c972cd|00000000-0000-0000-0000-000000000000|||",
+      "lib_symbol_issues|622300|647700|cae7d37a-826d-45a7-adb2-cfa3e98ecdf3|00000000-0000-0000-0000-000000000000|||",
+      "power_pin_not_driven|1168400|1016000|8dada6c0-8d68-4e5d-a5af-644173821849|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a|/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a|",
+      "power_pin_not_driven|2235200|736600|f9f09375-fd27-498a-9b43-d25113d16471|00000000-0000-0000-0000-000000000000|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|/30d77876-714b-4f1b-9bad-b74eb43ddcf6|"
+    ],
     "meta": {
       "version": 0
     },
@@ -650,6 +655,18 @@
     [
       "30d77876-714b-4f1b-9bad-b74eb43ddcf6",
       "Root"
+    ],
+    [
+      "ba8b1230-57a3-4f16-bcdd-31b6729b5a2c",
+      "Pedals"
+    ],
+    [
+      "7d1ff2c9-efd0-48ce-add2-9372a4e6c13a",
+      "Brake Fluid Sensor"
+    ],
+    [
+      "6613b086-4f9a-483f-8869-58f1a430ca82",
+      "Power"
     ]
   ],
   "text_variables": {}
