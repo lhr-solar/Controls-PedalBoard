@@ -117,7 +117,7 @@
 	(footprint "clipboard:1102f6bf-9d39-4637-903a-16b78c874ac5"
 		(layer "F.Cu")
 		(uuid "03dfc344-b8b8-4a31-89ba-1a9dd2bbbf52")
-		(at 129.975 68.4875)
+		(at 129.975 67.17)
 		(property "Reference" ""
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -209,7 +209,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "1970bf2c-fb74-4049-81df-05b16f23db9b")
-		(at 157.375 133.2375 180)
+		(at 157.375 134.6 180)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C5"
@@ -926,7 +926,7 @@
 	(footprint "clipboard:1102f6bf-9d39-4637-903a-16b78c874ac5"
 		(layer "F.Cu")
 		(uuid "48b1899c-2f8b-41b9-8564-813a34442768")
-		(at 170.725 68.4875)
+		(at 172.25 67.17)
 		(property "Reference" ""
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1018,7 +1018,7 @@
 	(footprint "clipboard:1102f6bf-9d39-4637-903a-16b78c874ac5"
 		(layer "F.Cu")
 		(uuid "866d0d65-1a95-4cc4-9015-ad13a239e162")
-		(at 129.975 131.2375)
+		(at 129.975 132.85)
 		(property "Reference" ""
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1110,7 +1110,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "8d9c7065-45d0-4ee3-bb9c-b1c79c3d3ee3")
-		(at 157.375 131.0875 180)
+		(at 157.375 132.45 180)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C4"
@@ -1336,7 +1336,7 @@
 	(footprint "Diode_SMD:D_SOD-323"
 		(layer "F.Cu")
 		(uuid "a22f01e2-4b81-479a-b1d1-620af328a885")
-		(at 152.225 133.2375)
+		(at 152.225 134.6)
 		(descr "SOD-323")
 		(tags "SOD-323")
 		(property "Reference" "D6"
@@ -1899,7 +1899,7 @@
 	(footprint "clipboard:1102f6bf-9d39-4637-903a-16b78c874ac5"
 		(layer "F.Cu")
 		(uuid "f2874838-a080-4d16-a0a0-e7c809ee9e43")
-		(at 170.725 131.2375)
+		(at 172.25 132.85)
 		(property "Reference" ""
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1991,7 +1991,7 @@
 	(footprint "Capacitor_SMD:C_0805_2012Metric"
 		(layer "F.Cu")
 		(uuid "f52d456c-8a50-4fb4-970b-cb3838d3a228")
-		(at 152.225 131.0875 180)
+		(at 152.225 132.45 180)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C2"
@@ -2726,7 +2726,7 @@
 	(footprint "UTSVT_Connectors:Molex_MicroFit3.0_1x4xP3.00mm_PolarizingPeg_Vertical"
 		(layer "B.Cu")
 		(uuid "19c1e9b1-947f-46c3-a34e-01e7ffb94078")
-		(at 168.475 101.3375 90)
+		(at 170 101.3375 90)
 		(property "Reference" "J5"
 			(at 4.35 2.71 90)
 			(layer "B.SilkS")
@@ -3793,7 +3793,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "4575a6ad-a596-4baf-80df-bee176f06b1e")
-		(at 128.975 126.6375 180)
+		(at 128.975 127.25 180)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Accel_TP1"
@@ -4257,7 +4257,7 @@
 	(footprint "Diode_SMD:D_0805_2012Metric"
 		(layer "B.Cu")
 		(uuid "558726b6-7370-4fd5-8f08-718dfc5d1f9f")
-		(at 153.0375 126.1375)
+		(at 153.0375 127.5)
 		(descr "Diode SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "diode")
 		(property "Reference" "D7"
@@ -4512,7 +4512,7 @@
 	(footprint "TestPoint:TestPoint_Pad_1.5x1.5mm"
 		(layer "B.Cu")
 		(uuid "5bd2275b-a768-4262-b29f-3e98df92a549")
-		(at 147.375 131.1375)
+		(at 147.375 132.5)
 		(descr "SMD rectangular pad as test Point, square 1.5mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "GNDPWR1"
@@ -4691,7 +4691,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "5f105dd8-7735-4971-bb3b-23de8b1ab381")
-		(at 170.175 74.9875 -90)
+		(at 171.7 74.9875 -90)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Brake_Fl_Sn_Raw1"
@@ -5265,7 +5265,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at -2 -1.68 360)
+			(at -2 -1.68 0)
 			(layer "B.Fab")
 			(uuid "8084d5d1-6d07-428d-b81c-74c49356d166")
 			(effects
@@ -5480,7 +5480,7 @@
 			(uuid "e7013d1b-5d4b-457c-96be-0c9f06e05197")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "34d149e3-aa15-4b41-b726-e00dcd79377d")
 			(effects
@@ -5757,11 +5757,11 @@
 	(footprint "Connector_Molex:Molex_Micro-Fit_3.0_43045-0612_2x03_P3.00mm_Vertical"
 		(layer "B.Cu")
 		(uuid "6f7ee921-5d46-490e-b006-964aab4bd7af")
-		(at 134.475 132.6375)
+		(at 134.475 134)
 		(descr "Molex Micro-Fit 3.0 Connector System, 43045-0612 (compatible alternatives: 43045-0613, 43045-0624), 3 Pins per row (http://www.molex.com/pdm_docs/sd/430450212_sd.pdf), generated with kicad-footprint-generator")
 		(tags "connector Molex Micro-Fit_3.0 vertical")
 		(property "Reference" "J2"
-			(at 3 1.5 360)
+			(at 3 1.5 0)
 			(layer "B.SilkS")
 			(uuid "3d88a386-3890-4d41-8027-8e922b18189c")
 			(effects
@@ -5773,7 +5773,7 @@
 			)
 		)
 		(property "Value" "Accel Pos. Sensor"
-			(at 3 -7.51 360)
+			(at 3 -7.51 0)
 			(layer "B.Fab")
 			(uuid "ff862e1c-ae0a-43b3-aea1-a019d34fe65d")
 			(effects
@@ -6136,7 +6136,7 @@
 			(uuid "e7ab34bd-6554-4cf9-91c2-8cff4958f245")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3 -4.2 360)
+			(at 3 -4.2 0)
 			(layer "B.Fab")
 			(uuid "4a98ade4-d589-4549-bd40-b171e3ffde2e")
 			(effects
@@ -6243,7 +6243,7 @@
 	(footprint "TestPoint:TestPoint_Pad_1.5x1.5mm"
 		(layer "B.Cu")
 		(uuid "7525171a-6a3b-48a8-945a-a55fa0f07eea")
-		(at 162.275 128.5375 90)
+		(at 162.275 129.9 90)
 		(descr "SMD rectangular pad as test Point, square 1.5mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "+5V1"
@@ -6422,7 +6422,7 @@
 	(footprint "TestPoint:TestPoint_Pad_1.5x1.5mm"
 		(layer "B.Cu")
 		(uuid "78c57a14-09ed-4a9f-87ce-e260c20acf82")
-		(at 162.275 131.1375)
+		(at 162.275 132.5)
 		(descr "SMD rectangular pad as test Point, square 1.5mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "GND1"
@@ -6601,7 +6601,7 @@
 	(footprint "UTSVT_ICs:RI3_DC_Converter"
 		(layer "B.Cu")
 		(uuid "7e4ff065-ca43-40d4-95e2-fbcce5a1d50d")
-		(at 154.775 128.8102)
+		(at 154.775 130.1727)
 		(property "Reference" "U1"
 			(at 0 5.5273 0)
 			(layer "B.SilkS")
@@ -6793,7 +6793,7 @@
 	(footprint "UTSVT_Connectors:Molex_MicroFit3.0_1x4xP3.00mm_PolarizingPeg_Vertical"
 		(layer "B.Cu")
 		(uuid "895e7c95-6400-4765-af5b-0412f6db87c7")
-		(at 168.475 120.0375 90)
+		(at 170 120.0375 90)
 		(property "Reference" "J3"
 			(at 4.6 2.66 90)
 			(layer "B.SilkS")
@@ -7341,7 +7341,7 @@
 	(footprint "Resistor_SMD:R_0805_2012Metric"
 		(layer "B.Cu")
 		(uuid "8efc2b55-6932-4a3e-9556-c66dff2dc299")
-		(at 156.5875 126.1375 180)
+		(at 156.5875 127.5 180)
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R3"
@@ -7785,7 +7785,7 @@
 			(uuid "1d2de3fc-e53f-4215-bf06-5cacc0769954")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "cc54e83a-4d0a-4348-be21-0aaf7881d5ea")
 			(effects
@@ -8094,7 +8094,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "9e50db54-3c9b-49b6-8ffb-96efc12a6c21")
-		(at 164.875 75.0375)
+		(at 166.4 75.0375)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Brake_Fl_Sn1"
@@ -8275,7 +8275,7 @@
 	(footprint "TestPoint:TestPoint_Pad_1.5x1.5mm"
 		(layer "B.Cu")
 		(uuid "abadf47f-e8c2-4b29-9d1e-e64c49974229")
-		(at 147.375 128.5375 180)
+		(at 147.375 129.9 180)
 		(descr "SMD rectangular pad as test Point, square 1.5mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "+12V1"
@@ -8454,7 +8454,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "ae9fb0fe-8c0a-46de-8ddb-33d5a5944d66")
-		(at 126.225 126.6375)
+		(at 126.225 127.25)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Accel_Raw1"
@@ -8871,7 +8871,7 @@
 		)
 		(fp_arc
 			(start 21.237742 18.612258)
-			(mid 20.300481 20.874995)
+			(mid 20.300482 20.874999)
 			(end 18.037742 21.812258)
 			(stroke
 				(width 0.1)
@@ -9388,7 +9388,7 @@
 	(footprint "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical"
 		(layer "B.Cu")
 		(uuid "b9f4c7a4-f533-4e2a-a6c4-9307229b9e00")
-		(at 168.575 83.6375 90)
+		(at 170.1 83.6375 90)
 		(descr "Molex Micro-Fit 3.0 Connector System, 43650-0215 (compatible alternatives: 43650-0216, 43650-0217), 2 Pins per row (http://www.molex.com/pdm_docs/sd/436500215_sd.pdf), generated with kicad-footprint-generator")
 		(tags "connector Molex Micro-Fit_3.0 vertical")
 		(property "Reference" "J4"
@@ -10895,11 +10895,11 @@
 	(footprint "TestPoint:TestPoint_Pad_1.5x1.5mm"
 		(layer "B.Cu")
 		(uuid "dc7f3bd6-7cdf-42d3-8ff4-830d82d8cd0b")
-		(at 165.175 88.8375 90)
+		(at 165.5 89 90)
 		(descr "SMD rectangular pad as test Point, square 1.5mm side length")
 		(tags "test point SMD pad rectangle square")
 		(property "Reference" "TP_3V3PWR1"
-			(at -4.9 0 90)
+			(at -5.8625 0 90)
 			(layer "B.SilkS")
 			(uuid "0a2d257f-fdae-44bb-9e12-0989a5bc8e0e")
 			(effects
@@ -11074,7 +11074,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "e33fb360-e3af-48a2-992f-3aa372f38376")
-		(at 143.475 68.3375 90)
+		(at 145.25 67.75 90)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Brake_TP1"
@@ -12004,11 +12004,11 @@
 	(footprint "Connector_Molex:Molex_Micro-Fit_3.0_43045-0612_2x03_P3.00mm_Vertical"
 		(layer "B.Cu")
 		(uuid "ed549a36-ad8e-4eca-9bb1-4c61e10e3e71")
-		(at 158.875 67.3175 180)
+		(at 158.875 66 180)
 		(descr "Molex Micro-Fit 3.0 Connector System, 43045-0612 (compatible alternatives: 43045-0613, 43045-0624), 3 Pins per row (http://www.molex.com/pdm_docs/sd/430450212_sd.pdf), generated with kicad-footprint-generator")
 		(tags "connector Molex Micro-Fit_3.0 vertical")
 		(property "Reference" "J1"
-			(at 3.15 -6 360)
+			(at 3.15 -6 0)
 			(layer "B.SilkS")
 			(uuid "e37ba1b5-b9ba-4355-9083-21eba17168ea")
 			(effects
@@ -12020,7 +12020,7 @@
 			)
 		)
 		(property "Value" "Brake Pos. Sensor"
-			(at 3 -7.51 360)
+			(at 3 -7.51 0)
 			(layer "B.Fab")
 			(uuid "2fc35ae2-f186-4786-a481-ad5172513bab")
 			(effects
@@ -12383,7 +12383,7 @@
 			(uuid "aa15cad2-e133-4054-b5de-1a60d0cb7f75")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 3 -4.2 360)
+			(at 3 -4.2 0)
 			(layer "B.Fab")
 			(uuid "3bbc56df-d133-41c5-a91c-718b24f1c29e")
 			(effects
@@ -12490,7 +12490,7 @@
 	(footprint "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
 		(layer "B.Cu")
 		(uuid "edfd615e-94c2-4407-a93e-eba440e89a5d")
-		(at 143.475 71.0375)
+		(at 145.25 70.45)
 		(descr "THT rectangular pad as test Point, square 1.5mm side length, hole diameter 0.7mm")
 		(tags "test point THT pad rectangle square")
 		(property "Reference" "Brake_Raw1"
@@ -12920,7 +12920,7 @@
 			)
 		)
 		(property "Value" "1nF"
-			(at 0 -1.68 360)
+			(at 0 -1.68 0)
 			(layer "B.Fab")
 			(uuid "d1e3c146-edb4-463d-9c59-760a04d32b44")
 			(effects
@@ -13107,7 +13107,7 @@
 			(uuid "5158dce0-dafc-4f2f-900f-aa2d1674b5a8")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "fc7df331-b0eb-4d28-9a43-f01090300142")
 			(effects
@@ -13665,9 +13665,9 @@
 		)
 	)
 	(gr_arc
-		(start 171.725 132.7375)
-		(mid 170.84632 134.85882)
-		(end 168.725 135.7375)
+		(start 173.25 134.1)
+		(mid 172.37132 136.22132)
+		(end 170.25 137.1)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13676,8 +13676,8 @@
 		(uuid "2a770b5a-b1da-45e0-8070-7e7c7b1bb626")
 	)
 	(gr_line
-		(start 168.725 64.2375)
-		(end 125.475 64.2375)
+		(start 170.25 62.92)
+		(end 125.475 62.92)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13686,8 +13686,8 @@
 		(uuid "65dc397e-18f9-4fd3-b309-f1f57fd83143")
 	)
 	(gr_line
-		(start 171.725 132.7375)
-		(end 171.725 67.2375)
+		(start 173.25 134.1)
+		(end 173.25 65.92)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13696,9 +13696,9 @@
 		(uuid "69c860f3-2794-447b-b8eb-742f3c9f9eb2")
 	)
 	(gr_arc
-		(start 168.725 64.2375)
-		(mid 170.84632 65.11618)
-		(end 171.725 67.2375)
+		(start 170.25 62.92)
+		(mid 172.37132 63.79868)
+		(end 173.25 65.92)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13707,8 +13707,8 @@
 		(uuid "72fe2146-9bde-42e4-96a0-fb32bfbe2fb4")
 	)
 	(gr_line
-		(start 122.475 67.2375)
-		(end 122.475 132.7375)
+		(start 122.475 65.92)
+		(end 122.475 134.1)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13717,8 +13717,8 @@
 		(uuid "96370a78-2fbb-49f7-8a99-5e5ba7165085")
 	)
 	(gr_line
-		(start 125.475 135.7375)
-		(end 168.725 135.7375)
+		(start 125.475 137.1)
+		(end 170.25 137.1)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13727,9 +13727,9 @@
 		(uuid "bc961f66-4587-45b6-94c8-b385b5dd3df6")
 	)
 	(gr_arc
-		(start 122.475 67.2375)
-		(mid 123.35368 65.11618)
-		(end 125.475 64.2375)
+		(start 122.475 65.92)
+		(mid 123.35368 63.79868)
+		(end 125.475 62.92)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13738,9 +13738,9 @@
 		(uuid "db58b41f-450e-4a75-9ac6-026889a5e2da")
 	)
 	(gr_arc
-		(start 125.475 135.7375)
-		(mid 123.35368 134.85882)
-		(end 122.475 132.7375)
+		(start 125.475 137.1)
+		(mid 123.35368 136.22132)
+		(end 122.475 134.1)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -13749,7 +13749,7 @@
 		(uuid "f55ee82d-82e1-49db-b55f-e910499922c8")
 	)
 	(gr_text "5V"
-		(at 159.275 129.4375 0)
+		(at 159.275 130.8 0)
 		(layer "F.SilkS")
 		(uuid "8cb805b0-91ca-4695-8a99-00f0d2ae825c")
 		(effects
