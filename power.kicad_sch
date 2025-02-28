@@ -3178,7 +3178,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uf"
+		(property "Value" ".1uf"
 			(at 191.77 91.4399 0)
 			(effects
 				(font

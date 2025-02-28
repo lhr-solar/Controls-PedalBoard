@@ -1336,12 +1336,6 @@
 		)
 	)
 	(junction
-		(at 223.52 73.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2f1075df-3206-47af-8709-632af651f58b")
-	)
-	(junction
 		(at 185.42 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1480,16 +1474,6 @@
 			(type default)
 		)
 		(uuid "4198eba2-ffd6-48cc-b906-56e67a7abac3")
-	)
-	(wire
-		(pts
-			(xy 223.52 73.66) (xy 223.52 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "449d7266-ba91-432d-8acc-40924c6a5379")
 	)
 	(wire
 		(pts
@@ -1830,6 +1814,73 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
 					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 223.52 76.2 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1919d7a8-d75a-458c-acf9-399b038752e9")
+		(property "Reference" "#PWR054"
+			(at 219.71 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 227.33 76.1999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 223.52 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "361e7afb-38af-4e3e-aa3f-d4110b8c7d1e")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -2350,16 +2401,16 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 223.52 73.66 0)
+		(at 223.52 73.66 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "92a7f8fc-40a8-4538-8126-3a7ca93b639e")
+		(uuid "8d594da8-109b-478c-a6f0-cdeab02a1bce")
 		(property "Reference" "#PWR022"
-			(at 223.52 77.47 0)
+			(at 219.71 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2368,7 +2419,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 226.06 72.3899 0)
+			(at 227.33 73.6599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2404,7 +2455,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f9f09375-fd27-498a-9b43-d25113d16471")
+			(uuid "99bebb74-c067-42a6-ad4b-8434b01a5a05")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
