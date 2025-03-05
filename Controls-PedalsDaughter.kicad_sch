@@ -2903,7 +2903,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "untitled.kicad_sch"
+		(property "Sheetfile" "pedals.kicad_sch"
 			(at 63.5 100.9634 0)
 			(effects
 				(font
