@@ -1,15 +1,19 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "1ba1c812-8f15-4ec4-ade8-3d7d23873433")
 	(paper "A4")
 	(lib_symbols
 		(symbol "+3V3_1"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -81,7 +85,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -93,7 +97,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -124,6 +128,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "2025-01-18_20-51-31:TLV70130DBVR"
 			(pin_names
@@ -215,18 +220,6 @@
 			(symbol "TLV70130DBVR_0_1"
 				(polyline
 					(pts
-						(xy 7.62 -10.16) (xy 25.4 -10.16)
-					)
-					(stroke
-						(width 0.127)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 7.62 5.08) (xy 7.62 -10.16)
 					)
 					(stroke
@@ -239,7 +232,7 @@
 				)
 				(polyline
 					(pts
-						(xy 25.4 -10.16) (xy 25.4 5.08)
+						(xy 7.62 -10.16) (xy 25.4 -10.16)
 					)
 					(stroke
 						(width 0.127)
@@ -252,6 +245,18 @@
 				(polyline
 					(pts
 						(xy 25.4 5.08) (xy 7.62 5.08)
+					)
+					(stroke
+						(width 0.127)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 25.4 -10.16) (xy 25.4 5.08)
 					)
 					(stroke
 						(width 0.127)
@@ -317,24 +322,6 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 33.02 -2.54 180)
-					(length 7.62)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin output line
 					(at 33.02 0 180)
 					(length 7.62)
@@ -353,7 +340,26 @@
 						)
 					)
 				)
+				(pin power_in line
+					(at 33.02 -2.54 180)
+					(length 7.62)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Amplifier_Difference:AMC1300BDWV"
 			(pin_names
@@ -428,19 +434,19 @@
 			(symbol "AMC1300BDWV_0_1"
 				(polyline
 					(pts
-						(xy -1.27 -3.175) (xy -1.27 -4.445)
+						(xy -7.62 -7.62) (xy -7.62 7.62) (xy 7.62 0) (xy -7.62 -7.62)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
-						(type none)
+						(type background)
 					)
 				)
 				(polyline
 					(pts
-						(xy -1.27 -0.635) (xy -1.27 -1.905)
+						(xy -1.27 4.445) (xy -1.27 3.175)
 					)
 					(stroke
 						(width 0)
@@ -464,7 +470,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 4.445) (xy -1.27 3.175)
+						(xy -1.27 -0.635) (xy -1.27 -1.905)
 					)
 					(stroke
 						(width 0)
@@ -476,36 +482,18 @@
 				)
 				(polyline
 					(pts
-						(xy -7.62 -7.62) (xy -7.62 7.62) (xy 7.62 0) (xy -7.62 -7.62)
+						(xy -1.27 -3.175) (xy -1.27 -4.445)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
-						(type background)
+						(type none)
 					)
 				)
 			)
 			(symbol "AMC1300BDWV_1_1"
-				(pin power_in line
-					(at -2.54 7.62 270)
-					(length 2.54)
-					(name "V+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at -10.16 2.54 0)
 					(length 2.54)
@@ -543,6 +531,24 @@
 					)
 				)
 				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 2.54)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
 					(at -2.54 -7.62 90)
 					(length 2.54)
 					(name "V-"
@@ -553,6 +559,24 @@
 						)
 					)
 					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -579,24 +603,6 @@
 					)
 				)
 				(pin output line
-					(at 7.62 -2.54 180)
-					(length 5.08)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
 					(at 7.62 2.54 180)
 					(length 5.08)
 					(name "+"
@@ -614,17 +620,17 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 0 7.62 270)
-					(length 3.81)
-					(name "V+"
+				(pin output line
+					(at 7.62 -2.54 180)
+					(length 5.08)
+					(name "-"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -633,11 +639,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Connector:TestPoint"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -735,157 +746,12 @@
 					)
 				)
 			)
-		)
-		(symbol "Connector_Generic:Conn_01x02"
-			(pin_names
-				(offset 1.016) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J4"
-				(at 0 -8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x02"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://kulite.com//assets/media/2017/06/ETL-200-375.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "P/N" "430450200"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_01x02_1_1"
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 1.27)
-					(end 1.27 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -958,7 +824,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -970,7 +836,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -1019,11 +885,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:D"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1121,10 +992,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 0) (xy -1.27 0)
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -1133,10 +1004,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+						(xy 1.27 0) (xy -1.27 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1182,9 +1053,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_US"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -1255,18 +1129,6 @@
 			(symbol "R_US_0_1"
 				(polyline
 					(pts
-						(xy 0 -2.286) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 0 2.286) (xy 0 2.54)
 					)
 					(stroke
@@ -1279,7 +1141,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 -0.762) (xy 1.016 -1.143) (xy 0 -1.524) (xy -1.016 -1.905) (xy 0 -2.286)
+						(xy 0 2.286) (xy 1.016 1.905) (xy 0 1.524) (xy -1.016 1.143) (xy 0 0.762)
 					)
 					(stroke
 						(width 0)
@@ -1303,7 +1165,19 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.286) (xy 1.016 1.905) (xy 0 1.524) (xy -1.016 1.143) (xy 0 0.762)
+						(xy 0 -0.762) (xy 1.016 -1.143) (xy 0 -1.524) (xy -1.016 -1.905) (xy 0 -2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.286) (xy 0 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -1352,12 +1226,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "PWR_FLAG_1"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1448,12 +1327,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+12V"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1525,7 +1409,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1537,7 +1421,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1568,12 +1452,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1664,12 +1553,17 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GNDPWR"
 			(power)
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0) hide)
+				(offset 0)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1729,18 +1623,6 @@
 			(symbol "GNDPWR_0_1"
 				(polyline
 					(pts
-						(xy 0 -1.27) (xy 0 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy -1.016 -1.27) (xy -1.27 -2.032) (xy -1.27 -2.032)
 					)
 					(stroke
@@ -1757,6 +1639,18 @@
 					)
 					(stroke
 						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1832,7 +1726,147 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(rectangle
+		(start 47.244 87.63)
+		(end 232.41 141.732)
+		(stroke
+			(width 0.1)
+			(type dash_dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 006fcbcd-8c2b-432c-a79d-dfdcf53cce08)
+	)
+	(rectangle
+		(start 47.244 48.26)
+		(end 111.252 82.042)
+		(stroke
+			(width 0.1)
+			(type dash_dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 5a0bedd6-6067-4b55-89b7-9d6f7141d8fa)
+	)
+	(text "Break sensor gives current\nreading 4ma - 20ma"
+		(exclude_from_sim no)
+		(at 68.58 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7cb48109-289d-4d23-a7b9-25bd54a8b20e")
+	)
+	(text "Isolated Amp"
+		(exclude_from_sim no)
+		(at 138.43 95.25 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "7cff21fd-b1a6-477c-8ea6-5ea0dbd24069")
+	)
+	(text "->"
+		(exclude_from_sim no)
+		(at 182.626 113.03 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+			)
+		)
+		(uuid "82af80b7-eb97-4799-a95a-10451339d162")
+	)
+	(text "20ma -> ~0.4V (*8.2) -> 3.28v"
+		(exclude_from_sim no)
+		(at 76.2 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "84790aba-270b-4114-904a-e1a7d052ea82")
+	)
+	(text "Break psi is 25 - 600\nSensor range is 25 - 2500 psi"
+		(exclude_from_sim no)
+		(at 68.58 134.62 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "918f0a6c-8d24-4c2a-a7b3-96113bf74d9e")
+	)
+	(text "3V3 Pwr for Isolated Amp"
+		(exclude_from_sim no)
+		(at 78.74 52.07 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "97b335a8-5218-46f9-8433-038c4124d38d")
+	)
+	(text "x8.2 gain"
+		(exclude_from_sim no)
+		(at 138.43 99.06 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "9dc68ab1-f061-4886-a53c-030dd7845593")
+	)
+	(text "->"
+		(exclude_from_sim no)
+		(at 93.472 113.284 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.6)
+				(bold yes)
+			)
+		)
+		(uuid "ba26b5ad-26b1-450a-b75f-176c7f1c2cbb")
+	)
+	(text "Break Fluid Sensor"
+		(exclude_from_sim no)
+		(at 143.002 67.056 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.508)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "d5f06c63-bee8-43bd-8a87-2a0f3c0aade4")
+	)
+	(text "Brake\n"
+		(exclude_from_sim no)
+		(at 60.96 114.3 0)
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+		)
+		(uuid "e72379ee-316c-4c82-94ed-6ef4e6f31529")
 	)
 	(junction
 		(at 157.48 102.87)
@@ -2386,148 +2420,8 @@
 		)
 		(uuid "f7a52d24-8c02-43fb-b0f2-0671c625a899")
 	)
-	(rectangle
-		(start 47.244 87.63)
-		(end 232.41 141.732)
-		(stroke
-			(width 0.1)
-			(type dash_dot)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 006fcbcd-8c2b-432c-a79d-dfdcf53cce08)
-	)
-	(rectangle
-		(start 47.244 48.26)
-		(end 111.252 82.042)
-		(stroke
-			(width 0.1)
-			(type dash_dot)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 5a0bedd6-6067-4b55-89b7-9d6f7141d8fa)
-	)
-	(text "Break sensor gives current\nreading 4ma - 20ma"
-		(exclude_from_sim no)
-		(at 68.58 129.54 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "7cb48109-289d-4d23-a7b9-25bd54a8b20e")
-	)
-	(text "Isolated Amp"
-		(exclude_from_sim no)
-		(at 138.43 95.25 0)
-		(effects
-			(font
-				(size 2 2)
-				(thickness 0.4)
-				(bold yes)
-			)
-		)
-		(uuid "7cff21fd-b1a6-477c-8ea6-5ea0dbd24069")
-	)
-	(text "->"
-		(exclude_from_sim no)
-		(at 182.626 113.03 0)
-		(effects
-			(font
-				(size 3 3)
-				(thickness 0.6)
-				(bold yes)
-			)
-		)
-		(uuid "82af80b7-eb97-4799-a95a-10451339d162")
-	)
-	(text "20ma -> ~0.4V (*8.2) -> 3.28v"
-		(exclude_from_sim no)
-		(at 76.2 102.87 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "84790aba-270b-4114-904a-e1a7d052ea82")
-	)
-	(text "Break psi is 25 - 600\nSensor range is 25 - 2500 psi"
-		(exclude_from_sim no)
-		(at 68.58 134.62 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "918f0a6c-8d24-4c2a-a7b3-96113bf74d9e")
-	)
-	(text "3V3 Pwr for Isolated Amp"
-		(exclude_from_sim no)
-		(at 78.74 52.07 0)
-		(effects
-			(font
-				(size 2 2)
-				(thickness 0.4)
-				(bold yes)
-			)
-		)
-		(uuid "97b335a8-5218-46f9-8433-038c4124d38d")
-	)
-	(text "x8.2 gain"
-		(exclude_from_sim no)
-		(at 138.43 99.06 0)
-		(effects
-			(font
-				(size 1.5 1.5)
-				(thickness 0.4)
-				(bold yes)
-			)
-		)
-		(uuid "9dc68ab1-f061-4886-a53c-030dd7845593")
-	)
-	(text "->"
-		(exclude_from_sim no)
-		(at 93.472 113.284 0)
-		(effects
-			(font
-				(size 3 3)
-				(thickness 0.6)
-				(bold yes)
-			)
-		)
-		(uuid "ba26b5ad-26b1-450a-b75f-176c7f1c2cbb")
-	)
-	(text "Break Fluid Sensor"
-		(exclude_from_sim no)
-		(at 143.002 67.056 0)
-		(effects
-			(font
-				(size 3 3)
-				(thickness 0.508)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "d5f06c63-bee8-43bd-8a87-2a0f3c0aade4")
-	)
-	(text "Brake\n"
-		(exclude_from_sim no)
-		(at 60.96 114.3 0)
-		(effects
-			(font
-				(size 1.5 1.5)
-				(thickness 0.3)
-				(bold yes)
-			)
-		)
-		(uuid "e72379ee-316c-4c82-94ed-6ef4e6f31529")
-	)
 	(label "Brake_Fl"
 		(at 153.67 113.03 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2538,7 +2432,6 @@
 	)
 	(label "INP"
 		(at 82.55 113.03 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2549,7 +2442,6 @@
 	)
 	(label "Brake_Fl"
 		(at 194.31 113.03 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2560,7 +2452,6 @@
 	)
 	(label "INP"
 		(at 125.73 113.03 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2572,7 +2463,6 @@
 	(hierarchical_label "Brake_Fl"
 		(shape output)
 		(at 219.71 113.03 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4024,82 +3914,6 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
 					(reference "Brake_Fl_Sn_Raw1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
-		(at 66.04 115.57 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b4148d73-9f1e-4a71-b822-7f460cbd7415")
-		(property "Reference" "J4"
-			(at 66.04 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Conn_01x02"
-			(at 66.04 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical"
-			(at 66.04 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://kulite.com//assets/media/2017/06/ETL-200-375.pdf"
-			(at 66.04 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 66.04 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "P/N" "430450200"
-			(at 66.04 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a75b0b45-a52a-414f-9d3f-418e91fbb8a2")
-		)
-		(pin "1"
-			(uuid "6813dce0-aa26-4d57-b070-ee81f3a903a0")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
-					(reference "J4")
 					(unit 1)
 				)
 			)

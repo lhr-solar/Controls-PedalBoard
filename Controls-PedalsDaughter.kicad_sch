@@ -1,652 +1,31 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "30d77876-714b-4f1b-9bad-b74eb43ddcf6")
 	(paper "A4")
 	(lib_symbols
-		(symbol "PWR_FLAG_1"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#FLG"
-				(at 0 1.905 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "PWR_FLAG"
-				(at 0 3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Special symbol for telling ERC where power comes from"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "flag power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "PWR_FLAG_1_0_0"
-				(pin power_out line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "PWR_FLAG_1_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-		)
-		(symbol "power:+12V"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+12V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+12V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+12V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+12V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "power:+3.3V"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3.3V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "power:GND"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "power:GNDPWR"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GNDPWR"
-				(at 0 -3.302 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global ground"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GNDPWR_0_1"
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy 0 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 -1.27) (xy -1.27 -2.032) (xy -1.27 -2.032)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.508 -1.27) (xy -0.762 -2.032) (xy -0.762 -2.032)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -1.27) (xy -0.254 -2.032) (xy -0.254 -2.032)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.508 -1.27) (xy 0.254 -2.032) (xy 0.254 -2.032)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 -1.27) (xy -1.016 -1.27) (xy -1.016 -1.27)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 -1.27) (xy 0.762 -2.032) (xy 0.762 -2.032) (xy 0.762 -2.032)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GNDPWR_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "utsvt-connectors:PeripheralCANConnector"
-			(pin_names
-				(offset 1.016)
-			)
+		(symbol "utsvt_connectors:MX150_02x03_Vertical"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "J"
-				(at 1.27 -6.35 0)
+				(at 0 0 0)
 				(effects
 					(font
-						(size 1.524 1.524)
+						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "PeripheralCANConnector"
-				(at 0 6.35 0)
+			(property "Value" "MX150_02x03_Vertical"
+				(at 0 -2.032 0)
 				(effects
 					(font
-						(size 1.524 1.524)
+						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "UTSVT_Connectors:Molex_MicroFit3.0_1x4xP3.00mm_PolarizingPeg_Vertical"
-				(at 0 -8.89 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.mouser.com/ProductDetail/Molex/43650-0244?qs=XoD1gVtqLQuEe6RJ38AzJQ%3D%3D"
-				(at 5.08 7.62 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Connection to the car's Peripheral CAN bus."
+			(property "Footprint" "UTSVT_Connectors:CONN06_0757575131_MOL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -655,7 +34,7 @@
 					(hide yes)
 				)
 			)
-			(property "P/N" "436500244"
+			(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/757575131?display=pdf"
 				(at 0 0 0)
 				(effects
 					(font
@@ -664,24 +43,41 @@
 					(hide yes)
 				)
 			)
-			(symbol "PeripheralCANConnector_0_1"
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "P/N" "757575131"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MX150_02x03_Vertical_1_1"
 				(rectangle
-					(start -5.08 5.08)
-					(end 5.08 -5.08)
+					(start -11.43 -3.81)
+					(end 11.43 -16.51)
 					(stroke
 						(width 0)
 						(type solid)
 					)
 					(fill
-						(type background)
+						(type color)
+						(color 255 255 194 1)
 					)
 				)
-			)
-			(symbol "PeripheralCANConnector_1_1"
 				(pin power_in line
-					(at 10.16 3.81 180)
-					(length 5.08)
-					(name "12V"
+					(at -13.97 -6.35 0)
+					(length 2.54)
+					(name "+24V"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -696,10 +92,10 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 10.16 1.27 180)
-					(length 5.08)
-					(name "GNDPWR"
+				(pin bidirectional line
+					(at -13.97 -10.16 0)
+					(length 2.54)
+					(name "CANH_IN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -715,9 +111,189 @@
 					)
 				)
 				(pin bidirectional line
-					(at 10.16 -1.27 180)
-					(length 5.08)
-					(name "CAN_H"
+					(at -13.97 -13.97 0)
+					(length 2.54)
+					(name "CANL_IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 13.97 -6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 13.97 -10.16 180)
+					(length 2.54)
+					(name "CANH_OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 13.97 -13.97 180)
+					(length 2.54)
+					(name "CANL_OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "utsvt_connectors:MX150_02x10_Vertical"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MX150_02x10_Vertical"
+				(at 0 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "UTSVT_Connectors:CONN_SD-75757-002_2X10_F16p09_MOL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/757575101?display=pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "P/N" "757575101"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MX150_02x10_Vertical_1_1"
+				(rectangle
+					(start -11.43 -3.81)
+					(end 11.43 -43.18)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type color)
+						(color 255 255 194 1)
+					)
+				)
+				(pin power_in line
+					(at -13.97 -6.35 0)
+					(length 2.54)
+					(name "+24V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -10.16 0)
+					(length 2.54)
+					(name "CANH_IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -13.97 0)
+					(length 2.54)
+					(name "CANL_IN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -733,9 +309,9 @@
 					)
 				)
 				(pin bidirectional line
-					(at 10.16 -3.81 180)
-					(length 5.08)
-					(name "CAN_L"
+					(at -13.97 -17.78 0)
+					(length 2.54)
+					(name "PWR_OUT*"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -750,167 +326,17 @@
 						)
 					)
 				)
-			)
-		)
-		(symbol "utsvt-misc:PeripheralSOM"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -13.716 30.48 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "PeripheralSOM"
-				(at 7.112 30.48 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "UTSVT_Special:PeripheralSOM"
-				(at -74.422 44.958 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://tools.molex.com/pdm_docs/sd/533072071_sd.pdf"
-				(at -75.946 47.244 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 2.54 24.13 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "P/N" "53307-2471"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Height" "3.85"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "PeripheralSOM_1_1"
-				(rectangle
-					(start -13.97 29.21)
-					(end 13.97 -29.21)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -5.08) (xy 2.54 -26.67)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 8.89) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 16.51) (xy 2.54 11.43)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(text "ADC"
-					(at 2.032 13.97 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-						(justify right)
-					)
-				)
-				(text "GPIO"
-					(at 1.778 12.7 0)
-					(effects
-						(font
-							(size 0.8 0.8)
-						)
-						(justify right)
-					)
-				)
-				(text "I2C"
-					(at 1.778 3.81 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-						(justify right)
-					)
-				)
-				(text "SPI"
-					(at 2.032 -15.24 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-						(justify right)
-					)
-				)
-				(pin passive line
-					(at 19.05 -22.86 180)
-					(length 5.08)
-					(name "SPI2_MOSI"
+				(pin bidirectional line
+					(at -13.97 -21.59 0)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -918,10 +344,82 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 20.32 180)
-					(length 5.08)
-					(name "VDDA(3.3V)"
+				(pin bidirectional line
+					(at -13.97 -25.4 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -29.21 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -33.02 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -36.83 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -13.97 -40.64 0)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -936,9 +434,9 @@
 						)
 					)
 				)
-				(pin output line
-					(at -19.05 -22.86 0)
-					(length 5.08)
+				(pin power_in line
+					(at 13.97 -6.35 180)
+					(length 2.54)
 					(name "GND"
 						(effects
 							(font
@@ -954,10 +452,10 @@
 						)
 					)
 				)
-				(pin output line
-					(at -19.05 -20.32 0)
-					(length 5.08)
-					(name "GNDA"
+				(pin bidirectional line
+					(at 13.97 -10.16 180)
+					(length 2.54)
+					(name "CANH_OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -972,10 +470,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -8.89 180)
-					(length 5.08)
-					(name "SPI1_SCK"
+				(pin bidirectional line
+					(at 13.97 -13.97 180)
+					(length 2.54)
+					(name "CANL_OUT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -990,10 +488,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 7.62 180)
-					(length 5.08)
-					(name "I2C1_SCL"
+				(pin bidirectional line
+					(at 13.97 -17.78 180)
+					(length 2.54)
+					(name "GND_OUT*"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1008,10 +506,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -13.97 180)
-					(length 5.08)
-					(name "SPI1_MISO"
+				(pin power_in line
+					(at 13.97 -21.59 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1026,10 +524,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 5.08 180)
-					(length 5.08)
-					(name "I2C1_SDA"
+				(pin bidirectional line
+					(at 13.97 -25.4 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1044,10 +542,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -11.43 180)
-					(length 5.08)
-					(name "SPI1_MOSI"
+				(pin bidirectional line
+					(at 13.97 -29.21 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1062,10 +560,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 12.7 180)
-					(length 5.08)
-					(name "PA2(ADC)"
+				(pin bidirectional line
+					(at 13.97 -33.02 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1080,10 +578,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -6.35 180)
-					(length 5.08)
-					(name "SPI1_NSS"
+				(pin bidirectional line
+					(at 13.97 -36.83 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1098,28 +596,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 25.4 180)
-					(length 5.08)
-					(name "+3.3V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 19.05 15.24 180)
-					(length 5.08)
-					(name "PA1(ADC)"
+				(pin bidirectional line
+					(at 13.97 -40.64 180)
+					(length 2.54)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1134,64 +614,144 @@
 						)
 					)
 				)
-				(pin passive line
-					(at -19.05 21.59 0)
-					(length 5.08)
-					(name "CAN_L"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "utsvt_connectors:PeripheralSOMConnector"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -14.732 -2.794 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(thickness 0.1588)
 					)
-					(number "21"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
+				)
+			)
+			(property "Value" "53307-2471"
+				(at 8.89 -2.794 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "UTSVT_Connectors:PeripheralSOM"
+				(at 0 1.016 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.molex.com/en-us/products/part-detail-pdf/533072471?display=pdf"
+				(at -0.254 5.588 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Board-to-board connector for Peripheral SOM daughterboards"
+				(at 0 8.636 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "P/N" "53307-2471"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PeripheralSOMConnector_0_1"
+				(polyline
+					(pts
+						(xy 0.762 -22.86) (xy 0.762 -15.24)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -24.892) (xy 0.762 -38.608)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -40.64) (xy 0.762 -62.23)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PeripheralSOMConnector_1_1"
+				(rectangle
+					(start -15.24 -3.81)
+					(end 15.24 -65.024)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(text "ADC"
+					(at -1.524 -31.75 0)
+					(effects
+						(font
+							(size 1.27 1.27)
 						)
 					)
 				)
-				(pin input line
-					(at -19.05 25.4 0)
-					(length 5.08)
-					(name "+12V_In"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "22"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
+				(text "I2C"
+					(at -1.27 -19.304 0)
+					(effects
+						(font
+							(size 1.27 1.27)
 						)
 					)
 				)
-				(pin passive line
-					(at -19.05 19.05 0)
-					(length 5.08)
-					(name "CAN_H"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "23"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
+				(text "SPI"
+					(at -1.27 -51.562 0)
+					(effects
+						(font
+							(size 1.27 1.27)
 						)
 					)
 				)
-				(pin passive line
-					(at -19.05 -17.78 0)
-					(length 5.08)
-					(name "GNDPWR"
+				(pin power_in line
+					(at -17.78 -7.62 0)
+					(length 2.54)
+					(name "+24V_In"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1206,10 +766,154 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -25.4 180)
-					(length 5.08)
-					(name "SPI2_MISO"
+				(pin bidirectional line
+					(at -17.78 -15.24 0)
+					(length 2.54)
+					(name "CAN_H"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "22"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -17.78 -17.78 0)
+					(length 2.54)
+					(name "CAN_L"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -40.64 0)
+					(length 2.54)
+					(name "MNT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "25"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -43.18 0)
+					(length 2.54)
+					(name "MNT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "26"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -45.72 0)
+					(length 2.54)
+					(name "MNT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "27"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -48.26 0)
+					(length 2.54)
+					(name "MNT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "28"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at -17.78 -52.07 0)
+					(length 2.54)
+					(name "GNDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -55.88 0)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -17.78 -58.42 0)
+					(length 2.54)
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1224,28 +928,10 @@
 						)
 					)
 				)
-				(pin output line
-					(at -19.05 -25.4 0)
-					(length 5.08)
+				(pin power_in line
+					(at -17.78 -60.96 0)
+					(length 2.54)
 					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 19.05 -20.32 180)
-					(length 5.08)
-					(name "SPI2_SCK"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1260,35 +946,17 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 -1.27 180)
-					(length 5.08)
-					(name "I2C2_SDA"
+				(pin power_out line
+					(at 17.78 -7.62 180)
+					(length 2.54)
+					(name "+3.3v"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 19.05 -17.78 180)
-					(length 5.08)
-					(name "SPI2_NSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1296,10 +964,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 19.05 1.27 180)
-					(length 5.08)
-					(name "I2C2_SCL"
+				(pin power_out line
+					(at 17.78 -11.43 180)
+					(length 2.54)
+					(name "VDDA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1315,9 +983,63 @@
 					)
 				)
 				(pin output line
-					(at 19.05 22.86 180)
-					(length 5.08)
-					(name "+3.3V"
+					(at 17.78 -17.78 180)
+					(length 2.54)
+					(name "I2C1_SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 17.78 -20.32 180)
+					(length 2.54)
+					(name "I2C1_SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -26.67 180)
+					(length 2.54)
+					(name "OPAMP1_VINP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -29.21 180)
+					(length 2.54)
+					(name "ADC1_IN7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1332,258 +1054,207 @@
 						)
 					)
 				)
+				(pin input line
+					(at 17.78 -31.75 180)
+					(length 2.54)
+					(name "ADC1_IN9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -34.29 180)
+					(length 2.54)
+					(name "ADC1_IN10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -36.83 180)
+					(length 2.54)
+					(name "ADC1_IN11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -41.91 180)
+					(length 2.54)
+					(name "SPI2_NSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -44.45 180)
+					(length 2.54)
+					(name "SPI2_SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -46.99 180)
+					(length 2.54)
+					(name "SPI2_MOSI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -49.53 180)
+					(length 2.54)
+					(name "SPI2_MISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -53.34 180)
+					(length 2.54)
+					(name "SPI1_NSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -55.88 180)
+					(length 2.54)
+					(name "SPI1_SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 17.78 -58.42 180)
+					(length 2.54)
+					(name "SPI1_MOSI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 17.78 -60.96 180)
+					(length 2.54)
+					(name "SPI1_MISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "21"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
-	)
-	(junction
-		(at 185.42 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "33f991e9-3d46-450b-a8ea-d1a1da312568")
-	)
-	(junction
-		(at 223.52 78.74)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "44ca063b-d3cd-4035-b905-c1d75bd9faac")
-	)
-	(junction
-		(at 223.52 73.66)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "470baec4-f57e-41f1-a726-1f728cf8f502")
-	)
-	(junction
-		(at 185.42 119.38)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5f172f13-bd47-4723-a1ee-0c66fcb6a01c")
-	)
-	(junction
-		(at 172.72 85.09)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "82bf26d6-345b-4689-8b55-98ba7b241fc1")
-	)
-	(junction
-		(at 162.56 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a98cca30-4427-4ce8-927d-2d0d9e08e749")
-	)
-	(no_connect
-		(at 223.52 97.79)
-		(uuid "2abe5554-9f6f-4af9-bab4-22c38c128413")
-	)
-	(no_connect
-		(at 223.52 113.03)
-		(uuid "2cf82275-9a2d-41ec-8d3f-86ceaff74cc2")
-	)
-	(no_connect
-		(at 223.52 121.92)
-		(uuid "2d384654-4288-4438-bb9a-89d1918ec67f")
-	)
-	(no_connect
-		(at 223.52 116.84)
-		(uuid "4680f283-1cb7-4550-90fb-f7a98245e756")
-	)
-	(no_connect
-		(at 223.52 119.38)
-		(uuid "4e3d1ded-1d29-4971-b91b-1ba456061d75")
-	)
-	(no_connect
-		(at 223.52 91.44)
-		(uuid "6ad41af7-2105-4831-bd61-f28d68a5dc6a")
-	)
-	(no_connect
-		(at 223.52 93.98)
-		(uuid "6c17f4e7-5193-4e43-b6a9-418a305200fe")
-	)
-	(no_connect
-		(at 223.52 107.95)
-		(uuid "6cff485e-6f52-4932-886d-42dbe7c675b0")
-	)
-	(no_connect
-		(at 223.52 110.49)
-		(uuid "9a2ef70b-82b1-462c-9696-57a5cca53e42")
-	)
-	(no_connect
-		(at 223.52 100.33)
-		(uuid "cf058fa9-a65f-4d45-b324-090f24fc1c4b")
-	)
-	(no_connect
-		(at 223.52 124.46)
-		(uuid "ff137a69-0c6e-49b1-8f0a-22cb4fda9e75")
-	)
-	(wire
-		(pts
-			(xy 163.83 93.98) (xy 163.83 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "01d35b20-83a7-4e83-9f72-63647a871da5")
-	)
-	(wire
-		(pts
-			(xy 163.83 115.57) (xy 163.83 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "055f1085-bf0b-49e8-82f8-398120d60ea9")
-	)
-	(wire
-		(pts
-			(xy 163.83 111.76) (xy 162.56 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0a131153-50ba-4d54-b958-eae1bef22ed8")
-	)
-	(wire
-		(pts
-			(xy 162.56 111.76) (xy 162.56 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "103c7397-ddd6-4836-a145-39836cc59269")
-	)
-	(wire
-		(pts
-			(xy 163.83 92.71) (xy 162.56 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1479eb68-b1c0-451f-af97-fd19b8191909")
-	)
-	(wire
-		(pts
-			(xy 163.83 113.03) (xy 163.83 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "185a6f1e-941a-4ed2-a673-361cda275e41")
-	)
-	(wire
-		(pts
-			(xy 162.56 92.71) (xy 162.56 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4198eba2-ffd6-48cc-b906-56e67a7abac3")
-	)
-	(wire
-		(pts
-			(xy 185.42 121.92) (xy 185.42 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "61942e52-1a8c-4dad-b2a5-fadba3f1ed72")
-	)
-	(wire
-		(pts
-			(xy 163.83 91.44) (xy 163.83 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "684ac5ad-4125-43ca-bba4-97c6544d06a0")
-	)
-	(wire
-		(pts
-			(xy 163.83 114.3) (xy 162.56 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "960b747a-7689-4779-b1aa-9b336535b6e2")
-	)
-	(wire
-		(pts
-			(xy 163.83 105.41) (xy 162.56 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9971c1ff-7e83-425a-8aa8-0e72b9278ac3")
-	)
-	(wire
-		(pts
-			(xy 163.83 87.63) (xy 162.56 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a83e27e5-f561-40de-a87a-23fcad74b134")
-	)
-	(wire
-		(pts
-			(xy 162.56 114.3) (xy 162.56 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ca80f6a4-5624-43e2-852b-46a340e848d3")
-	)
-	(wire
-		(pts
-			(xy 162.56 80.01) (xy 162.56 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d2b1af02-fc9e-4e7c-a04a-63d528ff321a")
-	)
-	(wire
-		(pts
-			(xy 166.37 82.55) (xy 162.56 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6e37081-5746-489c-808a-c60c03b44f8e")
-	)
-	(wire
-		(pts
-			(xy 162.56 85.09) (xy 172.72 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e1969e66-c978-473b-9406-651f5c769c59")
-	)
-	(wire
-		(pts
-			(xy 166.37 81.28) (xy 166.37 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f74a38d4-4232-412d-b60d-b1f82066aa27")
 	)
 	(rectangle
 		(start 131.064 59.436)
@@ -1599,7 +1270,7 @@
 	)
 	(text "PSOM\n"
 		(exclude_from_sim no)
-		(at 162.56 64.77 0)
+		(at 187.452 53.34 0)
 		(effects
 			(font
 				(size 3 3)
@@ -1621,52 +1292,8 @@
 		)
 		(uuid "69bab111-3efb-4015-80e9-525a8cb0a30c")
 	)
-	(text "Daisy Chain :)"
-		(exclude_from_sim no)
-		(at 152.4 95.25 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "87cd02cb-2014-487a-8182-df69380d73a7")
-	)
-	(label "CAN_L"
-		(at 185.42 77.47 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "0a34800e-da17-42ce-a9a6-7625646da478")
-	)
-	(label "CAN_L"
-		(at 163.83 115.57 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1d9e9df6-c95f-49d0-82d6-248244348a35")
-	)
-	(label "Brake_Pot"
-		(at 223.52 83.82 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "54010806-ba57-45df-9d9c-3724080ad501")
-	)
 	(label "Brake_Pot"
 		(at 85.09 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1675,42 +1302,8 @@
 		)
 		(uuid "85b0b3e8-5321-4203-91e0-0e55a317655f")
 	)
-	(label "CAN_L"
-		(at 163.83 93.98 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a20f1bcc-1d52-486b-9507-1f6d99eebe93")
-	)
-	(label "CAN_H"
-		(at 163.83 91.44 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a7a7eed9-d9da-4b01-98d9-8193f0b48973")
-	)
-	(label "CAN_H"
-		(at 163.83 113.03 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b0f8a16d-f16a-4904-b7d8-a3bde63be49e")
-	)
 	(label "Accel"
 		(at 85.09 85.09 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1719,42 +1312,8 @@
 		)
 		(uuid "c5088747-a663-459f-8b5a-e37d93a8d512")
 	)
-	(label "CAN_H"
-		(at 185.42 80.01 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "cf801f38-99d6-45c3-a53e-72a2fc60c88b")
-	)
-	(label "Accel"
-		(at 223.52 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d6bac6ae-7a83-4ecf-b47a-aeda3c90e272")
-	)
-	(label "Brake_Fl"
-		(at 223.52 105.41 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dfcd8591-6668-4211-a2ac-6da856006512")
-	)
 	(label "Brake_Fl"
 		(at 87.63 119.38 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1764,215 +1323,33 @@
 		(uuid "f2d41481-a14f-4676-9f8f-edd7bc1d8c7e")
 	)
 	(symbol
-		(lib_name "PWR_FLAG_1")
-		(lib_id "power:PWR_FLAG")
-		(at 172.72 85.09 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "09441e51-d602-4a31-8a33-e1e7f8265354")
-		(property "Reference" "#FLG02"
-			(at 172.72 83.185 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 172.72 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 172.72 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 172.72 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 172.72 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6eac16f4-1875-4283-9bb2-1e6a9f6f1bb6")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "PWR_FLAG_1")
-		(lib_id "power:PWR_FLAG")
-		(at 223.52 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0fa512a8-9f77-4c00-86e5-df66392c2125")
-		(property "Reference" "#FLG03"
-			(at 223.52 71.755 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 223.52 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4dbde5df-76df-49ac-8cc6-577a25d634f9")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#FLG03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "PWR_FLAG_1")
-		(lib_id "power:PWR_FLAG")
-		(at 223.52 78.74 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "114b80f4-b278-4c49-9195-a614881a9702")
-		(property "Reference" "#FLG04"
-			(at 223.52 80.645 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 223.52 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "965ec0d4-5f40-4081-ba76-c162ec99577c")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#FLG04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 223.52 76.2 270)
+		(lib_id "utsvt_connectors:MX150_02x03_Vertical")
+		(at 153.67 109.22 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "1919d7a8-d75a-458c-acf9-399b038752e9")
-		(property "Reference" "#PWR054"
-			(at 219.71 76.2 0)
+		(uuid "396c3c40-28d0-4619-9dcf-7abf8098006c")
+		(property "Reference" "J1"
+			(at 153.67 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MX150_02x03_Vertical"
+			(at 153.67 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "UTSVT_Connectors:CONN06_0757575131_MOL"
+			(at 153.67 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1980,91 +1357,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 227.33 76.1999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 223.52 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 223.52 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "361e7afb-38af-4e3e-aa3f-d4110b8c7d1e")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR054")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "utsvt-misc:PeripheralSOM")
-		(at 204.47 99.06 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "258e0294-d372-46a8-b4cc-12bb65739f5f")
-		(property "Reference" "U2"
-			(at 204.47 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PeripheralSOM"
-			(at 204.47 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "UTSVT_Special:PeripheralSOM"
-			(at 130.048 54.102 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://tools.molex.com/pdm_docs/sd/533072071_sd.pdf"
-			(at 128.524 51.816 0)
+		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/757575131?display=pdf"
+			(at 153.67 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2073,7 +1367,97 @@
 			)
 		)
 		(property "Description" ""
-			(at 207.01 74.93 0)
+			(at 153.67 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "757575131"
+			(at 153.67 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "dd674f47-44a3-4628-ac39-a8651383f225")
+		)
+		(pin "2"
+			(uuid "511a70a7-31a2-4546-b02f-0e1eff382175")
+		)
+		(pin "3"
+			(uuid "730e0ae2-3d55-4bd6-bbb4-a38840f3f1b1")
+		)
+		(pin "4"
+			(uuid "bb091972-48cd-4453-918c-bd43e025c394")
+		)
+		(pin "5"
+			(uuid "3f85fddd-a4b0-47c4-a3a9-0eaff57d8fe5")
+		)
+		(pin "1"
+			(uuid "49a00586-12c5-4965-846a-1d577abd9716")
+		)
+		(instances
+			(project ""
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "utsvt_connectors:PeripheralSOMConnector")
+		(at 205.74 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6b466836-ec3e-4aca-869e-1806929a0734")
+		(property "Reference" "J7"
+			(at 205.74 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.1588)
+				)
+			)
+		)
+		(property "Value" "53307-2471"
+			(at 205.74 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "UTSVT_Connectors:PeripheralSOM"
+			(at 205.74 59.944 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail-pdf/533072471?display=pdf"
+			(at 205.486 55.372 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Board-to-board connector for Peripheral SOM daughterboards"
+			(at 205.74 52.324 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2082,15 +1466,7 @@
 			)
 		)
 		(property "P/N" "53307-2471"
-			(at 204.47 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Height" "3.85"
-			(at 204.47 99.06 0)
+			(at 205.74 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2098,1041 +1474,225 @@
 				(hide yes)
 			)
 		)
-		(pin "15"
-			(uuid "ad6bc268-7b16-4d1f-944e-42d6947dcfa7")
-		)
-		(pin "17"
-			(uuid "b2df3720-1a67-425f-8950-fb312bf0602e")
-		)
-		(pin "14"
-			(uuid "a4812e5d-f688-4e74-a34e-ea78e84dbcc3")
-		)
-		(pin "19"
-			(uuid "59d1ae60-9b5d-4d74-a73f-e886413d90f7")
-		)
-		(pin "6"
-			(uuid "48be7f7f-b0d8-44f7-b6e4-abe2c9f5a77f")
-		)
-		(pin "2"
-			(uuid "f948b493-f68d-45f8-9ef7-d488b49a6f19")
-		)
-		(pin "12"
-			(uuid "a40d4a1a-84b3-42a8-a202-93d2e79285e7")
-		)
-		(pin "5"
-			(uuid "a29747ef-3bf0-4bbe-abc1-e0c8966f5c51")
-		)
-		(pin "21"
-			(uuid "0eadb9a5-206f-4b05-8f6f-740d765a2336")
-		)
-		(pin "20"
-			(uuid "badcee24-e95c-459e-ad37-f53ba35daa0d")
-		)
-		(pin "13"
-			(uuid "1eeb589a-fada-4d5f-8182-a5a3433eeacc")
-		)
-		(pin "10"
-			(uuid "76bead5a-e7dc-400c-88c9-65932e95a571")
-		)
-		(pin "18"
-			(uuid "52b7fc8a-2340-4d3b-a9a0-6beb2f8316e3")
+		(pin "28"
+			(uuid "f13e0be7-fd0a-400a-b70b-ace9196c7d85")
 		)
 		(pin "8"
-			(uuid "fcc633e3-9d20-4c90-80cb-51dc8d70da2f")
+			(uuid "81aa7033-a360-44dc-a320-f4e418dd749a")
 		)
-		(pin "3"
-			(uuid "164e7fca-c815-4936-8a80-4fd5a84076d5")
-		)
-		(pin "23"
-			(uuid "39c89ddd-ce7c-4ebd-a96c-674d971d3403")
-		)
-		(pin "24"
-			(uuid "97a8557b-fe3d-4947-bfef-dbe07d442e02")
-		)
-		(pin "7"
-			(uuid "288c7fad-cb7e-4859-8777-4faa71117bdf")
+		(pin "4"
+			(uuid "7044b939-2060-41c3-b6e6-2dcf3e986dec")
 		)
 		(pin "22"
-			(uuid "944c6a19-a6c4-42be-81d7-bfeb59211731")
+			(uuid "eaa03f21-16d9-4e04-8b65-743df7a3ce78")
 		)
-		(pin "16"
-			(uuid "241c1b63-cce3-43f1-bdff-5a74b9fd979d")
+		(pin "20"
+			(uuid "1e1f0ce8-17f2-4c61-ae90-eaa49f80614e")
 		)
-		(pin "4"
-			(uuid "3d8251d4-7436-456b-90b8-5be06b61c8a9")
+		(pin "25"
+			(uuid "f8fdb4e8-f9e1-48a2-9ac8-601633d3904c")
+		)
+		(pin "27"
+			(uuid "e33aec28-a2fa-4d38-983d-7ed51952aa68")
+		)
+		(pin "24"
+			(uuid "b5090923-18ea-4074-a505-6b707291cd6c")
+		)
+		(pin "10"
+			(uuid "d682c635-d00a-4a3e-900d-f44fc7225044")
+		)
+		(pin "3"
+			(uuid "67ed97fc-8e8b-4b41-bda8-45c0731db5f7")
 		)
 		(pin "1"
-			(uuid "5cc1908c-584e-4662-b94a-8a2fce06ac40")
+			(uuid "83d1049b-f24c-4be5-a17c-fef2e9ccd700")
 		)
-		(pin "11"
-			(uuid "3c8365ea-5b11-43cb-a6cf-97504d5ee6ce")
+		(pin "26"
+			(uuid "31ffc0f6-5476-4ed4-96c4-8c4c9def9640")
+		)
+		(pin "5"
+			(uuid "36688c1d-bd29-4e34-a14d-79345a857668")
+		)
+		(pin "2"
+			(uuid "a1ca3088-ce7c-4053-b4b2-54b60d82f325")
+		)
+		(pin "6"
+			(uuid "4dcb55c9-3e7d-4643-a793-ea177e8719f2")
 		)
 		(pin "9"
-			(uuid "ea138cea-f963-4ccf-b64c-1043379db663")
+			(uuid "2d89a2a5-70f8-42c8-88fb-269d3ba60129")
 		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "U2")
-					(unit 1)
-				)
-			)
+		(pin "7"
+			(uuid "a0be0641-17e1-48c6-b0d2-278794e104ca")
 		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 185.42 124.46 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2d8c7dc7-a84f-47c9-86b0-fccf81e85862")
-		(property "Reference" "#PWR016"
-			(at 185.42 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "11"
+			(uuid "86a08bd0-9e62-433c-8917-74a855913704")
 		)
-		(property "Value" "GND"
-			(at 185.42 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
+		(pin "13"
+			(uuid "bdf0375d-b0ff-403a-befa-55abef141e7b")
 		)
-		(property "Footprint" ""
-			(at 185.42 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "15"
+			(uuid "8cc39d82-85c2-4295-a76a-435288719c50")
 		)
-		(property "Datasheet" ""
-			(at 185.42 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "12"
+			(uuid "bded20e8-09ea-423c-beb6-8d48e21d990f")
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 185.42 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "18"
+			(uuid "c40e0183-07b8-4e26-b535-b37d4060c49c")
 		)
-		(pin "1"
-			(uuid "3d7df557-265e-434a-bcd9-5c279bc2b92a")
+		(pin "16"
+			(uuid "bedd2a5a-c1a9-4a7b-a798-0ea6207d6a9d")
 		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR016")
-					(unit 1)
-				)
-			)
+		(pin "23"
+			(uuid "c5d9f834-003b-42bb-9dc8-5b5a82974c4a")
 		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 185.42 73.66 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "33177cfe-cea2-42cf-91b7-2b49104abf70")
-		(property "Reference" "#PWR024"
-			(at 185.42 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "14"
+			(uuid "8c15bc5b-2cde-4d4e-9687-b4752a852b73")
 		)
-		(property "Value" "+12V"
-			(at 185.801 69.2658 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
+		(pin "17"
+			(uuid "ace96e77-9e4a-4fc5-8ae1-2d61c340386f")
 		)
-		(property "Footprint" ""
-			(at 185.42 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+		(pin "21"
+			(uuid "6f3498c7-2562-4284-a2a5-5cda2199c12d")
 		)
-		(property "Datasheet" ""
-			(at 185.42 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 185.42 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "69f8d58c-b80b-42a2-ba59-126fa31fa917")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "utsvt-connectors:PeripheralCANConnector")
-		(at 152.4 109.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "33302777-6bce-4ad7-8bf6-a88d1f2e9a4a")
-		(property "Reference" "J5"
-			(at 150.876 100.076 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Value" "PeripheralCANConnector"
-			(at 147.828 102.616 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Footprint" "UTSVT_Connectors:Molex_MicroFit3.0_1x4xP3.00mm_PolarizingPeg_Vertical"
-			(at 152.4 118.11 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/ProductDetail/Molex/43650-0244?qs=XoD1gVtqLQuEe6RJ38AzJQ%3D%3D"
-			(at 157.48 101.6 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Connection to the car's Peripheral CAN bus."
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "P/N" "436500244"
-			(at 152.4 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1c8184ed-e8c1-4c8b-830d-a433ff5e9720")
-		)
-		(pin "4"
-			(uuid "a3e79784-8060-4d7b-97e2-76a42e78ea41")
-		)
-		(pin "1"
-			(uuid "58733594-d552-4f66-bcd1-4d228516c179")
-		)
-		(pin "3"
-			(uuid "0568de59-a97f-4df9-8561-7f952a9495f1")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "J5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "utsvt-connectors:PeripheralCANConnector")
-		(at 152.4 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "45e554a4-c549-4af9-9aab-00d5da3e6a8f")
-		(property "Reference" "J3"
-			(at 152.4 76.2 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Value" "PeripheralCANConnector"
-			(at 146.304 78.994 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-			)
-		)
-		(property "Footprint" "UTSVT_Connectors:Molex_MicroFit3.0_1x4xP3.00mm_PolarizingPeg_Vertical"
-			(at 152.4 95.25 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.com/ProductDetail/Molex/43650-0244?qs=XoD1gVtqLQuEe6RJ38AzJQ%3D%3D"
-			(at 157.48 78.74 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Connection to the car's Peripheral CAN bus."
-			(at 152.4 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "P/N" "436500244"
-			(at 152.4 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "2b8ad99c-335d-40fb-9bf7-40ffd8bc5698")
-		)
-		(pin "4"
-			(uuid "6e005a81-9a4d-472e-ab63-d503f9a2e78f")
-		)
-		(pin "1"
-			(uuid "1514da63-6889-4e28-98aa-a5c5e7684125")
-		)
-		(pin "3"
-			(uuid "714eb037-2588-4ed9-8fbb-ed16fe2d3110")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "PWR_FLAG_1")
-		(lib_id "power:PWR_FLAG")
-		(at 185.42 119.38 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f427fdb-6fff-4fcb-833f-13860f8852dd")
-		(property "Reference" "#FLG05"
-			(at 185.42 117.475 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 185.42 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2c81d275-6302-483a-a032-6e3db01aef84")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#FLG05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDPWR")
-		(at 172.72 85.09 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6ce8af83-d45e-4184-b063-9ed12f23715e")
-		(property "Reference" "#PWR02"
-			(at 177.8 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDPWR"
-			(at 176.53 85.2169 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 173.99 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 173.99 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
-			(at 172.72 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6756cd13-4687-41c7-b6f5-ef4c62e81713")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 185.42 119.38 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "859f09ab-f35d-4410-9e49-15bdadcfdc5e")
-		(property "Reference" "#PWR055"
-			(at 179.07 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDA"
-			(at 181.61 119.3799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 185.42 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4120f94d-50bd-4297-a97c-347628d0a1da")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR055")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 223.52 73.66 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8d594da8-109b-478c-a6f0-cdeab02a1bce")
-		(property "Reference" "#PWR022"
-			(at 219.71 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 227.33 73.6599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 223.52 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "99bebb74-c067-42a6-ad4b-8434b01a5a05")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 223.52 78.74 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a3c7d0f5-40e5-48e8-98c0-e7f97ea1fbd4")
-		(property "Reference" "#PWR056"
-			(at 219.71 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+VDDA"
-			(at 227.33 78.7399 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 223.52 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4cd81498-fc8f-4abf-b6b8-889d4d5cf1ad")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR056")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 166.37 81.28 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a6d6af7a-46b6-4b29-b58b-fcaa073b8465")
-		(property "Reference" "#PWR021"
-			(at 166.37 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 166.751 76.8858 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 166.37 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 166.37 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 166.37 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1c658164-27b1-4ee7-887a-1de49beb9462")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 163.83 105.41 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b68cb28d-290b-46a9-b885-d658f2728030")
-		(property "Reference" "#PWR027"
-			(at 163.83 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 164.211 101.0158 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 163.83 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 163.83 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 163.83 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "fe462bfa-64e1-4c79-9a32-cc449b645c9e")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR027")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_name "PWR_FLAG_1")
-		(lib_id "power:PWR_FLAG")
-		(at 162.56 80.01 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b9c46455-793a-40cc-9ca3-92788f44f79e")
-		(property "Reference" "#FLG01"
-			(at 162.56 78.105 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 162.56 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 162.56 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 162.56 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 162.56 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "093a4ad5-e8ce-4b19-8faa-b5bf50b3ca81")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#FLG01")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDPWR")
-		(at 185.42 116.84 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ce7cc52c-ca1d-444f-9e2a-e597deaa015c")
-		(property "Reference" "#PWR06"
-			(at 180.34 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDPWR"
-			(at 181.61 116.7129 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 184.15 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 184.15 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
-			(at 185.42 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "66341474-cee7-4067-b1e0-f03d3d580d33")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDPWR")
-		(at 162.56 107.95 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ec316ed9-4deb-49ee-937c-3a3add685d21")
-		(property "Reference" "#PWR028"
-			(at 167.64 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GNDPWR"
-			(at 166.37 108.0769 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 163.83 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 163.83 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDPWR\" , global ground"
-			(at 162.56 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3d058672-114e-4bbe-90f1-a7519ed7892e")
+		(pin "19"
+			(uuid "835ffe4e-27c7-4e50-83f1-b0cfa92ef8fc")
 		)
 		(instances
 			(project ""
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR028")
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "utsvt_connectors:MX150_02x10_Vertical")
+		(at 153.67 63.5 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a845e900-f219-4b6a-96ad-fbef34201ff8")
+		(property "Reference" "J6"
+			(at 153.67 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MX150_02x10_Vertical"
+			(at 153.67 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "UTSVT_Connectors:CONN_SD-75757-002_2X10_F16p09_MOL"
+			(at 153.67 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.molex.com/en-us/products/part-detail/757575101?display=pdf"
+			(at 153.67 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 153.67 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "757575101"
+			(at 153.67 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "20"
+			(uuid "066ab5ac-d8d8-4986-80ab-ff098eedb2ba")
+		)
+		(pin "19"
+			(uuid "d83741f3-1f05-4a55-b344-4d795b7de204")
+		)
+		(pin "18"
+			(uuid "4bfda392-2b19-4c5a-916b-51d613373996")
+		)
+		(pin "8"
+			(uuid "24ab9d85-c8d9-4053-ac46-07db4d25d656")
+		)
+		(pin "17"
+			(uuid "de9081f4-1528-4732-ba36-ae5d0f349e49")
+		)
+		(pin "7"
+			(uuid "aaa62b44-90ad-4aa3-9d45-92eef98ce73b")
+		)
+		(pin "13"
+			(uuid "1e7c9b36-af3b-4018-b813-0c8a456601b0")
+		)
+		(pin "5"
+			(uuid "021e3b63-8452-4aee-827d-3c7b242c2f71")
+		)
+		(pin "2"
+			(uuid "05395ed7-27cd-4773-ac53-673296e3bed9")
+		)
+		(pin "14"
+			(uuid "46be07b0-0e06-46e1-a962-53091f8ccd94")
+		)
+		(pin "1"
+			(uuid "d5655410-5c0c-44ab-b390-38fb8c9c3eb8")
+		)
+		(pin "3"
+			(uuid "bcba9f1e-268a-481d-9e17-f483d9e5b7d7")
+		)
+		(pin "6"
+			(uuid "06b2da19-1e67-41ac-baf0-6bd65be2038b")
+		)
+		(pin "4"
+			(uuid "5d9190ea-d94e-459b-bc9b-501cb40ee82e")
+		)
+		(pin "9"
+			(uuid "48dcde95-8353-4e3b-a049-9a73e2392f38")
+		)
+		(pin "10"
+			(uuid "bdffa49c-da87-4b4b-86de-835daf261ef8")
+		)
+		(pin "12"
+			(uuid "d8a88522-62c9-461a-94f0-acecb2270690")
+		)
+		(pin "15"
+			(uuid "84970cb4-347d-4c22-8b86-ecda5973b31f")
+		)
+		(pin "11"
+			(uuid "ecae366f-fe31-487d-8290-796c18ebcffb")
+		)
+		(pin "16"
+			(uuid "31292d4c-7a52-456a-8dac-91ac4e151683")
+		)
+		(instances
+			(project ""
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -3141,6 +1701,10 @@
 	(sheet
 		(at 63.5 49.53)
 		(size 21.59 19.05)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -3179,6 +1743,10 @@
 	(sheet
 		(at 63.5 109.22)
 		(size 24.13 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -3208,13 +1776,13 @@
 		)
 		(pin "Brake_Fl" output
 			(at 87.63 119.38 0)
+			(uuid "809fd006-1f17-4bc2-bea5-5d4aa0483d11")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "809fd006-1f17-4bc2-bea5-5d4aa0483d11")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
@@ -3227,6 +1795,10 @@
 	(sheet
 		(at 63.5 78.74)
 		(size 21.59 21.59)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.25)
@@ -3256,23 +1828,23 @@
 		)
 		(pin "Accel" output
 			(at 85.09 85.09 0)
+			(uuid "2258f538-b11c-4406-8353-d6d2321a89fa")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "2258f538-b11c-4406-8353-d6d2321a89fa")
 		)
 		(pin "Brake_Pot" output
 			(at 85.09 91.44 0)
+			(uuid "f192fa44-781f-479b-bbbd-ec9424783d63")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f192fa44-781f-479b-bbbd-ec9424783d63")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
@@ -3287,4 +1859,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )
