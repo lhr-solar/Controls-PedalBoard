@@ -1,3 +1,3 @@
-[submodule "VCAT-PedalBoxPCB/KiCAD-Sharepoint"]
-	path = VCAT-PedalBoxPCB/KiCAD-Sharepoint
+[submodule "hardware/VCAT-PedalBoxPCB/KiCAD-Sharepoint"]
+	path = hardware/VCAT-PedalBoxPCB/KiCAD-Sharepoint
 	url = git@github.com:lhr-solar/KiCAD-Sharepoint.git
