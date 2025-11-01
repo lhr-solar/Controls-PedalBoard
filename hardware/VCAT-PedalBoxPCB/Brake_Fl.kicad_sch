@@ -1257,17 +1257,29 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Break Fluid Sensor"
+	(rectangle
+		(start 57.785 64.77)
+		(end 248.92 133.985)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 4ffa89d8-cfda-4c6f-9f8c-1fbd579fd47c)
+	)
+	(text "Brake Fluid Sensor"
 		(exclude_from_sim no)
-		(at 71.755 60.325 0)
+		(at 79.375 60.96 0)
 		(effects
 			(font
-				(size 2 2)
+				(size 3 3)
 				(thickness 0.4)
 				(bold yes)
 			)
 		)
-		(uuid "2755d411-ce9c-45b5-89fa-5ed992439a17")
+		(uuid "2a23bf72-3aac-49a7-9ca4-c62ee2c44de4")
 	)
 	(text "Vout = G(Vin+ - Vin-) + (Vref1 +Vref2)/2\nVout = 200(ADC - 0) + (2.5)\nVout = 200ADC + 2.5\nVout = [2.64v, 3.2v]\n\nADC = [0.7mV, 3.5mV]\nVref1 = Vref2 = 2.5v\nG = 200"
 		(exclude_from_sim no)

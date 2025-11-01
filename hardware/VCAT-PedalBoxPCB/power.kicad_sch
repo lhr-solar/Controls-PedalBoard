@@ -702,6 +702,18 @@
 			(embedded_fonts no)
 		)
 	)
+	(rectangle
+		(start 88.265 60.325)
+		(end 217.17 137.16)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid c3651475-e4b0-47ab-8b19-af4304ca4370)
+	)
 	(text "9V"
 		(exclude_from_sim no)
 		(at 163.195 108.585 0)
@@ -775,6 +787,18 @@
 			)
 		)
 		(uuid "d1a8c08b-6e77-4a55-a203-f54d3353a86c")
+	)
+	(text "Adjustable LDOs"
+		(exclude_from_sim no)
+		(at 106.68 56.515 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "e7de3543-507c-4db3-8721-75e07a4023f4")
 	)
 	(junction
 		(at 143.51 111.125)
