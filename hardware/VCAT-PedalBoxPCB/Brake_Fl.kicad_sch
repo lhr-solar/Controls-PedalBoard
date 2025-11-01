@@ -1054,131 +1054,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+3.3V"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3.3V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers
@@ -1996,17 +1871,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 139.065 125.095 0)
+		(lib_name "+3V3_1")
+		(lib_id "power:+3V3")
+		(at 181.61 106.045 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4c69caa7-2a56-4da7-a39f-9b4e91917bdd")
-		(property "Reference" "#PWR032"
-			(at 139.065 131.445 0)
+		(uuid "32cb00b7-fe02-401d-ae63-96a29d9c4378")
+		(property "Reference" "#PWR01"
+			(at 181.61 109.855 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2014,17 +1889,16 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 139.065 130.175 0)
+		(property "Value" "+VDDA"
+			(at 181.61 100.965 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 139.065 125.095 0)
+			(at 181.61 106.045 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2033,7 +1907,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 139.065 125.095 0)
+			(at 181.61 106.045 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2041,8 +1915,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 139.065 125.095 0)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 181.61 106.045 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2051,12 +1925,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "17cb9336-ceb3-4f7e-8911-625c2d6b86d3")
+			(uuid "3b400628-1eae-4d72-b7c2-85578cfce68e")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
-					(reference "#PWR032")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -2208,17 +2082,17 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 181.61 106.045 0)
+		(lib_id "power:GND")
+		(at 139.065 125.095 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "81361898-5624-4507-9b7a-139d5d069a68")
+		(uuid "9ddf874c-e8ec-4f10-9ba8-092bd3057da4")
 		(property "Reference" "#PWR029"
-			(at 181.61 109.855 0)
+			(at 139.065 131.445 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2226,8 +2100,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3.3V"
-			(at 181.61 100.965 0)
+		(property "Value" "GNDA"
+			(at 139.065 130.175 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2235,7 +2109,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 181.61 106.045 0)
+			(at 139.065 125.095 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2244,7 +2118,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.61 106.045 0)
+			(at 139.065 125.095 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2252,8 +2126,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 181.61 106.045 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 139.065 125.095 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2262,7 +2136,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "7f23780c-5cbf-4a02-87ba-25eb9dddde7c")
+			(uuid "d33c41e2-2634-4973-b3b9-22abf9594e3a")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
