@@ -647,6 +647,107 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:VDDA"
 			(power)
 			(pin_numbers
@@ -1021,7 +1122,7 @@
 						(color 255 255 194 1)
 					)
 				)
-				(pin power_in line
+				(pin bidirectional line
 					(at -13.97 -6.35 0)
 					(length 2.54)
 					(name "BrakePot1+"
@@ -1201,7 +1302,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin bidirectional line
 					(at 26.67 -6.35 180)
 					(length 2.54)
 					(name "BrakePot1-"
@@ -1273,7 +1374,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin bidirectional line
 					(at 26.67 -21.59 180)
 					(length 2.54)
 					(name "AccelPotSig2"
@@ -2078,6 +2179,12 @@
 		(uuid "33e1dbf6-42d0-43ea-a405-61691031b32e")
 	)
 	(junction
+		(at 133.985 132.715)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "37cc858a-852b-49fd-b354-3ccd765ccde2")
+	)
+	(junction
 		(at 113.03 92.075)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2407,16 +2514,6 @@
 	)
 	(wire
 		(pts
-			(xy 76.835 67.945) (xy 80.645 67.945)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e0fea68-5383-4f3b-bbed-ccb262e726d9")
-	)
-	(wire
-		(pts
 			(xy 113.03 88.265) (xy 113.03 92.075)
 		)
 		(stroke
@@ -2447,6 +2544,26 @@
 	)
 	(wire
 		(pts
+			(xy 189.865 83.185) (xy 188.595 81.915)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a5cb496-2d24-4856-8ca2-6880830ec944")
+	)
+	(wire
+		(pts
+			(xy 171.45 98.425) (xy 168.91 98.425)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5456b77d-4e8a-4ba3-8c7c-17c19a8e6623")
+	)
+	(wire
+		(pts
 			(xy 193.04 136.525) (xy 193.04 141.605)
 		)
 		(stroke
@@ -2474,16 +2591,6 @@
 			(type default)
 		)
 		(uuid "5dc29fa1-6304-4814-a37a-70ad20faf484")
-	)
-	(wire
-		(pts
-			(xy 76.835 71.755) (xy 80.645 71.755)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60508b6c-e4be-4e51-9e9d-18ac1b9b47c4")
 	)
 	(wire
 		(pts
@@ -2547,7 +2654,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.105 94.615) (xy 76.835 94.615)
+			(xy 78.74 94.615) (xy 76.835 94.615)
 		)
 		(stroke
 			(width 0)
@@ -2597,6 +2704,16 @@
 	)
 	(wire
 		(pts
+			(xy 76.835 71.755) (xy 80.645 71.755)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f26e053-04a3-45a8-aa79-9d2843753392")
+	)
+	(wire
+		(pts
 			(xy 78.74 99.06) (xy 76.835 99.06)
 		)
 		(stroke
@@ -2614,16 +2731,6 @@
 			(type default)
 		)
 		(uuid "80ec7376-0bf0-425b-953f-70a06a56a7ad")
-	)
-	(wire
-		(pts
-			(xy 189.865 83.185) (xy 194.945 83.185)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82f06fa6-7ec0-4572-9422-d970ca22e455")
 	)
 	(wire
 		(pts
@@ -2667,6 +2774,16 @@
 	)
 	(wire
 		(pts
+			(xy 188.595 80.645) (xy 188.595 81.915)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d02028d-d60d-41f9-ac06-0a6f86021ca4")
+	)
+	(wire
+		(pts
 			(xy 167.005 140.335) (xy 165.1 140.335)
 		)
 		(stroke
@@ -2684,6 +2801,16 @@
 			(type default)
 		)
 		(uuid "973f5385-7506-4e17-93c6-9cc61763dcaa")
+	)
+	(wire
+		(pts
+			(xy 133.985 132.715) (xy 137.16 132.715)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a86cae9-11bb-495f-882a-94097d96966d")
 	)
 	(wire
 		(pts
@@ -2737,7 +2864,7 @@
 	)
 	(wire
 		(pts
-			(xy 131.445 132.715) (xy 137.16 132.715)
+			(xy 131.445 132.715) (xy 133.985 132.715)
 		)
 		(stroke
 			(width 0)
@@ -2784,6 +2911,16 @@
 			(type default)
 		)
 		(uuid "b537cc38-2b79-4482-95c3-4ac955e5ac80")
+	)
+	(wire
+		(pts
+			(xy 76.835 67.945) (xy 80.645 67.945)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8b8c036-654d-4f97-9027-f804ebf7b5a7")
 	)
 	(wire
 		(pts
@@ -2917,6 +3054,16 @@
 	)
 	(wire
 		(pts
+			(xy 189.865 83.185) (xy 194.945 83.185)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb1cedbf-ab4b-4cd4-a2c5-2a600375110d")
+	)
+	(wire
+		(pts
 			(xy 168.91 102.235) (xy 182.245 102.235)
 		)
 		(stroke
@@ -2944,26 +3091,6 @@
 			(justify left bottom)
 		)
 		(uuid "0005b739-a044-4de1-9ef5-2ed0766e31d3")
-	)
-	(label "BrakePotRed"
-		(at 235.585 125.095 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "17c73ef3-c153-44c3-b816-161c5f8177ec")
-	)
-	(label "BrakePressRed"
-		(at 235.585 122.555 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1ccf5058-d2fa-4e31-83ec-426a0e59bc87")
 	)
 	(label "CANL_IN"
 		(at 167.005 136.525 0)
@@ -3086,7 +3213,7 @@
 		(uuid "875ea548-57db-4d62-a159-cde5205b8242")
 	)
 	(label "AccelPotRed"
-		(at 168.91 98.425 0)
+		(at 171.45 98.425 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3166,7 +3293,7 @@
 		(uuid "ae231eb3-5af6-4a02-8cd3-fa13db5ef196")
 	)
 	(label "Accel_ADC"
-		(at 78.105 94.615 0)
+		(at 78.74 94.615 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4636,6 +4763,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 133.985 132.715 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cb9a73f7-4a67-4f75-84f8-88f8a12c8f3b")
+		(property "Reference" "#FLG01"
+			(at 133.985 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 133.985 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.985 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 133.985 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 133.985 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "783fa07b-39a7-41e1-ae79-e1cad8eda6f6")
+		)
+		(instances
+			(project ""
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+24V")
 		(at 130.81 130.81 0)
 		(mirror y)
@@ -4703,7 +4897,7 @@
 	)
 	(symbol
 		(lib_id "power:+24V")
-		(at 189.865 83.185 0)
+		(at 188.595 80.645 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4712,7 +4906,7 @@
 		(dnp no)
 		(uuid "d27e3b95-8681-43a3-a175-727ec845b1d4")
 		(property "Reference" "#PWR07"
-			(at 189.865 86.995 0)
+			(at 188.595 84.455 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4721,7 +4915,7 @@
 			)
 		)
 		(property "Value" "+24V"
-			(at 189.865 78.74 0)
+			(at 188.595 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4729,7 +4923,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 189.865 83.185 0)
+			(at 188.595 80.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4738,7 +4932,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 189.865 83.185 0)
+			(at 188.595 80.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4747,7 +4941,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+24V\""
-			(at 189.865 83.185 0)
+			(at 188.595 80.645 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4803,7 +4997,7 @@
 		)
 		(pin "VoutAdj1" output
 			(at 76.835 67.945 0)
-			(uuid "7b1b900e-beba-4917-8622-4580a2a31c7b")
+			(uuid "f274c26f-ec93-4866-b8c7-bd971bd45269")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4813,7 +5007,7 @@
 		)
 		(pin "VoutAdj2" output
 			(at 76.835 71.755 0)
-			(uuid "41f1a37d-976b-42ea-bac4-d65793873dd2")
+			(uuid "2685c198-6ebb-4378-91b7-8175826e72cf")
 			(effects
 				(font
 					(size 1.27 1.27)

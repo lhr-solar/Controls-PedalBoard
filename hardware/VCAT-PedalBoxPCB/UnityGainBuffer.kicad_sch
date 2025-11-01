@@ -826,6 +826,107 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "Pedals Potentiometer Datasheet\nhttps://www.ttelectronics.com/TTElectronics/media/ProductFiles/Datasheet/6120.pdf"
 		(exclude_from_sim no)
@@ -864,6 +965,18 @@
 		(uuid "051f6da9-a034-4755-9d34-5e7cae68a9dd")
 	)
 	(junction
+		(at 115.57 106.045)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1ad37ffa-7d8a-4ac5-8551-aa935e0c5272")
+	)
+	(junction
+		(at 128.905 114.935)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "27494ac2-6437-444c-9390-6a5ca381375d")
+	)
+	(junction
 		(at 149.225 98.425)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -874,6 +987,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3c0e3689-60a9-459e-abd1-d8ddaa15cb3a")
+	)
+	(junction
+		(at 149.225 97.155)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "77c39098-0228-48ea-94d3-e2144e29f43b")
 	)
 	(junction
 		(at 197.485 108.585)
@@ -892,6 +1011,16 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f1c6526f-b9be-4550-9a07-c0e7a25121d6")
+	)
+	(wire
+		(pts
+			(xy 149.225 97.155) (xy 149.225 98.425)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11a56f46-3cf6-4a81-97b1-9f23e54da0a6")
 	)
 	(wire
 		(pts
@@ -915,7 +1044,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.015 106.045) (xy 112.395 106.045)
+			(xy 120.015 106.045) (xy 115.57 106.045)
 		)
 		(stroke
 			(width 0)
@@ -945,7 +1074,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.225 95.885) (xy 149.225 98.425)
+			(xy 149.225 95.885) (xy 149.225 97.155)
 		)
 		(stroke
 			(width 0)
@@ -1032,6 +1161,16 @@
 			(type default)
 		)
 		(uuid "b7b93050-1eae-4067-8c2c-e9677d25d2fa")
+	)
+	(wire
+		(pts
+			(xy 115.57 106.045) (xy 112.395 106.045)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7477fd7-d907-4e8c-b728-c9276b2fdab6")
 	)
 	(wire
 		(pts
@@ -1622,6 +1761,77 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 149.225 97.155 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6279b254-9c32-4321-bba1-6cf71c62af01")
+		(property "Reference" "#FLG02"
+			(at 147.32 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 144.78 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.225 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 149.225 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 149.225 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "900b431e-678f-4986-a028-80086e9de29c")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/1df934bb-0f85-46b5-a5e9-bfe930dfec25"
+					(reference "#FLG03")
+					(unit 1)
+				)
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/e12eb39a-5974-4583-9357-506769bd125d"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 128.905 111.125 0)
 		(unit 1)
@@ -1699,6 +1909,77 @@
 				)
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/e12eb39a-5974-4583-9357-506769bd125d"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 115.57 106.045 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "781ec798-f53b-4c90-bdeb-d01be81a15a6")
+		(property "Reference" "#FLG04"
+			(at 115.57 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 115.57 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 106.045 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 115.57 106.045 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 115.57 106.045 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d81ad3f3-46e3-403b-8e45-667ce1f05e12")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/1df934bb-0f85-46b5-a5e9-bfe930dfec25"
+					(reference "#FLG05")
+					(unit 1)
+				)
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/e12eb39a-5974-4583-9357-506769bd125d"
+					(reference "#FLG04")
 					(unit 1)
 				)
 			)
@@ -2061,6 +2342,77 @@
 				)
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/e12eb39a-5974-4583-9357-506769bd125d"
 					(reference "Raw1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 128.905 114.935 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d0395685-1c00-4ec4-a4bf-7578a4516fe5")
+		(property "Reference" "#FLG06"
+			(at 127 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 124.46 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 128.905 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.905 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 128.905 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f8688b13-5181-43ed-b157-1adc46df0b8b")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/1df934bb-0f85-46b5-a5e9-bfe930dfec25"
+					(reference "#FLG07")
+					(unit 1)
+				)
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c/e12eb39a-5974-4583-9357-506769bd125d"
+					(reference "#FLG06")
 					(unit 1)
 				)
 			)
