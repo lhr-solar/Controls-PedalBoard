@@ -458,6 +458,7 @@
       "single_global_label": "ignore",
       "unannotated": "error",
       "unconnected_wire_endpoint": "warning",
+      "undefined_netclass": "error",
       "unit_value_mismatch": "error",
       "unresolved_variable": "error",
       "wire_dangling": "error"
@@ -637,6 +638,24 @@
           "label": "Description",
           "name": "Description",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Distributor Link",
+          "name": "Distributor Link",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer Prt #",
+          "name": "Manufacturer Prt #",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -702,6 +721,14 @@
     [
       "6613b086-4f9a-483f-8869-58f1a430ca82",
       "Power"
+    ],
+    [
+      "e12eb39a-5974-4583-9357-506769bd125d",
+      "Unity Gain Buffer"
+    ],
+    [
+      "1df934bb-0f85-46b5-a5e9-bfe930dfec25",
+      "Unity Gain Buffer1"
     ]
   ],
   "text_variables": {}

@@ -5,4 +5,6 @@
   (lib (name "utsvt-microcontrollers")(type "KiCad")(uri "${KIPRJMOD}/UTSVT-KiCadLibraries/utsvt-microcontrollers.kicad_sym")(options "")(descr ""))
   (lib (name "utsvt-misc")(type "KiCad")(uri "${KIPRJMOD}/UTSVT-KiCadLibraries/utsvt-misc.kicad_sym")(options "")(descr ""))
   (lib (name "utsvt-power-regulators")(type "KiCad")(uri "${KIPRJMOD}/UTSVT-KiCadLibraries/utsvt-power-regulators.kicad_sym")(options "")(descr ""))
+  (lib (name "AD8411AWBRMZ-10")(type "KiCad")(uri "${KIPRJMOD}/Footprints/Current Sense Amp/AD8411AWBRMZ-10.kicad_sym")(options "")(descr ""))
+  (lib (name "REF5025AID")(type "KiCad")(uri "${KIPRJMOD}/Symbols/REF5025AID.kicad_sym")(options "")(descr ""))
 )
