@@ -5,4 +5,5 @@
   (lib (name "UTSVT_Power")(type "KiCad")(uri "${KIPRJMOD}/KiCAD-Sharepoint/UTSVT_Power.pretty")(options "")(descr ""))
   (lib (name "UTSVT_Special")(type "KiCad")(uri "${KIPRJMOD}/KiCAD-Sharepoint/UTSVT_Special.pretty")(options "")(descr ""))
   (lib (name "UTSVT_Connectors")(type "KiCad")(uri "${KIPRJMOD}/KiCAD-Sharepoint/UTSVT_Connectors.pretty")(options "")(descr ""))
+  (lib (name "VoltageRef")(type "KiCad")(uri "${KIPRJMOD}/Footprints/VoltageRef.pretty")(options "")(descr ""))
 )
