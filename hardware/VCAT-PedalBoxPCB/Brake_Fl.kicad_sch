@@ -1093,6 +1093,12 @@
 		(uuid "1da52b89-b30d-4a1a-a7ae-75ea5a7671b0")
 	)
 	(junction
+		(at 99.06 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6db38945-1066-49df-aab4-b1e5982b780a")
+	)
+	(junction
 		(at 87.63 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1133,16 +1139,6 @@
 			(type default)
 		)
 		(uuid "099b2b15-ea5b-4a33-a40b-cda9eba6b26e")
-	)
-	(wire
-		(pts
-			(xy 87.63 88.9) (xy 92.71 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12b96c86-1546-4376-b31f-bf9d6196b7b0")
 	)
 	(wire
 		(pts
@@ -1226,7 +1222,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 107.95) (xy 144.78 107.95)
+			(xy 141.605 107.95) (xy 144.78 107.95)
 		)
 		(stroke
 			(width 0)
@@ -1286,6 +1282,16 @@
 	)
 	(wire
 		(pts
+			(xy 87.63 88.9) (xy 99.06 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7fb87e7-c6a4-4123-ad57-1c49e1399c69")
+	)
+	(wire
+		(pts
 			(xy 87.63 86.36) (xy 87.63 88.9)
 		)
 		(stroke
@@ -1303,6 +1309,16 @@
 			(type default)
 		)
 		(uuid "bc701174-ea42-45b1-928f-cb49d768aee0")
+	)
+	(wire
+		(pts
+			(xy 105.41 88.9) (xy 99.06 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cae11f82-36dd-4068-a4e4-2ef2e2142849")
 	)
 	(wire
 		(pts
@@ -1327,7 +1343,7 @@
 		(uuid "470fca33-fde2-44bd-bdd8-db4dceed1576")
 	)
 	(label "BrakeFL_ADC"
-		(at 92.71 88.9 0)
+		(at 105.41 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1532,6 +1548,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 99.06 92.71 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "95903629-f8d4-467e-928b-159f4cdc5ac6")
+		(property "Reference" "C10"
+			(at 102.87 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1nF"
+			(at 102.87 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 100.0252 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 99.06 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 99.06 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "pickle"
+			(at 99.06 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a90c7ff8-2b47-4ee7-aab9-fd82308eb078")
+		)
+		(pin "1"
+			(uuid "757b62d1-8d86-44c3-a106-4e8a1205ca17")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
+					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 153.67 120.65 0)
 		(unit 1)
@@ -1599,7 +1693,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDA")
-		(at 142.24 107.95 0)
+		(at 141.605 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1607,7 +1701,7 @@
 		(dnp no)
 		(uuid "a65c577a-4a09-47a6-aa91-904749286cc9")
 		(property "Reference" "#PWR010"
-			(at 142.24 114.3 0)
+			(at 141.605 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1616,7 +1710,7 @@
 			)
 		)
 		(property "Value" "GNDA"
-			(at 142.24 112.395 0)
+			(at 141.605 112.395 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1624,7 +1718,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 142.24 107.95 0)
+			(at 141.605 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1633,7 +1727,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 142.24 107.95 0)
+			(at 141.605 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1642,7 +1736,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
-			(at 142.24 107.95 0)
+			(at 141.605 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2019,6 +2113,72 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
 					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 96.52 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f40c676c-84ee-4477-95ef-b174a363029f")
+		(property "Reference" "#PWR015"
+			(at 99.06 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 99.06 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 99.06 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "72bb0f0b-b186-4355-b8f7-63dedfabb392")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
