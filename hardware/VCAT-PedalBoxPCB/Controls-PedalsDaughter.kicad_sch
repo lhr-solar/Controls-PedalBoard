@@ -2824,6 +2824,12 @@
 		(uuid "59439b2d-dd90-4b4f-8a32-c5f7e3bee829")
 	)
 	(junction
+		(at 118.745 103.505)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5f5478fe-06b0-42be-aef0-86f0defb5f32")
+	)
+	(junction
 		(at 103.505 56.515)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2930,6 +2936,16 @@
 			(type default)
 		)
 		(uuid "006e91d1-920d-46bf-9566-2b164e28cd50")
+	)
+	(wire
+		(pts
+			(xy 116.84 103.505) (xy 118.745 103.505)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06d60d3e-ce4c-4343-9aa7-488ebb319fd2")
 	)
 	(wire
 		(pts
@@ -3043,16 +3059,6 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 103.505) (xy 128.27 103.505)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1e9ce87b-5252-4a49-8a98-765c4e93b503")
-	)
-	(wire
-		(pts
 			(xy 66.675 166.37) (xy 64.77 166.37)
 		)
 		(stroke
@@ -3060,6 +3066,16 @@
 			(type default)
 		)
 		(uuid "1ef3e8d0-64db-4e53-8ce3-dcfc21b7e3ca")
+	)
+	(wire
+		(pts
+			(xy 109.22 99.695) (xy 102.616 99.695)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1effe588-6708-4285-b7b0-f33079cf755b")
 	)
 	(wire
 		(pts
@@ -3303,6 +3319,16 @@
 	)
 	(wire
 		(pts
+			(xy 116.84 99.695) (xy 118.745 99.695)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53099f65-ff89-4952-b334-bacaace946ba")
+	)
+	(wire
+		(pts
 			(xy 116.84 153.035) (xy 118.745 153.035)
 		)
 		(stroke
@@ -3433,6 +3459,16 @@
 	)
 	(wire
 		(pts
+			(xy 118.745 103.505) (xy 128.27 103.505)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ee364c9-de41-4dff-9545-73ab821e6745")
+	)
+	(wire
+		(pts
 			(xy 107.315 111.125) (xy 109.22 111.125)
 		)
 		(stroke
@@ -3493,7 +3529,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 107.315) (xy 107.315 107.315)
+			(xy 109.22 107.315) (xy 102.235 107.315)
 		)
 		(stroke
 			(width 0)
@@ -3813,6 +3849,16 @@
 	)
 	(wire
 		(pts
+			(xy 118.745 99.695) (xy 118.745 103.505)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9f00716-ef88-4362-a2af-1987f81c1db0")
+	)
+	(wire
+		(pts
 			(xy 122.555 99.695) (xy 121.92 99.06)
 		)
 		(stroke
@@ -3850,16 +3896,6 @@
 			(type default)
 		)
 		(uuid "c54b857c-33f3-46b9-8bbf-325274c805c6")
-	)
-	(wire
-		(pts
-			(xy 109.22 103.505) (xy 107.315 103.505)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c6b52d62-2e56-44bf-a2fa-76ef8ccef97b")
 	)
 	(wire
 		(pts
@@ -3960,6 +3996,16 @@
 			(type default)
 		)
 		(uuid "dced64b3-8283-4f63-a706-73fd95604050")
+	)
+	(wire
+		(pts
+			(xy 106.426 103.505) (xy 109.22 103.505)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e09f72be-3abc-4883-8f34-fb2b820c1086")
 	)
 	(wire
 		(pts
@@ -5269,16 +5315,6 @@
 		)
 		(uuid "5235106a-f580-402f-aeaf-c225dab3e305")
 	)
-	(label "CANH"
-		(at 107.315 103.505 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5736a630-8d9e-4f59-8a43-a4ac561871e5")
-	)
 	(label "Accel_Main"
 		(at 117.475 66.675 180)
 		(effects
@@ -5439,6 +5475,16 @@
 		)
 		(uuid "d0a7acd8-70bf-4e04-a18e-c503b56456cf")
 	)
+	(label "CANH"
+		(at 102.616 99.695 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d41ea4aa-e1dc-4c39-8c92-f62f6c05afea")
+	)
 	(label "BrakePotStatus"
 		(at 249.555 102.87 0)
 		(effects
@@ -5500,7 +5546,7 @@
 		(uuid "eefbf47a-41ee-43c2-898f-bcc270f7bd65")
 	)
 	(label "CANL"
-		(at 107.315 107.315 180)
+		(at 102.235 107.315 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6178,6 +6224,139 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 106.426 103.505 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "610d34f0-1fce-4712-90d1-5cab9be17aad")
+		(property "Reference" "#PWR037"
+			(at 106.426 109.855 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 106.426 108.585 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 106.426 103.505 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 106.426 103.505 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 106.426 103.505 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06459a53-a015-4e98-958d-87022cf7f8eb")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+9V")
+		(at 74.93 101.6 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "62b8407c-4a62-4d19-b269-af3d661a6f8e")
+		(property "Reference" "#PWR031"
+			(at 74.93 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+9V"
+			(at 74.93 97.155 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 74.93 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 74.93 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+9V\""
+			(at 74.93 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b3242365-99cd-45e5-b216-3317550fe024")
+		)
+		(instances
+			(project ""
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 113.03 103.505 90)
 		(unit 1)
@@ -6185,8 +6364,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "623c09f8-c7d4-4d0d-a17f-f18ea16afb02")
-		(property "Reference" "R16"
+		(uuid "65fc89fb-af8e-4293-af08-01001a40fdf1")
+		(property "Reference" "R20"
 			(at 114.935 103.505 90)
 			(effects
 				(font
@@ -6196,7 +6375,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 113.665 101.6 90)
+			(at 117.094 102.489 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6268,81 +6447,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "6f3e904b-6baa-4453-956c-8096de1b5d6d")
+			(uuid "471cf08b-a977-45ba-bfac-ee09764de3cc")
 		)
 		(pin "2"
-			(uuid "a3a60676-a239-4cca-a960-df271417fb3a")
+			(uuid "99188026-3f65-4287-882f-32602526c2dc")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "R16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+9V")
-		(at 74.93 101.6 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "62b8407c-4a62-4d19-b269-af3d661a6f8e")
-		(property "Reference" "#PWR031"
-			(at 74.93 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+9V"
-			(at 74.93 97.155 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 74.93 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 74.93 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+9V\""
-			(at 74.93 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b3242365-99cd-45e5-b216-3317550fe024")
-		)
-		(instances
-			(project ""
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
-					(reference "#PWR031")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -7777,7 +7890,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b65ddeb5-20b5-4ea1-95a0-6b494a149ff4")
 		(property "Reference" "R17"
 			(at 114.935 107.315 90)
@@ -7789,7 +7902,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 113.665 105.41 90)
+			(at 116.84 106.045 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8776,7 +8889,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 113.665 109.22 90)
+			(at 117.094 109.982 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8924,6 +9037,111 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
 					(reference "#PWR032")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 113.03 99.695 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "f9edde2f-f32c-4d8d-9782-d500041bf0a5")
+		(property "Reference" "R19"
+			(at 114.935 99.695 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 116.84 98.679 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 113.03 101.473 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 113.03 99.695 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Controls R47"
+			(at 113.03 99.695 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Distributor Link" ""
+			(at 113.03 99.695 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 113.03 99.695 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer Prt #" ""
+			(at 113.03 99.695 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW12101K10FKEAHP"
+			(at 113.03 99.695 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3d13a0a8-9ddd-4a77-b8f1-9cfd7554d6bd")
+		)
+		(pin "2"
+			(uuid "d6ed7782-fae8-4432-8c2d-b8768e0d72ce")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6"
+					(reference "R19")
 					(unit 1)
 				)
 			)
