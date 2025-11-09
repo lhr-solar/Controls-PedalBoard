@@ -1463,7 +1463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 1k ohms"
 			(at 106.045 74.295 0)
 			(effects
 				(font
@@ -1536,6 +1536,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 106.045 74.295 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW06031K00FKEI "
 			(at 106.045 74.295 0)
 			(effects
 				(font
@@ -1604,7 +1613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 10K Ohms"
 			(at 143.51 125.095 0)
 			(effects
 				(font
@@ -1677,6 +1686,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 143.51 125.095 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW060310K0FKEI "
 			(at 143.51 125.095 0)
 			(effects
 				(font
@@ -1745,7 +1763,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 10K Ohms"
 			(at 142.875 84.455 0)
 			(effects
 				(font
@@ -1818,6 +1836,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 142.875 84.455 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW060310K0FKEI "
 			(at 142.875 84.455 0)
 			(effects
 				(font
@@ -1886,7 +1913,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedals 5v LDO C5 cap"
 			(at 100.965 77.47 0)
 			(effects
 				(font
@@ -1959,6 +1986,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 100.965 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "MLASU168SB5105KTNA01"
 			(at 100.965 77.47 0)
 			(effects
 				(font
@@ -2092,7 +2128,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedals 5v LDO C5 cap"
 			(at 154.94 118.745 0)
 			(effects
 				(font
@@ -2165,6 +2201,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 154.94 118.745 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "MLASU168SB5105KTNA01"
 			(at 154.94 118.745 0)
 			(effects
 				(font
@@ -2299,7 +2344,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "400mA, 3.5V-38V input, 2.5V-11V output, adjustable positive LDO regulator with enable, DFN-6"
+		(property "Description" "LDO40LPURY"
 			(at 127.635 116.205 0)
 			(effects
 				(font
@@ -2372,6 +2417,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 127.635 116.205 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "LDO40LPURY"
 			(at 127.635 116.205 0)
 			(effects
 				(font
@@ -2588,7 +2642,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 5v LDO 3.16 ohms"
 			(at 142.875 76.835 0)
 			(effects
 				(font
@@ -2661,6 +2715,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 142.875 76.835 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "ERJ-S03F3161V"
 			(at 142.875 76.835 0)
 			(effects
 				(font
@@ -2729,7 +2792,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedals 5v LDO C5 cap"
 			(at 101.6 118.11 0)
 			(effects
 				(font
@@ -2802,6 +2865,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 101.6 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "MLASU168SB5105KTNA01"
 			(at 101.6 118.11 0)
 			(effects
 				(font
@@ -2869,7 +2941,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "400mA, 3.5V-38V input, 2.5V-11V output, adjustable positive LDO regulator with enable, DFN-6"
+		(property "Description" "LDO40LPURY"
 			(at 127 75.565 0)
 			(effects
 				(font
@@ -2942,6 +3014,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 127 75.565 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "LDO40LPURY"
 			(at 127 75.565 0)
 			(effects
 				(font
@@ -3025,7 +3106,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 9v LDO 1.54 ohms"
 			(at 143.51 117.475 0)
 			(effects
 				(font
@@ -3098,6 +3179,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 143.51 117.475 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW06031K54FKEAC"
 			(at 143.51 117.475 0)
 			(effects
 				(font
@@ -3166,7 +3256,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedals 5v LDO C5 cap"
 			(at 153.035 78.105 0)
 			(effects
 				(font
@@ -3239,6 +3329,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 153.035 78.105 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "MLASU168SB5105KTNA01"
 			(at 153.035 78.105 0)
 			(effects
 				(font
@@ -3307,7 +3406,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Pedals 1k ohms"
 			(at 106.68 114.935 0)
 			(effects
 				(font
@@ -3380,6 +3479,15 @@
 			)
 		)
 		(property "p/n" ""
+			(at 106.68 114.935 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "CRCW06031K00FKEI "
 			(at 106.68 114.935 0)
 			(effects
 				(font

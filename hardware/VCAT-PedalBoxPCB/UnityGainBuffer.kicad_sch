@@ -1336,7 +1336,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedals BrakePot C2 cap"
 			(at 151.765 100.965 0)
 			(effects
 				(font
@@ -1345,7 +1345,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "MLASH168SB7104KTNA01"
 			(at 151.765 100.965 0)
 			(effects
 				(font
@@ -1490,7 +1490,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Pedal BrakePot C6 cap"
 			(at 178.435 114.935 0)
 			(effects
 				(font
@@ -1499,7 +1499,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "MSASH168SB5103KTNA01"
 			(at 178.435 114.935 0)
 			(effects
 				(font
@@ -1781,7 +1781,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "40-V, 1-MHz, RRO Operational Amplifiers for Cost-Sensitive Systems, SC-70"
+		(property "Description" "TLV9301IDCKR"
 			(at 147.955 111.125 0)
 			(effects
 				(font
@@ -2016,7 +2016,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
+		(property "Description" "Pedals 22k ohms"
 			(at 127.635 113.665 0)
 			(effects
 				(font
@@ -2025,7 +2025,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW060322K0FKEAHP"
 			(at 127.635 113.665 0)
 			(effects
 				(font
@@ -2391,7 +2391,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
+		(property "Description" "Pedals 10K Ohms"
 			(at 122.555 108.585 0)
 			(effects
 				(font
@@ -2400,7 +2400,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW060310K0FKEI "
 			(at 122.555 108.585 0)
 			(effects
 				(font
@@ -2834,7 +2834,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
+		(property "Description" "Pedals 100 ohms"
 			(at 171.45 111.125 0)
 			(effects
 				(font
@@ -2843,7 +2843,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW0402100RFKEDHP"
 			(at 171.45 111.125 0)
 			(effects
 				(font

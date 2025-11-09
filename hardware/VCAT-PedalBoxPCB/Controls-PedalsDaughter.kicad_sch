@@ -5620,7 +5620,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm LED"
+		(property "Description" "Pedals Status LEDs"
 			(at 122.555 153.035 0)
 			(effects
 				(font
@@ -5962,7 +5962,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Pedals CAN conn"
 			(at 142.24 93.345 0)
 			(effects
 				(font
@@ -6256,7 +6256,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm led R45"
+		(property "Description" "Pedals status LED resistor"
 			(at 132.715 161.925 0)
 			(effects
 				(font
@@ -6292,7 +6292,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW0603120RFKEC "
 			(at 132.715 161.925 90)
 			(effects
 				(font
@@ -6698,7 +6698,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls R47"
+		(property "Description" "Pedals goofy ah 0 ohms"
 			(at 113.03 103.505 0)
 			(effects
 				(font
@@ -6734,7 +6734,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "~"
+		(property "P/N" "CRCW06030000Z0EE"
 			(at 113.03 103.505 90)
 			(effects
 				(font
@@ -6875,7 +6875,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Board-to-board connector for Peripheral SOM daughterboards"
+		(property "Description" "PSOM"
 			(at 229.235 35.814 0)
 			(effects
 				(font
@@ -7356,6 +7356,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "~"
+			(at 184.15 152.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2bc04fcf-7910-4970-a693-e1a285256c7e")
 		)
@@ -7544,7 +7553,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls Lead LED"
+		(property "Description" "Pedals PWR LED"
 			(at 121.92 141.605 0)
 			(effects
 				(font
@@ -8050,7 +8059,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls R47"
+		(property "Description" "Pedals PWR LED R47"
 			(at 132.08 141.605 0)
 			(effects
 				(font
@@ -8341,7 +8350,7 @@
 				)
 			)
 		)
-		(property "Footprint" "UTSVT_Connectors:CONN_SD-75757-002_2X10_F16p09_MOL"
+		(property "Footprint" "UTSVT_Connectors:MX150_02x10_Vertical"
 			(at 132.715 45.085 0)
 			(effects
 				(font
@@ -8359,7 +8368,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Pedals MX150"
 			(at 132.715 45.085 0)
 			(effects
 				(font
@@ -8563,7 +8572,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm LED"
+		(property "Description" "Pedals Status LEDs"
 			(at 122.555 161.925 0)
 			(effects
 				(font
@@ -8749,7 +8758,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm led R45"
+		(property "Description" "Pedals status LED resistor"
 			(at 132.715 153.035 0)
 			(effects
 				(font
@@ -8785,7 +8794,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW0603120RFKEC "
 			(at 132.715 153.035 90)
 			(effects
 				(font
@@ -9098,7 +9107,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls R47"
+		(property "Description" "Pedals goofy ah 0 ohms"
 			(at 113.03 107.315 0)
 			(effects
 				(font
@@ -9134,7 +9143,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "~"
+		(property "P/N" "CRCW06030000Z0EE"
 			(at 113.03 107.315 90)
 			(effects
 				(font
@@ -9686,7 +9695,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm led R45"
+		(property "Description" "Pedals status LED resistor"
 			(at 133.35 170.18 0)
 			(effects
 				(font
@@ -9722,7 +9731,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" ""
+		(property "P/N" "CRCW0603120RFKEC "
 			(at 133.35 170.18 90)
 			(effects
 				(font
@@ -10196,7 +10205,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "prgm LED"
+		(property "Description" "Pedals Status LEDs"
 			(at 123.19 170.18 0)
 			(effects
 				(font
@@ -10382,7 +10391,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls R47"
+		(property "Description" "Pedals goofy ah 0 ohms"
 			(at 113.03 111.125 0)
 			(effects
 				(font
@@ -10418,7 +10427,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "~"
+		(property "P/N" "CRCW06030000Z0EE"
 			(at 113.03 111.125 90)
 			(effects
 				(font
@@ -10626,7 +10635,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Controls R47"
+		(property "Description" "Pedals goofy ah 0 ohms"
 			(at 113.03 99.695 0)
 			(effects
 				(font
@@ -10662,7 +10671,7 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "~"
+		(property "P/N" "CRCW06030000Z0EE"
 			(at 113.03 99.695 90)
 			(effects
 				(font
