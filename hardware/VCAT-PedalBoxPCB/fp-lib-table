@@ -7,4 +7,5 @@
   (lib (name "UTSVT_Connectors")(type "KiCad")(uri "${KIPRJMOD}/KiCAD-Sharepoint/UTSVT_Connectors.pretty")(options "")(descr ""))
   (lib (name "VoltageRef")(type "KiCad")(uri "${KIPRJMOD}/Footprints/VoltageRef.pretty")(options "")(descr ""))
   (lib (name "TLV9002QDRQ1")(type "KiCad")(uri "${KIPRJMOD}/Footprints/TLV9002QDRQ1/TLV9002QDRQ1.pretty")(options "")(descr ""))
+  (lib (name "images")(type "KiCad")(uri "${KIPRJMOD}/images.pretty")(options "")(descr ""))
 )
