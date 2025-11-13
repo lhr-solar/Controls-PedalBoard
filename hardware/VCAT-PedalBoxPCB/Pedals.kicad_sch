@@ -17,21 +17,9 @@
 		)
 		(uuid ca6f979d-f13d-41c1-a724-d56e836480b9)
 	)
-	(text "Brake Pedal"
+	(text "Accel & Brake Pedal"
 		(exclude_from_sim no)
-		(at 171.45 76.2 0)
-		(effects
-			(font
-				(size 3 3)
-				(thickness 0.4)
-				(bold yes)
-			)
-		)
-		(uuid "169946d5-6284-41df-b881-2baec7d1f028")
-	)
-	(text "Accel Pedal"
-		(exclude_from_sim no)
-		(at 114.935 76.835 0)
+		(at 140.716 76.2 0)
 		(effects
 			(font
 				(size 3 3)
@@ -53,27 +41,7 @@
 	)
 	(wire
 		(pts
-			(xy 159.385 88.9) (xy 161.29 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f015f2b-d1ae-409c-8efd-54608b317889")
-	)
-	(wire
-		(pts
-			(xy 102.235 88.9) (xy 104.14 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fc2c41b-218c-4b67-a1bf-1e252497857a")
-	)
-	(wire
-		(pts
-			(xy 126.365 88.9) (xy 129.54 88.9)
+			(xy 152.146 89.154) (xy 155.448 89.154)
 		)
 		(stroke
 			(width 0)
@@ -83,17 +51,37 @@
 	)
 	(wire
 		(pts
-			(xy 183.515 88.9) (xy 188.595 88.9)
+			(xy 152.146 96.774) (xy 155.194 96.774)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "85811416-f49c-4f2c-be0c-3a08f3a0f17c")
+		(uuid "89ce7e15-a006-4e54-bc23-be01de1cf5d1")
+	)
+	(wire
+		(pts
+			(xy 128.27 86.614) (xy 130.048 86.614)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f6d8a1f-e7cf-48a5-862e-1b1c5754c989")
+	)
+	(wire
+		(pts
+			(xy 128.016 93.218) (xy 130.048 93.218)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae31ded7-e24c-4e7b-b4dc-83b69f735084")
 	)
 	(hierarchical_label "BrakePot"
 		(shape input)
-		(at 159.385 88.9 180)
+		(at 128.016 93.218 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -104,7 +92,7 @@
 	)
 	(hierarchical_label "Accel"
 		(shape input)
-		(at 102.235 88.9 180)
+		(at 128.27 86.614 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -115,7 +103,7 @@
 	)
 	(hierarchical_label "Accel_GPIO"
 		(shape output)
-		(at 129.54 88.9 0)
+		(at 155.448 89.154 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -126,7 +114,7 @@
 	)
 	(hierarchical_label "BrakePot_GPIO"
 		(shape output)
-		(at 188.595 88.9 0)
+		(at 155.194 96.774 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -136,69 +124,8 @@
 		(uuid "f7339d0a-4214-46b8-a93a-4c49c64bfbc3")
 	)
 	(sheet
-		(at 161.29 85.09)
-		(size 22.225 6.985)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "1df934bb-0f85-46b5-a5e9-bfe930dfec25")
-		(property "Sheetname" "Unity Gain Buffer1"
-			(at 161.29 84.3784 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "UnityGainBuffer.kicad_sch"
-			(at 158.115 94.615 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "ADC_GPIO" output
-			(at 183.515 88.9 0)
-			(uuid "c5c3be76-499c-483b-b4ad-e44a05d56682")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "ADC_Raw" input
-			(at 161.29 88.9 180)
-			(uuid "4e97d9c9-ab0d-4eea-8904-eed65994bda5")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c"
-					(page "6")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 104.14 85.09)
-		(size 22.225 6.985)
+		(at 130.048 84.328)
+		(size 22.098 14.732)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -212,7 +139,7 @@
 		)
 		(uuid "e12eb39a-5974-4583-9357-506769bd125d")
 		(property "Sheetname" "Unity Gain Buffer"
-			(at 104.14 84.3784 0)
+			(at 130.048 83.6164 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -221,7 +148,7 @@
 			)
 		)
 		(property "Sheetfile" "UnityGainBuffer.kicad_sch"
-			(at 100.965 94.615 0)
+			(at 126.873 100.838 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -229,9 +156,9 @@
 				(justify left top)
 			)
 		)
-		(pin "ADC_GPIO" output
-			(at 126.365 88.9 0)
-			(uuid "1633c8e2-411c-49c0-9199-11408982b256")
+		(pin "Accel_ADC" output
+			(at 152.146 89.154 0)
+			(uuid "165d6d69-d53b-48a4-a65f-d5789771d774")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -239,14 +166,34 @@
 				(justify right)
 			)
 		)
-		(pin "ADC_Raw" input
-			(at 104.14 88.9 180)
-			(uuid "ff7eeaac-dae3-4348-aab6-d099582c7cc2")
+		(pin "Accel_Raw" input
+			(at 130.048 86.614 180)
+			(uuid "1db62f63-4932-4d07-8287-321cd251bfba")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(pin "BrakePot_Raw" input
+			(at 130.048 93.218 180)
+			(uuid "e7410353-0240-4f6b-abee-2ae1254b4711")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Brake_ADC" output
+			(at 152.146 96.774 0)
+			(uuid "90b22fd4-bdc8-40f6-8f0d-a537728331a6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
