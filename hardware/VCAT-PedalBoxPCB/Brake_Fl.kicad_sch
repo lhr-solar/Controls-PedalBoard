@@ -1179,12 +1179,6 @@
 		(uuid "3f400b57-ee14-4338-bc61-deb94d65be2a")
 	)
 	(junction
-		(at 98.298 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "474fc01b-15f3-4b72-93aa-3ada86b73181")
-	)
-	(junction
 		(at 188.976 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1264,7 +1258,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.838 102.87) (xy 98.298 102.87)
+			(xy 91.948 102.87) (xy 100.838 102.87)
 		)
 		(stroke
 			(width 0)
@@ -1664,16 +1658,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.948 102.87) (xy 98.298 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb78dbec-2fcd-441b-ba94-fb37fb471184")
-	)
-	(wire
-		(pts
 			(xy 98.044 60.452) (xy 98.044 62.484)
 		)
 		(stroke
@@ -1721,16 +1705,6 @@
 			(type default)
 		)
 		(uuid "cae5ef37-b7bc-4792-b552-0ad7f97b1133")
-	)
-	(wire
-		(pts
-			(xy 98.298 100.838) (xy 98.298 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cd5d0d07-bd4f-4e26-82ce-b331a633b80d")
 	)
 	(wire
 		(pts
@@ -4640,153 +4614,6 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
 					(reference "R27")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 98.298 100.838 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ed172de4-0414-44a1-ad1c-877ffa33b969")
-		(property "Reference" "Brake_Fl_Sn_Raw2"
-			(at 100.076 96.774 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Brake_Fl_Sn_Raw_TP"
-			(at 76.708 97.028 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
-			(at 103.378 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 103.378 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Inventory" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfg" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "P/N" "~"
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PN" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "p/n" ""
-			(at 98.298 100.838 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ac991636-4384-4ad6-8b1b-4159043b516e")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a"
-					(reference "Brake_Fl_Sn_Raw2")
 					(unit 1)
 				)
 			)
