@@ -3424,7 +3424,7 @@
 				)
 			)
 		)
-		(property "Footprint" "AP2205W57"
+		(property "Footprint" "AP2205-W5-7:AP2205W57"
 			(at 118.618 -3.734 0)
 			(effects
 				(font
@@ -3854,7 +3854,7 @@
 				)
 			)
 		)
-		(property "Footprint" "AP2205W57"
+		(property "Footprint" "AP2205-W5-7:AP2205W57"
 			(at 118.364 -38.278 0)
 			(effects
 				(font

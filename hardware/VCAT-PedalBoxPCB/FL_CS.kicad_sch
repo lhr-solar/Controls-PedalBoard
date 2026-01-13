@@ -1145,16 +1145,24 @@
 		(uuid "36d02a99-1e9e-41b6-8d84-3a158511f631")
 	)
 	(junction
-		(at 91.186 86.868)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "99e1ff3b-a311-4757-ac86-59ee3aae87b5")
-	)
-	(junction
 		(at 144.526 93.472)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b7fe281f-0364-4716-a58a-2e9b5013ea18")
+	)
+	(junction
+		(at 91.186 86.106)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2ad0f39-99d8-4b52-94fe-99c7222c5e7c")
+	)
+	(no_connect
+		(at 84.074 108.966)
+		(uuid "084d2a50-600a-4095-a5f1-48d674b6c6fc")
+	)
+	(no_connect
+		(at 84.074 116.586)
+		(uuid "a3810a3b-6c0d-4690-8e80-52cbe9a2478f")
 	)
 	(wire
 		(pts
@@ -1348,16 +1356,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.186 80.264) (xy 91.186 86.868)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bde7f41b-49c7-4507-b589-6bbba1bb67b0")
-	)
-	(wire
-		(pts
 			(xy 83.566 97.282) (xy 84.328 98.044)
 		)
 		(stroke
@@ -1375,6 +1373,16 @@
 			(type default)
 		)
 		(uuid "cc418b74-f713-4c99-bb64-7f0c00c30c36")
+	)
+	(wire
+		(pts
+			(xy 91.186 86.106) (xy 91.186 89.662)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf989bf8-df09-4c29-9a91-655b4b343687")
 	)
 	(wire
 		(pts
@@ -1438,7 +1446,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.186 86.868) (xy 91.186 89.662)
+			(xy 91.186 80.264) (xy 91.186 86.106)
 		)
 		(stroke
 			(width 0)
@@ -2001,6 +2009,159 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 91.186 86.106 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7652fd10-935c-4c61-8657-a09e4c015897")
+		(property "Reference" "TP4"
+			(at 82.804 88.646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Raw_TP"
+			(at 85.1154 88.646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
+			(at 91.186 81.026 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 91.186 81.026 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Inventory" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "~"
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PN" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "p/n" ""
+			(at 91.186 86.106 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0c06361c-391a-4dc5-bc26-65b454275bb4")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a/4f4b66ca-ebef-4dbc-af03-510cf70c75cb"
+					(reference "TP5")
+					(unit 1)
+				)
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a/5ee0acff-6668-4939-819e-7e9025ec765c"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 106.172 108.712 0)
 		(unit 1)
@@ -2134,157 +2295,6 @@
 				)
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a/5ee0acff-6668-4939-819e-7e9025ec765c"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 91.186 86.868 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b26fea51-b27d-4746-b036-671860fb188a")
-		(property "Reference" "Brake_Fl_Sn_Raw1"
-			(at 87.63 84.582 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Brake_Fl_Sn_Raw_TP"
-			(at 87.122 86.614 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
-			(at 91.186 81.788 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 91.186 81.788 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Inventory" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mfg" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "P/N" "~"
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "PN" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "p/n" ""
-			(at 91.186 86.868 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bf674541-1c43-47cf-948e-b0602632d4ef")
-		)
-		(instances
-			(project "Controls-PedalsDaughter"
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a/4f4b66ca-ebef-4dbc-af03-510cf70c75cb"
-					(reference "Brake_Fl_Sn_Raw2")
-					(unit 1)
-				)
-				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/7d1ff2c9-efd0-48ce-add2-9372a4e6c13a/5ee0acff-6668-4939-819e-7e9025ec765c"
-					(reference "Brake_Fl_Sn_Raw1")
 					(unit 1)
 				)
 			)

@@ -538,7 +538,7 @@
           "group_by": false,
           "label": "Reference",
           "name": "Reference",
-          "show": false
+          "show": true
         },
         {
           "group_by": true,
@@ -786,11 +786,11 @@
       "Dual Op Amp Buffer"
     ],
     [
-      "2be02246-c3e4-4c7d-bba6-fc9a98c92828",
+      "dc8520c8-78e0-4dd5-a5dd-649ccee79505",
       "Dual Op Amp Buffer"
     ],
     [
-      "bcc26b59-92dd-4e62-951b-5b71aa206c8b",
+      "7fb99fbb-578f-42e7-9ca0-6bdbfb004215",
       "Dual Op Amp Buffer1"
     ]
   ],
