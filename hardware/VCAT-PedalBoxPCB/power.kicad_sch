@@ -820,7 +820,7 @@
 		)
 		(uuid c3651475-e4b0-47ab-8b19-af4304ca4370)
 	)
-	(text "9V"
+	(text "5V"
 		(exclude_from_sim no)
 		(at 161.798 85.852 0)
 		(effects
@@ -907,6 +907,12 @@
 		(uuid "23939443-b50e-47fa-ad5f-ea6494b94897")
 	)
 	(junction
+		(at 146.05 88.646)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2a622bf6-09ac-4881-96bb-5404a706093a")
+	)
+	(junction
 		(at 151.892 88.646)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -979,12 +985,6 @@
 		(uuid "d7955cdc-aff0-4c1f-b0da-f5ed0e800c0c")
 	)
 	(junction
-		(at 146.05 88.646)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e00a514e-b287-4a26-ac99-56042cf4c89c")
-	)
-	(junction
 		(at 150.622 70.358)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1054,16 +1054,6 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 88.646) (xy 151.892 88.646)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1463773d-15b0-4493-803e-682c5aa80345")
-	)
-	(wire
-		(pts
 			(xy 108.966 101.854) (xy 108.966 102.362)
 		)
 		(stroke
@@ -1121,6 +1111,16 @@
 			(type default)
 		)
 		(uuid "23d6ef64-fef1-4dc0-9524-7d0279c13ff0")
+	)
+	(wire
+		(pts
+			(xy 146.05 88.646) (xy 151.892 88.646)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27085364-7438-4cac-9b6b-707841d9aa09")
 	)
 	(wire
 		(pts
@@ -2785,6 +2785,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "~"
+			(at 151.13 54.102 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "07668a2d-6d9e-4bc9-a014-699586c1d323")
 		)
@@ -3323,7 +3332,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "274b4f83-440f-42f9-9ccb-51c74d18529c")
-		(property "Reference" "9V_Out1"
+		(property "Reference" "5V_Out2"
 			(at 155.448 82.55 0)
 			(effects
 				(font
@@ -3369,13 +3378,22 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "~"
+			(at 151.892 88.646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6f697426-2f65-4501-83a0-52e9ccc2c81f")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
-					(reference "9V_Out1")
+					(reference "5V_Out2")
 					(unit 1)
 				)
 			)
@@ -3485,6 +3503,15 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "AP2205-W5-7"
+			(at 142.748 91.186 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "60345df9-f0c1-4899-8c1f-b5af87263b5c")
 		)
@@ -3519,7 +3546,7 @@
 		(dnp no)
 		(uuid "440e5067-109f-4db0-96c3-abc308816685")
 		(property "Reference" "R9"
-			(at 147.574 90.932 0)
+			(at 141.986 89.916 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3527,8 +3554,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "63.4k"
-			(at 147.574 94.234 0)
+		(property "Value" "30k"
+			(at 146.05 94.488 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3707,6 +3734,15 @@
 		)
 		(property "Description" "test point"
 			(at 111.76 59.436 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "~"
+			(at 111.76 59.436 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3894,6 +3930,15 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "P/N" "AP2205-W5-7"
+			(at 142.494 56.642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -4662,7 +4707,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bf2b775d-43d1-4717-8426-fe4673052f35")
-		(property "Reference" "En9V1"
+		(property "Reference" "En5V2"
 			(at 115.57 96.012 90)
 			(effects
 				(font
@@ -4708,13 +4753,22 @@
 				(hide yes)
 			)
 		)
+		(property "P/N" "~"
+			(at 112.014 93.98 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1b2b860f-905a-4765-8add-b8de86c0a361")
 		)
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
-					(reference "En9V1")
+					(reference "En5V2")
 					(unit 1)
 				)
 			)
@@ -4729,7 +4783,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c6f95867-c25f-466c-90a9-bc837ab72f02")
-		(property "Reference" "Adj9V1"
+		(property "Reference" "Adj5V2"
 			(at 141.478 96.52 90)
 			(effects
 				(font
@@ -4781,7 +4835,7 @@
 		(instances
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
-					(reference "Adj9V1")
+					(reference "Adj5V2")
 					(unit 1)
 				)
 			)
@@ -4984,6 +5038,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 112.522 51.562 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "P/N" "~"
 			(at 112.522 51.562 0)
 			(effects
 				(font

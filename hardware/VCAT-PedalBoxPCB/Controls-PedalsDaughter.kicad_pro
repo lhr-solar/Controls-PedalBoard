@@ -772,6 +772,26 @@
     [
       "6613b086-4f9a-483f-8869-58f1a430ca82",
       "Power"
+    ],
+    [
+      "5ee0acff-6668-4939-819e-7e9025ec765c",
+      "Brake Fluid Current Sense Amp"
+    ],
+    [
+      "4f4b66ca-ebef-4dbc-af03-510cf70c75cb",
+      "Brake Fluid Current Sense Amp1"
+    ],
+    [
+      "c5ce1f8e-3f8d-4f26-a3fd-69c2eb3180e5",
+      "Dual Op Amp Buffer"
+    ],
+    [
+      "2be02246-c3e4-4c7d-bba6-fc9a98c92828",
+      "Dual Op Amp Buffer"
+    ],
+    [
+      "bcc26b59-92dd-4e62-951b-5b71aa206c8b",
+      "Dual Op Amp Buffer1"
     ]
   ],
   "text_variables": {}
