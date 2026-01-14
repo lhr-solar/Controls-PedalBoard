@@ -2043,7 +2043,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "untitled.kicad_sch"
+		(property "Sheetfile" "OpAmpBuffer.kicad_sch"
 			(at 124.968 65.8626 0)
 			(effects
 				(font

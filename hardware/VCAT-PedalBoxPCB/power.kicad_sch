@@ -5,6 +5,173 @@
 	(uuid "849f38cc-3165-4cf0-8256-33023f716449")
 	(paper "A4")
 	(lib_symbols
+		(symbol "0603L025YR:0603L025YR"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 13.97 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "0603L025YR"
+				(at 13.97 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "FUSC1608X75N"
+				(at 13.97 -96.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://m.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_0603l_datasheet.pdf.pdf"
+				(at 13.97 -196.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resettable Fuses - PPTC PTC 9V .250A POLY SURF MOUNT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "0.75"
+				(at 13.97 -396.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "576-0603L025YR"
+				(at 13.97 -496.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Littelfuse/0603L025YR?qs=n5MbhIql%252BRmYmNliBUCDFQ%3D%3D"
+				(at 13.97 -596.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "LITTELFUSE"
+				(at 13.97 -696.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "0603L025YR"
+				(at 13.97 -796.19 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "0603L025YR_1_1"
+				(rectangle
+					(start 5.08 1.27)
+					(end 12.7 -1.27)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 12.7 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 17.78 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "AP2205-W5-7:AP2205-W5-7"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -822,7 +989,7 @@
 	)
 	(text "5V"
 		(exclude_from_sim no)
-		(at 161.798 85.852 0)
+		(at 181.102 85.852 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -832,9 +999,9 @@
 		)
 		(uuid "6cf1ac3c-e3f0-4fcd-ad77-66ca7049a679")
 	)
-	(text "Vout = Vref(1+(R9/R13))\nVref = 1.24\n\nFor VouT = 9v, R13 = 10K: \nR9 = ((Vout/Vref)-1)*R13\n\nR6 =  63.4k"
+	(text "------- For 9V ONLY -------\n\nVout = Vref(1+(R9/R13))\nVref = 1.24\n\nFor VouT = 9v, R13 = 10K: \nR9 = ((Vout/Vref)-1)*R13\n\nR9 =  63.4k"
 		(exclude_from_sim no)
-		(at 189.738 88.646 0)
+		(at 182.88 131.064 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -844,7 +1011,7 @@
 	)
 	(text "Vout = Vref(1+(R6/R7))\nVref = 1.24\n\nFor VouT = 5v, r7 = 10K: \nR6 = ((Vout/Vref)-1)*R7\n\nR6 =  30k"
 		(exclude_from_sim no)
-		(at 188.976 59.69 0)
+		(at 199.39 72.136 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -854,7 +1021,7 @@
 	)
 	(text "5V"
 		(exclude_from_sim no)
-		(at 161.29 51.562 0)
+		(at 180.594 51.562 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1314,6 +1481,16 @@
 	)
 	(wire
 		(pts
+			(xy 174.498 88.646) (xy 176.022 88.646)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b18ca47-482e-487e-b326-218a6f6775f6")
+	)
+	(wire
+		(pts
 			(xy 154.686 88.646) (xy 154.686 92.71)
 		)
 		(stroke
@@ -1524,6 +1701,16 @@
 	)
 	(wire
 		(pts
+			(xy 174.244 54.102) (xy 175.768 54.102)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc4a090e-9bbd-4719-ab45-dd2950d649be")
+	)
+	(wire
+		(pts
 			(xy 106.172 102.87) (xy 106.172 103.632)
 		)
 		(stroke
@@ -1673,8 +1860,8 @@
 		(uuid "f6147df2-d5f9-4bcc-aadc-da9ccc0df5fd")
 	)
 	(image
-		(at 152.146 139.954)
-		(scale 0.291907)
+		(at 116.078 130.556)
+		(scale 0.188022)
 		(uuid "cbdaaf55-dacc-4fe5-b174-973219afdb71")
 		(data "iVBORw0KGgoAAAANSUhEUgAABFwAAAHECAIAAACLFqkXAAAAA3NCSVQICAjb4U/gAAAACXBIWXMA"
 			"AA50AAAOdAFrJLPWAAAgAElEQVR4nOzdZ1gUV8MG4DOznQ7SBEEERRBUFAvYUOy9l4AtpmiaScyb"
@@ -2426,7 +2613,7 @@
 	)
 	(hierarchical_label "VoutAdj2"
 		(shape output)
-		(at 156.718 88.646 0)
+		(at 176.022 88.646 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2437,7 +2624,7 @@
 	)
 	(hierarchical_label "VoutAdj1"
 		(shape output)
-		(at 156.464 54.102 0)
+		(at 175.768 54.102 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3763,6 +3950,125 @@
 		)
 	)
 	(symbol
+		(lib_id "0603L025YR:0603L025YR")
+		(at 156.718 88.646 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5ff7aea5-1a16-4672-ac72-f2c538574cba")
+		(property "Reference" "F1"
+			(at 165.862 91.948 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0603L025YR"
+			(at 165.862 94.488 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "0603L025YR:FUSC1608X75N"
+			(at 170.688 184.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://m.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_0603l_datasheet.pdf.pdf"
+			(at 170.688 284.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resettable Fuses - PPTC PTC 9V .250A POLY SURF MOUNT"
+			(at 156.718 88.646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "0.75"
+			(at 170.688 484.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "576-0603L025YR"
+			(at 170.688 584.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Littelfuse/0603L025YR?qs=n5MbhIql%252BRmYmNliBUCDFQ%3D%3D"
+			(at 170.688 684.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "LITTELFUSE"
+			(at 170.688 784.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "0603L025YR"
+			(at 170.688 884.836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6a010e21-8fde-462c-bc47-388797dc9e42")
+		)
+		(pin "1"
+			(uuid "47f0483a-143d-4fa6-936c-ef65b3549206")
+		)
+		(instances
+			(project ""
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 106.172 103.632 0)
 		(unit 1)
@@ -3824,6 +4130,125 @@
 			(project "Controls-PedalsDaughter"
 				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
 					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "0603L025YR:0603L025YR")
+		(at 156.464 54.102 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "70fd4555-60e0-420a-8a27-86bcf1645392")
+		(property "Reference" "F2"
+			(at 165.608 57.404 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0603L025YR"
+			(at 165.608 59.944 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "0603L025YR:FUSC1608X75N"
+			(at 170.434 150.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://m.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_0603l_datasheet.pdf.pdf"
+			(at 170.434 250.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resettable Fuses - PPTC PTC 9V .250A POLY SURF MOUNT"
+			(at 156.464 54.102 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "0.75"
+			(at 170.434 450.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "576-0603L025YR"
+			(at 170.434 550.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Littelfuse/0603L025YR?qs=n5MbhIql%252BRmYmNliBUCDFQ%3D%3D"
+			(at 170.434 650.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "LITTELFUSE"
+			(at 170.434 750.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "0603L025YR"
+			(at 170.434 850.292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "36d4bfea-c00d-4740-8bc5-676f17e2c170")
+		)
+		(pin "1"
+			(uuid "fcdaa668-3d2e-4ce5-adb9-173f827a5fc6")
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/6613b086-4f9a-483f-8869-58f1a430ca82"
+					(reference "F2")
 					(unit 1)
 				)
 			)

@@ -787,11 +787,11 @@
     ],
     [
       "dc8520c8-78e0-4dd5-a5dd-649ccee79505",
-      "Dual Op Amp Buffer"
+      "Dual Op Amp Buffer Pots (main)"
     ],
     [
       "7fb99fbb-578f-42e7-9ca0-6bdbfb004215",
-      "Dual Op Amp Buffer1"
+      "Dual Op Amp Buffer Pots (Redundant)"
     ]
   ],
   "text_variables": {}
