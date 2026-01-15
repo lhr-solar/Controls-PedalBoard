@@ -2065,7 +2065,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+VDDA"
+		(property "Value" "+3.3V"
 			(at 84.328 80.264 0)
 			(effects
 				(font
@@ -2848,7 +2848,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 206.375 122.809 0)
 			(effects
 				(font
@@ -2921,7 +2921,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 206.375 94.869 0)
 			(effects
 				(font
@@ -2994,7 +2994,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 84.328 116.84 0)
 			(effects
 				(font
@@ -3622,7 +3622,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 130.683 97.155 0)
 			(effects
 				(font
@@ -4214,7 +4214,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 123.952 125.73 0)
 			(effects
 				(font
