@@ -1054,7 +1054,7 @@
 		)
 		(uuid "3ded2633-2034-4f33-b6aa-a87df249188a")
 	)
-	(text "Vout = G(Vin+ - Vin-) + (Vref1 +Vref2)/2\nVout = 200(ADC - 0) + (2.5)\nVout = 200ADC\nVout = [0.66v, 3.3v]\n\nADC = [3.3mV, 16.5mV]\nVref1 = Vref2 = GNDA = 0.0V\nG = 200"
+	(text "Vout = G(Vin+ - Vin-) + (Vref1 +Vref2)/2\nVout = 200(ADC - 0) + (2.5)\nVout = 200ADC\nVout = [0.66v, 3.3v]\n\nADC = [3.3mV, 16.5mV]\nVref1 = Vref2 = GND = 0.0V\nG = 200"
 		(exclude_from_sim no)
 		(at 192.786 118.872 0)
 		(effects
@@ -1857,7 +1857,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+VDDA"
+		(property "Value" "+3.3V"
 			(at 102.362 78.232 0)
 			(effects
 				(font
@@ -2288,7 +2288,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 106.172 113.792 0)
 			(effects
 				(font
@@ -2357,7 +2357,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 91.186 105.283 0)
 			(effects
 				(font
@@ -2427,7 +2427,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GNDA"
+		(property "Value" "GND"
 			(at 134.366 106.172 0)
 			(effects
 				(font
