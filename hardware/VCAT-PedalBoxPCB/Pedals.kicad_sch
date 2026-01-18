@@ -1,0 +1,406 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "a58b263b-9a15-4d46-93d2-e41b474bc7e0")
+	(paper "A4")
+	(lib_symbols)
+	(rectangle
+		(start 93.726 40.894)
+		(end 205.74 122.428)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 06cd38f9-fb16-4683-afa8-bd21f4ca1274)
+	)
+	(rectangle
+		(start 98.298 133.35)
+		(end 198.374 161.798)
+		(stroke
+			(width 0.1)
+			(type dash_dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid ca6f979d-f13d-41c1-a724-d56e836480b9)
+	)
+	(text "Vin = [0.25, 5]\nVdivider = Vin * 10/(10+5.6)\n\nVdivider_low = 0.25 * 10/15.6 = 0.16v\nVdivider_high = 5 * 10/15.6 = 3.205v"
+		(exclude_from_sim no)
+		(at 150.114 106.426 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0d42aae3-9d85-4a1b-a6e4-c524f21ce30c")
+	)
+	(text "Accel & Brake ADC Signal Buffer"
+		(exclude_from_sim no)
+		(at 132.08 36.83 0)
+		(effects
+			(font
+				(size 3 3)
+				(thickness 0.4)
+				(bold yes)
+			)
+		)
+		(uuid "ab40fb8d-e2f4-48d3-969a-a3e58af0f262")
+	)
+	(text "Notes:\n\n·	Motor + refers to the pin that has battery voltage applied to it to open the throttle.\n·	It is recommended to use shielded cables for TPS and APS sensors.\n·	To prevent back feeding, the throttle motor relay must be controlled from a non flywheeled \noutput such as a spare Ignition or Injection channel.\n\n - If the sensor and microcontroller are powered from different systems\n or are physically far apart, consider using an op-amp buffer or isolation amplifier to ensure \naccurate signal transmission and reduce noise."
+		(exclude_from_sim no)
+		(at 147.828 147.574 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ebeac7a5-3474-4396-b270-e16f869c35d7")
+	)
+	(text "Pedals Potentiometer Datasheet\nhttps://www.ttelectronics.com/TTElectronics/media/ProductFiles/Datasheet/6120.pdf"
+		(exclude_from_sim no)
+		(at 149.606 126.492 0)
+		(effects
+			(font
+				(size 1 1)
+			)
+		)
+		(uuid "f2f91790-146f-4f23-928d-fabfd1cca073")
+	)
+	(wire
+		(pts
+			(xy 123.698 56.642) (xy 127 56.642)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24bd7141-d1bf-49cc-8503-243d5b9dcb2b")
+	)
+	(wire
+		(pts
+			(xy 167.132 56.642) (xy 173.736 56.642)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "872d0cf6-1adb-4145-a1ff-35cd24ed31b7")
+	)
+	(wire
+		(pts
+			(xy 167.386 88.9) (xy 172.72 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9dface1b-2a36-41a2-be1b-2ad49480226f")
+	)
+	(wire
+		(pts
+			(xy 125.222 84.074) (xy 127.254 84.074)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f05d227-2041-4cfb-bc0c-94267fabf039")
+	)
+	(wire
+		(pts
+			(xy 167.132 61.468) (xy 173.736 61.468)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb3a1c7d-c0fc-4776-870a-6b6632b3e5c9")
+	)
+	(wire
+		(pts
+			(xy 123.698 61.468) (xy 127 61.468)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5c9a55e-b857-448b-9040-b7a15608d01e")
+	)
+	(wire
+		(pts
+			(xy 125.73 88.9) (xy 127.254 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfbe3cde-d594-4322-83eb-a9cace0b6231")
+	)
+	(wire
+		(pts
+			(xy 167.386 84.074) (xy 172.72 84.074)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6ef1a8f-6e9c-42e4-ae2e-dd5f5060b6af")
+	)
+	(hierarchical_label "BrakePot"
+		(shape input)
+		(at 123.698 61.468 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1f8137f3-4611-40f5-8c1e-a070cefc398c")
+	)
+	(hierarchical_label "Accel"
+		(shape input)
+		(at 123.698 56.642 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "84c31367-102e-4a76-8125-56dca86fdbef")
+	)
+	(hierarchical_label "Accel_Buff"
+		(shape output)
+		(at 173.736 56.642 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8d9a0b5e-32cb-476a-b879-61d6939f4a2e")
+	)
+	(hierarchical_label "BrakePotRed"
+		(shape input)
+		(at 125.73 88.9 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a4f07252-3f38-498f-95a3-259583c68745")
+	)
+	(hierarchical_label "AccelRed_Buff"
+		(shape output)
+		(at 172.72 84.074 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "aebd3d1e-5e46-4cb8-9c3e-92f1f0501fba")
+	)
+	(hierarchical_label "AccelRed"
+		(shape input)
+		(at 125.222 84.074 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "be68d0d8-7ad4-484a-91fa-e87657212110")
+	)
+	(hierarchical_label "BrakePotRed_Buff"
+		(shape output)
+		(at 172.72 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dc969e6a-45a3-4cae-92fc-d8b5c3322114")
+	)
+	(hierarchical_label "BrakePot_Buff"
+		(shape output)
+		(at 173.736 61.468 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f7339d0a-4214-46b8-a93a-4c49c64bfbc3")
+	)
+	(sheet
+		(at 127.254 80.01)
+		(size 40.132 11.938)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "7fb99fbb-578f-42e7-9ca0-6bdbfb004215")
+		(property "Sheetname" "Dual Op Amp Buffer Pots (Redundant)"
+			(at 127.254 79.2984 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "OpAmpBuffer.kicad_sch"
+			(at 127.254 92.5326 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Signal1_In" input
+			(at 127.254 84.074 180)
+			(uuid "fc4c1eb6-e616-453c-8ed1-030f8d65369a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Signal1_Out" output
+			(at 167.386 84.074 0)
+			(uuid "2d6d5e56-6584-4f72-b64b-611f0314957e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Signal2_In" input
+			(at 127.254 88.9 180)
+			(uuid "08ba87eb-454b-40cd-84ac-bf196e73c4c6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Signal2_Out" output
+			(at 167.386 88.9 0)
+			(uuid "fe769a08-749d-4c94-bbb8-1f69e684378c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c"
+					(page "9")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 127 52.578)
+		(size 40.132 11.938)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "dc8520c8-78e0-4dd5-a5dd-649ccee79505")
+		(property "Sheetname" "Dual Op Amp Buffer Pots (main)"
+			(at 127 51.8664 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "OpAmpBuffer.kicad_sch"
+			(at 127 65.1006 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Signal1_In" input
+			(at 127 56.642 180)
+			(uuid "63a959ce-6bc3-43b4-b32d-9ec39d6f90d5")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Signal1_Out" output
+			(at 167.132 56.642 0)
+			(uuid "dad6a484-13af-4a69-ba1d-5b5ed039b492")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "Signal2_In" input
+			(at 127 61.468 180)
+			(uuid "34ac58fe-6103-4f5a-8fd4-c9d9f5c70a5f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "Signal2_Out" output
+			(at 167.132 61.468 0)
+			(uuid "9e805b38-f29e-46bd-8270-c52808d1e219")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "Controls-PedalsDaughter"
+				(path "/30d77876-714b-4f1b-9bad-b74eb43ddcf6/ba8b1230-57a3-4f16-bcdd-31b6729b5a2c"
+					(page "8")
+				)
+			)
+		)
+	)
+)
