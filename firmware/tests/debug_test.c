@@ -23,6 +23,7 @@ void DebugTask(void *argument) {
 
 int main(void) {
     HAL_Init();
+    SystemClock_Config();
     GPIO_Init();
     ADC1_Init();
 

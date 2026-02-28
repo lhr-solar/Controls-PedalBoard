@@ -1,6 +1,7 @@
 #include "StatusLEDs.h"
 #include "Debugging.h"
 #include "stm32l4xx_hal.h"
+#include "ADC_init.h"
 
 
 #define PRINT_TASK_PRIORITY                  (tskIDLE_PRIORITY+1)
@@ -8,28 +9,22 @@
 StaticTask_t PRINT_TASK_TCB;
 StackType_t PRINT_TASK_Stack_Array[PRINT_TASK_STACK_SIZE];
 
-extern ADC_HandleTypeDef hadc1;
-DMA_HandleTypeDef hdma_adc1;
+static uint8_t adc1_static_storage[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+static StaticQueue_t adc1QueueBuffer;
+static QueueHandle_t adc1RecvQ;
 
-uint32_t adcBuffer[1];
 
-void Error_Handler(void);
-void MX_GPIO_ADC_Init(void);
-void MX_ADC1_Init(void);
-void MX_DMA_Init(void);
-void Debug_ADC_Task(void *argument);
-void initADC();
-void DMA1_Channel1_IRQHandler(void);
-
+void ADC_Task(void *argument);
 
 int main() {
     HAL_Init();
+    SystemClock_Config();
     GPIO_Init();
-    initADC();
     initPrintf();
+    if(dash_adc_init() != ADC_OK) Error_Handler();
 
     xTaskCreateStatic(
-        Debug_ADC_Task,
+        ADC_Task,
         "ADC testing",
         PRINT_TASK_STACK_SIZE,
         NULL,
@@ -44,16 +39,24 @@ int main() {
 }
 
 
-void Debug_ADC_Task(void *argument) {
-    
-    /* ---------- START ---------- */
-    if (HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adcBuffer, 1) != HAL_OK)
-        Error_Handler();
-    
-    flashThem(500);
+void ADC_Task(void *argument) {
 
     while(1) {
-        printf("ADC: %ld\n", adcBuffer[0]);
+        printf("\n\r--> Task Started\n\r");
+        
+        printf("bruh1\n\r");
+        if(readADC_All() != ADC_OK) {
+            printf("ADC read failed\n\r");
+            continue;
+        }
+        
+        printf("bruh2\n\r");
+
+        uint16_t adcVal = 0;
+        if(xQueueReceive(adc1RecvQ, &adcVal, portMAX_DELAY) == pdTRUE) {
+            printf("ADC value: %d\n\r", adcVal);
+        } else printf("Failed to receive ADC value from queue\n\r");
+
 
         set_LED(PSOM_HB, GPIO_PIN_SET);
         vTaskDelay(pdMS_TO_TICKS(500));
@@ -62,98 +65,88 @@ void Debug_ADC_Task(void *argument) {
     }
 }
 
-void Error_Handler(void) {
-    while(1) flashThem(100);
+
+adc_status_t readADC_All() {
+    return adc_read(ADC_CHANNEL_7, ADC_SAMPLETIME_2CYCLE_5, hadc1, adc1RecvQ);
 }
 
-void MX_GPIO_ADC_Init(void) {
-    __HAL_RCC_GPIOA_CLK_ENABLE();   // or correct port
+adc_status_t dash_adc_init() {
+    printf("Creating ADC Queue...\n\r");
+    adc1RecvQ = xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_static_storage, &adc1QueueBuffer);
 
+    if(adc1RecvQ == NULL) return ADC_INIT_FAIL;
+
+    printf("Queue created successfully\n\r");
+    return adc1_init();
+}
+
+adc_status_t adc1_init() {
+    printf("Initializing ADC1...\n\r");
     GPIO_InitTypeDef GPIO_InitStruct = {0};
-    GPIO_InitStruct.Pin = GPIO_PIN_2;        // <-- ADC1_IN7 pin
+    RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+
+    /** Initializes the peripherals clocks*/
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+    PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_SYSCLK;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) Error_Handler();
+
+    /* ADC1 clock enable */
+    __HAL_RCC_ADC_CLK_ENABLE();
+
+    printf("Peripheral clocks initialized successfully\n\r");
+
+    GPIO_InitStruct.Pin = GPIO_PIN_2;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-}
 
-
-void MX_ADC1_Init(void) {
-    __HAL_RCC_ADC_CLK_ENABLE();
+    printf("GPIO-ADC initialized successfully\n\r");
 
     ADC_ChannelConfTypeDef sConfig = {0};
 
-    hadc1.Instance = ADC1;
-    hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV1;
-    hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-    hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-    hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-    hadc1.Init.LowPowerAutoWait = DISABLE;
-    hadc1.Init.ContinuousConvMode = ENABLE;
-    hadc1.Init.NbrOfConversion = 1;
-    hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-    hadc1.Init.DMAContinuousRequests = ENABLE;
-    hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+    hadc1->Instance = ADC1;
+    hadc1->Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
+    hadc1->Init.Resolution = ADC_RESOLUTION_12B;
+    hadc1->Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    hadc1->Init.ScanConvMode = ADC_SCAN_DISABLE;
+    hadc1->Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+    hadc1->Init.LowPowerAutoWait = DISABLE;
+    hadc1->Init.ContinuousConvMode = DISABLE;
+    hadc1->Init.NbrOfConversion = 1;
+    hadc1->Init.DiscontinuousConvMode = DISABLE;
+    hadc1->Init.ExternalTrigConv = ADC_SOFTWARE_START;
+    hadc1->Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    hadc1->Init.DMAContinuousRequests = DISABLE;
+    hadc1->Init.Overrun = ADC_OVR_DATA_PRESERVED;
+    hadc1->Init.OversamplingMode = DISABLE;
+    if (HAL_ADC_Init(hadc1) != HAL_OK) Error_Handler();
 
-    if (HAL_ADC_Init(&hadc1) != HAL_OK)
-        Error_Handler();
-
-    /* ---------- CALIBRATION ---------- */
-
-    if (HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED) != HAL_OK)
-        Error_Handler();
-    /* ---------- CHANNEL ---------- */
+    printf("ADC1 initialized successfully\n\r");
 
     sConfig.Channel = ADC_CHANNEL_7;
     sConfig.Rank = ADC_REGULAR_RANK_1;
-    sConfig.SamplingTime = ADC_SAMPLETIME_47CYCLES_5;
+    sConfig.SamplingTime = ADC_SAMPLETIME_2CYCLES_5;
     sConfig.SingleDiff = ADC_SINGLE_ENDED;
+    sConfig.OffsetNumber = ADC_OFFSET_NONE;
+    sConfig.Offset = 0;
+    if (HAL_ADC_ConfigChannel(hadc1, &sConfig) != HAL_OK) Error_Handler();
 
-    if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-        Error_Handler();
+    printf("ADC1 channel configured successfully\n\r");
 
-    /* ---------- DMA ---------- */
+    HAL_NVIC_SetPriority(ADC1_2_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(ADC1_2_IRQn);
 
-    hdma_adc1.Instance = DMA1_Channel1;
-    hdma_adc1.Init.Request = DMA_REQUEST_0;  // ✔ correct for L431
-    hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
-    hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
-    hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
-    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
-    hdma_adc1.Init.Mode = DMA_CIRCULAR;
-    hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
-    flashThem(500);
-    if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
-        Error_Handler();
-    __HAL_LINKDMA(&hadc1, DMA_Handle, hdma_adc1);
-
-    flashThem(500);
-}
-
-void MX_DMA_Init(void) {
-    /* DMA controller clock enable */
-    __HAL_RCC_DMA1_CLK_ENABLE();
-
-    /* DMA interrupt init */
-    /* DMA1_Channel1_IRQn interrupt configuration */
-    HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 5, 0);
-    HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+    printf("ADC1 interrupt configured successfully\n\r");
+    printf("ADC initialization complete\n\r");
+    return ADC_OK;
 
 }
 
-void initADC() {
-    MX_GPIO_ADC_Init();
-    MX_DMA_Init();
-    MX_ADC1_Init();
+void Error_Handler(void) {
+    __disable_irq();
+    printf("Error Handler: ADC initialization failed\n\r");
+    while (1) {}
 }
-
-void DMA1_Channel1_IRQHandler(void) {
-    HAL_DMA_IRQHandler(&hdma_adc1);
-}
-
-
 
 
 
