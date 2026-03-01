@@ -118,8 +118,8 @@ adc_status_t adc1_init(void)
     hadc1->Init.Overrun               = ADC_OVR_DATA_PRESERVED;
     hadc1->Init.OversamplingMode      = DISABLE;
     __HAL_RCC_ADC_CLK_ENABLE();
-    HAL_NVIC_SetPriority(ADC1_IRQn, 5, 0);
-    HAL_NVIC_EnableIRQ(ADC1_IRQn);
+    // HAL_NVIC_SetPriority(ADC1_IRQn, 5, 0);
+    // HAL_NVIC_EnableIRQ(ADC1_IRQn);
 
     if (HAL_ADC_Init(hadc1) != HAL_OK)
     {
