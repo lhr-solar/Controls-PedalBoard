@@ -3,7 +3,7 @@
 
 int main(){
     HAL_Init();
-    GPIO_Init();
+    Status_LEDs_Init();
 
     while(1){
         flashThem(500);

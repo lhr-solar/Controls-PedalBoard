@@ -1,5 +1,4 @@
-#ifndef DEBUGGING_H
-#define DEBUGGING_H
+#pragma once
 
 #include "stm32xx_hal.h"
 #include <stdio.h>
@@ -12,5 +11,3 @@
 
 extern UART_HandleTypeDef* husart1;
 void initPrintf();
-
-#endif

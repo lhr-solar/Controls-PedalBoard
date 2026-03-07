@@ -3,7 +3,7 @@
 
 int main(){
     HAL_Init();
-    GPIO_Init();
+    Status_LEDs_Init();
 
     while(1){
         set_LED(BRAKE_POT_LED, GPIO_PIN_SET);

@@ -24,7 +24,7 @@ void DebugTask(void *argument) {
 int main(void) {
     HAL_Init();
     SystemClock_Config();
-    GPIO_Init();
+    Status_LEDs_Init();
     ADC1_Init();
 
     initPrintf();

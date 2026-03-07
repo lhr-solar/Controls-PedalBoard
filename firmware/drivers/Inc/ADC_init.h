@@ -1,13 +1,49 @@
-#include "ADC.h"
+#pragma once
 
-#define ADC1_QUEUE_LENGTH   10
-#define ADC_ITEM_SIZE       sizeof( uint32_t )
+#include "FreeRTOS.h"
+#include "queue.h"
 
-extern ADC_HandleTypeDef* hadc1;
+#define ADC1_QUEUE_LENGTH 10
+#define ADC_ITEM_SIZE sizeof(uint32_t)
+
+extern uint8_t adc1_brakePot_queue[];
+extern StaticQueue_t adc1_brakePot_queue_buffer;
+extern QueueHandle_t adc1_brakePot_RecvQ;
+
+extern uint8_t adc1_accelPot_queue[];
+extern StaticQueue_t adc1_accelPot_queue_buffer;
+extern QueueHandle_t adc1_accelPot_RecvQ;
+
+extern uint8_t adc1_brakeFL_queue[];
+extern StaticQueue_t adc1_brakeFL_queueBuffer;
+extern QueueHandle_t adc1_brakeFL_RecvQ;
+
+extern uint8_t adc1_brakeFLRed_queue[];
+extern StaticQueue_t adc1_brakeFLRed_queueBuffer;
+extern QueueHandle_t adc1_brakeFLRed_RecvQ;
+
+extern uint8_t adc1_accelPotRed_queue[];
+extern StaticQueue_t adc1_accelPotRed_queue_buffer;
+extern QueueHandle_t adc1_accelPotRed_RecvQ;
+
+extern uint8_t adc1_brakePotRed_queue[];
+extern StaticQueue_t adc1_brakePotRed_queue_buffer;
+extern QueueHandle_t adc1_brakePotRed_RecvQ;
+
+extern const GPIO_Pin BRAKE_POT;
+extern const GPIO_Pin ACCEL_POT;
+extern const GPIO_Pin BRAKE_FL;
+extern const GPIO_Pin BRAKE_FL_RED;
+extern const GPIO_Pin ACCEL_POT_RED;
+extern const GPIO_Pin BRAKE_POT_RED;
+
+extern uint16_t adcPercentPotsLUT[4096];
 
 
-ADC_InitTypeDef adc_init_1;
-void Error_Handler();
-adc_status_t adc1_init();
-adc_status_t dash_adc_init();
-adc_status_t adc_start_read();
+extern ADC_HandleTypeDef *hadc1;
+
+void adc_GPIO_init();
+adc_status_t adc_start_read(ADC_ChannelConfTypeDef *adcPin);
+adc_status_t pedals_adc_init();
+void Error_Handler(void);
+void readAll_ADCs_task(void *argument);

@@ -1,5 +1,6 @@
 #include "Debugging.h"
 
+
 void initPrintf(void) {
     // First, initialize the UART hardware (GPIO, clocks, etc.)
         // UART init
@@ -40,4 +41,14 @@ void initPrintf(void) {
     husart1->Init.OverSampling = UART_OVERSAMPLING_16;
 
     printf_init(husart1);
+}
+
+
+int _write(int file, char *ptr, int len) {
+    (void)file;
+    if (husart1 == NULL) return -1;
+    if (HAL_UART_Transmit(husart1, (uint8_t*)ptr, (uint16_t)len, HAL_MAX_DELAY) != HAL_OK) {
+        return -1;
+    }
+    return len;
 }

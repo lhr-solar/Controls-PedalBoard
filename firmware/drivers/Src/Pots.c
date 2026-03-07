@@ -1,10 +1,35 @@
+#include "Pedals.h"
 #include "Pots.h"
 #include "StatusLEDs.h"
-#include "Debugging.h"
+#include "ADC_init.h"
 
-uint32_t adc_buffer[6];
+/* --------------------------------------------------
+      ADC Queue Declarations and GPIO Pin Configurations
+   -------------------------------------------------- */
 
-extern ADC_HandleTypeDef hadc1;
+uint8_t adc1_brakePot_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_brakePot_queueBuffer;
+QueueHandle_t adc1_brakePot_RecvQ;
+
+uint8_t adc1_accelPot_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_accelPot_queue_buffer;
+QueueHandle_t adc1_accelPot_RecvQ;
+
+uint8_t adc1_brakeFL_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_brakeFL_queueBuffer;
+QueueHandle_t adc1_brakeFL_RecvQ;
+
+uint8_t adc1_brakeFLRed_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_brakeFLRed_queueBuffer;
+QueueHandle_t adc1_brakeFLRed_RecvQ;
+
+uint8_t adc1_accelPotRed_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_accelPotRed_queue_buffer;
+QueueHandle_t adc1_accelPotRed_RecvQ;
+
+uint8_t adc1_brakePotRed_queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
+StaticQueue_t adc1_brakePotRed_queue_buffer;
+QueueHandle_t adc1_brakePotRed_RecvQ;
 
 const GPIO_Pin BRAKE_POT = {GPIOA, GPIO_PIN_2};
 const GPIO_Pin ACCEL_POT = {GPIOA, GPIO_PIN_0};
@@ -13,95 +38,308 @@ const GPIO_Pin BRAKE_FL_RED = {GPIOA, GPIO_PIN_5};
 const GPIO_Pin ACCEL_POT_RED = {GPIOA, GPIO_PIN_6};
 const GPIO_Pin BRAKE_POT_RED = {GPIOB, GPIO_PIN_0};
 
-// void ADC1_Init(void) {
-//     __HAL_RCC_ADC_CLK_ENABLE();
-//     __HAL_RCC_GPIOA_CLK_ENABLE();
-//     __HAL_RCC_GPIOC_CLK_ENABLE();
+ADC_ChannelConfTypeDef brakePot_buff = {.Channel = ADC_CHANNEL_7, // PA2
+                                        .Rank = ADC_REGULAR_RANK_1,
+                                        .SamplingTime =
+                                            ADC_SAMPLETIME_2CYCLES_5,
+                                        .SingleDiff = ADC_SINGLE_ENDED,
+                                        .OffsetNumber = ADC_OFFSET_NONE,
+                                        .Offset = 0};
 
-//     GPIO_InitTypeDef g = {0};
-//     g.Mode = GPIO_MODE_ANALOG;
-//     g.Pull = GPIO_NOPULL;
-//     g.Pin = BRAKE_POT.pin | ACCEL_POT.pin | BRAKE_FL.pin | BRAKE_FL_RED.pin | ACCEL_POT_RED.pin;
-//     HAL_GPIO_Init(GPIOA, &g);
-//     g.Pin = BRAKE_POT_RED.pin;
-//     HAL_GPIO_Init(GPIOB, &g);
+ADC_ChannelConfTypeDef accelPot_buff = {.Channel = ADC_CHANNEL_5, // PA0
+                                        .Rank = ADC_REGULAR_RANK_1,
+                                        .SamplingTime =
+                                            ADC_SAMPLETIME_2CYCLES_5,
+                                        .SingleDiff = ADC_SINGLE_ENDED,
+                                        .OffsetNumber = ADC_OFFSET_NONE,
+                                        .Offset = 0};
 
-//     ADC_HandleTypeDef hadc1;
-//     ADC_ChannelConfTypeDef sConfig = {0};
-    
-//     hadc1.Instance = ADC1;
-//     hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
-//     hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-//     hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-//     hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
-//     hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-//     hadc1.Init.LowPowerAutoWait = DISABLE;
-//     hadc1.Init.ContinuousConvMode = ENABLE;
-//     hadc1.Init.NbrOfConversion = 6;
-//     hadc1.Init.DiscontinuousConvMode = DISABLE;
-//     hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-//     hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-//     hadc1.Init.DMAContinuousRequests = ENABLE;
-//     hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-//     hadc1.Init.OversamplingMode = DISABLE;
-//     HAL_ADC_Init(&hadc1);
-//     //   if (HAL_ADC_Init(&hadc1) != HAL_OK) {
-//     //     Error_Handler();
-//     //   }
-//     flashThem(500);
-//     // Rank 1 → IN5 (PA0)
-//     sConfig.Channel = ADC_CHANNEL_5;
-//     sConfig.Rank = ADC_REGULAR_RANK_1;
-//     sConfig.SamplingTime = ADC_SAMPLETIME_12CYCLES_5;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ADC_ChannelConfTypeDef brakeFL_buff = {.Channel = ADC_CHANNEL_9, // PA4
+                                       .Rank = ADC_REGULAR_RANK_1,
+                                       .SamplingTime = ADC_SAMPLETIME_2CYCLES_5,
+                                       .SingleDiff = ADC_SINGLE_ENDED,
+                                       .OffsetNumber = ADC_OFFSET_NONE,
+                                       .Offset = 0};
 
-//     // Rank 2 → IN7 (PA6)
-//     sConfig.Channel = ADC_CHANNEL_7;
-//     sConfig.Rank = ADC_REGULAR_RANK_2;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ADC_ChannelConfTypeDef brakeFLRed_buff = {.Channel = ADC_CHANNEL_10, // PA5
+                                          .Rank = ADC_REGULAR_RANK_1,
+                                          .SamplingTime =
+                                              ADC_SAMPLETIME_2CYCLES_5,
+                                          .SingleDiff = ADC_SINGLE_ENDED,
+                                          .OffsetNumber = ADC_OFFSET_NONE,
+                                          .Offset = 0};
 
-//     // Rank 3 → IN9 (PA4)
-//     sConfig.Channel = ADC_CHANNEL_9;
-//     sConfig.Rank = ADC_REGULAR_RANK_3;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ADC_ChannelConfTypeDef accelPotRed_buff = {.Channel = ADC_CHANNEL_11, // PA6
+                                           .Rank = ADC_REGULAR_RANK_1,
+                                           .SamplingTime =
+                                               ADC_SAMPLETIME_2CYCLES_5,
+                                           .SingleDiff = ADC_SINGLE_ENDED,
+                                           .OffsetNumber = ADC_OFFSET_NONE,
+                                           .Offset = 0};
 
-//     // Rank 4 → IN10 (PC0)
-//     sConfig.Channel = ADC_CHANNEL_10;
-//     sConfig.Rank = ADC_REGULAR_RANK_4;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+ADC_ChannelConfTypeDef brakePotRed_buff = {.Channel = ADC_CHANNEL_15, // PB0
+                                           .Rank = ADC_REGULAR_RANK_1,
+                                           .SamplingTime =
+                                               ADC_SAMPLETIME_2CYCLES_5,
+                                           .SingleDiff = ADC_SINGLE_ENDED,
+                                           .OffsetNumber = ADC_OFFSET_NONE,
+                                           .Offset = 0};
 
-//     // Rank 5 → IN11 (PC1)
-//     sConfig.Channel = ADC_CHANNEL_11;
-//     sConfig.Rank = ADC_REGULAR_RANK_5;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+void readAll_ADCs_task(void *argument) {
+  if (pedals_adc_init() != ADC_OK)
+    Error_Handler();
+  while (1) {
 
-//     // Rank 6 → IN15 (PC5)
-//     sConfig.Channel = ADC_CHANNEL_15;
-//     sConfig.Rank = ADC_REGULAR_RANK_6;
-//     HAL_ADC_ConfigChannel(&hadc1, &sConfig);
+    for (uint32_t i = 0; i < 50; i++) {
+      printf("  \n\r");
+    }
 
-//     DMA1_Init();
-//     HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_buffer, 6);
-//     flashThem(500);
+    if (adc_start_read(&brakePot_buff) != ADC_OK)
+      printf("ADC read failed\n\r");
+    if (adc_start_read(&accelPot_buff) != ADC_OK)
+      printf("ADC read failed\n\r");
 
-// }
+    uint32_t brakePot_buff_val = 0;
+    uint32_t accelPot_buff_val = 0;
+    uint32_t brakeFL_buff_val = 0;
+    uint32_t brakeFLRed_buff_val = 0;
+    uint32_t accelPotRed_buff_val = 0;
+    uint32_t brakePotRed_buff_val = 0;
 
-// void DMA1_Init(void) {
-//     /* DMA controller clock enable */
-//     __HAL_RCC_DMA1_CLK_ENABLE();
+    /* --------------------------------------------------
+        POTS Queue Receives
+      -------------------------------------------------- */
+    if (xQueueReceive(adc1_brakePot_RecvQ, &brakePot_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Brake Pot: %lu  |  Brake (%%)): %u%%\n\r", brakePot_buff_val,
+             adcPercentPotsLUT[brakePot_buff_val]);
+    } else {
+      printf("Failed to receive BrakePot ADC value from queue\n\r");
+    }
 
-//     /* DMA interrupt init */
-//     /* DMA1_Channel1_IRQn interrupt configuration */
-//     HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
-//     HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+    if (xQueueReceive(adc1_accelPot_RecvQ, &accelPot_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Accel Pot: %lu  |  Accel (%%)): %u%%\n\r", accelPot_buff_val,
+             adcPercentPotsLUT[accelPot_buff_val]);
+    } else {
+      printf("Failed to receive AccelPot ADC value from queue\n\r");
+    }
 
-// }
+    /* --------------------------------------------------
+        POTS Redundant Queue Receives
+      -------------------------------------------------- */
 
+    if (xQueueReceive(adc1_brakePotRed_RecvQ, &brakePotRed_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Brake Pot Redundant: %lu  |  Brake Redundant (%%)): %u%%\n\r",
+             brakePotRed_buff_val, adcPercentPotsLUT[brakePotRed_buff_val]);
+    } else {
+      printf("Failed to receive BrakePot Redundant ADC value from queue\n\r");
+    }
 
-// uint32_t getADCInput(ADCInput adc) {
-//     uint32_t out;
-//     flashThem(500);
-//     out = adc_buffer[adc];
+    if (xQueueReceive(adc1_accelPotRed_RecvQ, &accelPotRed_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Accel Pot Redundant: %lu  |  Accel Redundant (%%)): %u%%\n\r",
+             accelPotRed_buff_val, adcPercentPotsLUT[accelPotRed_buff_val]);
+    } else {
+      printf("Failed to receive AccelPot Redundant ADC value from queue\n\r");
+    }
 
-//     return out;
-// }
+    /* --------------------------------------------------
+        CALIBRATE A NEW LUT FOR BRAKE_FL
+       -------------------------------------------------- */
+    if (xQueueReceive(adc1_brakeFL_RecvQ, &brakeFL_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Brake FL: %lu  |  Brake FL (%%)): %u%%\n\r", brakeFL_buff_val,
+             adcPercentPotsLUT[brakeFL_buff_val]);
+    } else {
+      printf("Failed to receive BrakeFL ADC value from queue\n\r");
+    }
+
+    /* --------------------------------------------------
+        CALIBRATE A NEW LUT FOR BRAKE_FL Redundant
+      -------------------------------------------------- */
+    if (xQueueReceive(adc1_brakeFLRed_RecvQ, &brakeFLRed_buff_val,
+                      pdMS_TO_TICKS(10)) == pdPASS) {
+      printf("Brake FL Redundant: %lu  |  Brake FL Redundant (%%)): %u%%\n\r",
+             brakeFLRed_buff_val, adcPercentPotsLUT[brakeFLRed_buff_val]);
+    } else {
+      printf("Failed to receive BrakeFL Redundant ADC value from queue\n\r");
+    }
+
+    /* --------------------------------------------------
+        Input Status LEDs toggle (processing data into array)
+      -------------------------------------------------- */
+    if (adcPercentPotsLUT[brakePot_buff_val] > 50)
+      set_LED(BRAKE_POT_LED, GPIO_PIN_SET);
+    else
+      set_LED(BRAKE_POT_LED, GPIO_PIN_RESET);
+    if (adcPercentPotsLUT[accelPot_buff_val] > 50)
+      set_LED(ACCEL_POT_LED, GPIO_PIN_SET);
+    else
+      set_LED(ACCEL_POT_LED, GPIO_PIN_RESET);
+    if (adcPercentPotsLUT[brakeFL_buff_val] > 50)
+      set_LED(BRAKE_FL_LED, GPIO_PIN_SET);
+    else
+      set_LED(BRAKE_FL_LED, GPIO_PIN_RESET);
+  }
+}
+
+adc_status_t adc_start_read(ADC_ChannelConfTypeDef *adcPin) {
+  // Determine which queue to use based on the ADC channel
+  QueueHandle_t targetQueue = adc1_brakePot_RecvQ;  // default
+  
+  if (adcPin == &accelPot_buff) {
+    targetQueue = adc1_accelPot_RecvQ;
+  } else if (adcPin == &brakeFL_buff) {
+    targetQueue = adc1_brakeFL_RecvQ;
+  } else if (adcPin == &brakeFLRed_buff) {
+    targetQueue = adc1_brakeFLRed_RecvQ;
+  } else if (adcPin == &accelPotRed_buff) {
+    targetQueue = adc1_accelPotRed_RecvQ;
+  } else if (adcPin == &brakePotRed_buff) {
+    targetQueue = adc1_brakePotRed_RecvQ;
+  }
+  // brakePot_buff uses default adc1_brakePot_RecvQ
+  
+  return adc_read(hadc1, adcPin, targetQueue);
+}
+
+adc_status_t pedals_adc_init() {
+  ADC_InitTypeDef adc_init_1 = {0};
+
+  /* --------------------------------------------------
+      ADC Init
+   -------------------------------------------------- */
+  adc_init_1.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
+  adc_init_1.Resolution = ADC_RESOLUTION_12B;
+  adc_init_1.DataAlign = ADC_DATAALIGN_RIGHT;
+  adc_init_1.ScanConvMode = ADC_SCAN_DISABLE;
+  adc_init_1.EOCSelection = ADC_EOC_SINGLE_CONV;
+  adc_init_1.LowPowerAutoWait = DISABLE;
+  adc_init_1.ContinuousConvMode = DISABLE;
+  adc_init_1.NbrOfConversion = 1;
+  adc_init_1.DiscontinuousConvMode = DISABLE;
+  adc_init_1.ExternalTrigConv = ADC_SOFTWARE_START;
+  adc_init_1.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  adc_init_1.DMAContinuousRequests = DISABLE;
+  adc_init_1.Overrun = ADC_OVR_DATA_PRESERVED;
+  adc_init_1.OversamplingMode = DISABLE;
+
+  /* --------------------------------------------------
+      ADC Queue Init
+   -------------------------------------------------- */
+  adc1_brakePot_RecvQ =
+      xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_brakePot_queue,
+                         &adc1_brakePot_queueBuffer);
+  if (adc1_brakePot_RecvQ == NULL) {
+    printf("Failed to create BrakePot ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  adc1_accelPot_RecvQ =
+      xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_accelPot_queue,
+                         &adc1_accelPot_queue_buffer);
+  if (adc1_accelPot_RecvQ == NULL) {
+    printf("Failed to create AccelPot ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  adc1_brakeFL_RecvQ =
+      xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_brakeFL_queue,
+                         &adc1_brakeFL_queueBuffer);
+  if (adc1_brakeFL_RecvQ == NULL) {
+    printf("Failed to create BrakeFL ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  adc1_brakeFLRed_RecvQ =
+      xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE,
+                         adc1_brakeFLRed_queue, &adc1_brakeFLRed_queueBuffer);
+  if (adc1_brakeFLRed_RecvQ == NULL) {
+    printf("Failed to create BrakeFLRed ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  adc1_accelPotRed_RecvQ = xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE,
+                                              adc1_accelPotRed_queue,
+                                              &adc1_accelPotRed_queue_buffer);
+  if (adc1_accelPotRed_RecvQ == NULL) {
+    printf("Failed to create AccelPotRed ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  adc1_brakePotRed_RecvQ = xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE,
+                                              adc1_brakePotRed_queue,
+                                              &adc1_brakePotRed_queue_buffer);
+  if (adc1_brakePotRed_RecvQ == NULL) {
+    printf("Failed to create BrakePotRed ADC queue\n\r");
+    return ADC_INIT_FAIL;
+  }
+
+  volatile adc_status_t s = adc_init(&adc_init_1, hadc1);
+  s += 0;
+  if (s != ADC_OK) {
+    printf("Failed to initialize ADC1\n\r");
+    return ADC_INIT_FAIL;
+  }
+  return ADC_OK;
+}
+
+/* --------------------------------------------------
+      ADC GPIO init
+   -------------------------------------------------- */
+
+void adc_GPIO_init() {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+  if (hadc1->Instance == ADC1) {
+
+    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+    PeriphClkInit.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
+    PeriphClkInit.PLLSAI1.PLLSAI1Source = RCC_PLLSOURCE_HSE;
+    PeriphClkInit.PLLSAI1.PLLSAI1M = 1;
+    PeriphClkInit.PLLSAI1.PLLSAI1N = 16;
+    PeriphClkInit.PLLSAI1.PLLSAI1P = RCC_PLLP_DIV7;
+    PeriphClkInit.PLLSAI1.PLLSAI1Q = RCC_PLLQ_DIV2;
+    PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
+    PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
+    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
+      printf("ravi is dum\n\r");
+      Error_Handler();
+    }
+
+    /* ADC1 clock enable */
+    __HAL_RCC_ADC_CLK_ENABLE();
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    /**ADC1 GPIO Configuration
+    PA2     ------> ADC1_IN7
+    PA0     ------> ADC1_IN5
+    PA4     ------> ADC1_IN9
+    PA5     ------> ADC1_IN10
+    PA6     ------> ADC1_IN11
+    */
+    GPIO_InitStruct.Pin = BRAKE_POT.pin || ACCEL_POT.pin || BRAKE_FL.pin ||
+                          BRAKE_FL_RED.pin || ACCEL_POT_RED.pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(BRAKE_POT.port, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = BRAKE_POT_RED.pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(BRAKE_POT_RED.port, &GPIO_InitStruct);
+
+    /* ADC1 interrupt Init */
+    HAL_NVIC_SetPriority(ADC1_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(ADC1_IRQn);
+  }
+}
+
+void Error_Handler(void) {
+  __disable_irq();
+  printf("Error Handler: ADC initialization failed\n\r");
+  while (1) {
+  }
+}

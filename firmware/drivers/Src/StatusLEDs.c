@@ -1,12 +1,16 @@
 #include "StatusLEDs.h"
 
+/* --------------------------------------------------
+      Status LED inits
+   -------------------------------------------------- */
+
 const GPIO_Pin BRAKE_POT_LED = {GPIOB , GPIO_PIN_12};
 const GPIO_Pin ACCEL_POT_LED = {GPIOB , GPIO_PIN_7};
 const GPIO_Pin BRAKE_FL_LED = {GPIOB , GPIO_PIN_6};
 
 const GPIO_Pin PSOM_HB = {GPIOA, GPIO_PIN_7};
 
-void GPIO_Init(void) {
+void Status_LEDs_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
@@ -15,14 +19,13 @@ void GPIO_Init(void) {
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_12|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, PSOM_HB.pin, GPIO_PIN_RESET); //|GPIO_PIN_8|GPIO_PIN_12|GPIO_PIN_15
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_14|GPIO_PIN_15
-                          |GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, BRAKE_POT_LED.pin|BRAKE_FL_LED.pin|ACCEL_POT_LED.pin, GPIO_PIN_RESET); //GPIO_PIN_11||GPIO_PIN_14|GPIO_PIN_15
 
   /*Configure GPIO pins : PA7 PA8 PA12 PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_12|GPIO_PIN_15;
+  GPIO_InitStruct.Pin = PSOM_HB.pin;//|GPIO_PIN_8|GPIO_PIN_12|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -30,8 +33,7 @@ void GPIO_Init(void) {
 
   /*Configure GPIO pins : PB11 PB12 PB14 PB15
                            PB6 PB7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_14|GPIO_PIN_15
-                          |GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Pin = BRAKE_POT_LED.pin|BRAKE_FL_LED.pin|ACCEL_POT_LED.pin; //GPIO_PIN_11||GPIO_PIN_14|GPIO_PIN_15
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -56,4 +58,5 @@ void flashThem(uint16_t delay) {
   set_LED(BRAKE_FL_LED, GPIO_PIN_RESET);
   HAL_Delay(delay);
 }
+
 
