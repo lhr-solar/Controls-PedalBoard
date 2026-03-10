@@ -14,8 +14,8 @@ extern const GPIO_Pin BRAKE_POT_RED;
 
 extern ADC_ChannelConfTypeDef brakePot_buff;
 extern ADC_ChannelConfTypeDef accelPot_buff;
-extern ADC_ChannelConfTypeDef brakeFL_buff;
-extern ADC_ChannelConfTypeDef brakeFLRed_buff;
+extern ADC_ChannelConfTypeDef brakeFL_front_buff;
+extern ADC_ChannelConfTypeDef brakeFL_back_buff;
 extern ADC_ChannelConfTypeDef accelPotRed_buff;
 extern ADC_ChannelConfTypeDef brakePotRed_buff;
 
