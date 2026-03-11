@@ -1,6 +1,6 @@
 #include "Pedals.h"
 #include "Pedals_CAN.h"
-#include "Pots.h"
+#include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 
 #define CAN_TASK_PRIORITY (tskIDLE_PRIORITY + 1)

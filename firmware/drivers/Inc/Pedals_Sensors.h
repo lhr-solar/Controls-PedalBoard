@@ -3,15 +3,6 @@
 #include "Pedals.h"
 #include "ADC_init.h"
 
-extern uint32_t adc_buffer[];
-
-extern const GPIO_Pin BRAKE_POT;
-extern const GPIO_Pin ACCEL_POT;
-extern const GPIO_Pin BRAKE_FL;
-extern const GPIO_Pin BRAKE_FL_RED;
-extern const GPIO_Pin ACCEL_POT_RED;
-extern const GPIO_Pin BRAKE_POT_RED;
-
 extern ADC_ChannelConfTypeDef brakePot_buff;
 extern ADC_ChannelConfTypeDef accelPot_buff;
 extern ADC_ChannelConfTypeDef brakeFL_front_buff;

@@ -1,6 +1,6 @@
 #include "FreeRTOS.h"
 #include "Pedals.h"
-#include "Pots.h"
+#include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 #include "queue.h"
 
@@ -139,7 +139,7 @@ void adc_GPIO_init_test() {
 		HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 		/* ADC1 interrupt Init */
-		HAL_NVIC_SetPriority(ADC1_IRQn, 5, 0);
+		HAL_NVIC_SetPriority(ADC1_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY, 0);
 		HAL_NVIC_EnableIRQ(ADC1_IRQn);
 
 		printf("GPIO-ADC initialized successfully\n\r");
@@ -147,7 +147,6 @@ void adc_GPIO_init_test() {
 }
 
 void Error_Handler_test(void) {
-	__disable_irq();
 	printf("Error Handler: ADC initialization failed\n\r");
 	while (1) {
 	}

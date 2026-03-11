@@ -2,15 +2,8 @@
 
 #include "Pedals.h"
 
-//Port B - out
-extern const GPIO_Pin BRAKE_POT_LED;
-extern const GPIO_Pin ACCEL_POT_LED;
-extern const GPIO_Pin BRAKE_FL_LED;
 
-//port A - out
-extern const GPIO_Pin PSOM_HB;
-
-void Status_LEDs_Init(void);
-void set_LED(GPIO_Pin LED, GPIO_PinState state);
-void toggle_LED(GPIO_Pin LED);
-void flashThem(uint16_t delay);
+void Status_LEDs_Init(void);                      // init all LED GPIOs
+void set_LED(GPIO_Pin LED, GPIO_PinState state);  // sets LED state to GPIO_PIN_SET (ON) or GPIO_PIN_RESET (OFF)
+void toggle_LED(GPIO_Pin LED); 					  // nots the current state of LED (ON -> OFF or OFF -> ON)
+void flashThem(uint16_t delay); 				  // Flashes all LEDs :)

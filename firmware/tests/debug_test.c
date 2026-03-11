@@ -1,6 +1,6 @@
 #include "Debugging.h"
 #include "FreeRTOS.h"
-#include "Pots.h"
+#include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 
 #define TEST_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
@@ -36,15 +36,6 @@ int main(void) {
 	vTaskStartScheduler();
 
 	while (1) {
-#ifdef USART1
-		set_LED(BRAKE_POT_LED, GPIO_PIN_SET);
-		HAL_Delay(500);
-#endif
-#ifdef USART1
-		set_LED(BRAKE_POT_LED, GPIO_PIN_RESET);
-		HAL_Delay(500);
-#endif
-
 		// printf("Mika Sucks Balls\n");
 		// HAL_Delay(500);
 	}

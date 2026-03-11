@@ -4,12 +4,6 @@
       Status LED inits
    -------------------------------------------------- */
 
-const GPIO_Pin BRAKE_POT_LED = {GPIOB , GPIO_PIN_12};
-const GPIO_Pin ACCEL_POT_LED = {GPIOB , GPIO_PIN_7};
-const GPIO_Pin BRAKE_FL_LED = {GPIOB , GPIO_PIN_6};
-
-const GPIO_Pin PSOM_HB = {GPIOA, GPIO_PIN_7};
-
 void Status_LEDs_Init(void) {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 

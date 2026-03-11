@@ -1,5 +1,5 @@
 #include "Pedals.h"
-#include "Pots.h"
+#include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 #include "stm32xx_hal.h"
 

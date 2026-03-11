@@ -1,6 +1,6 @@
 #include "ADC_init.h"
 #include "Pedals.h"
-#include "Pots.h"
+#include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 
 #define ADC_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
