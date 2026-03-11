@@ -30,13 +30,6 @@ extern uint8_t adc1_brakePotRed_queue[];
 extern StaticQueue_t adc1_brakePotRed_queue_buffer;
 extern QueueHandle_t adc1_brakePotRed_RecvQ;
 
-extern const GPIO_Pin BRAKE_POT;
-extern const GPIO_Pin ACCEL_POT;
-extern const GPIO_Pin BRAKE_FL_FRONT;
-extern const GPIO_Pin BRAKE_FL_BACK;
-extern const GPIO_Pin ACCEL_POT_RED;
-extern const GPIO_Pin BRAKE_POT_RED;
-
 extern uint16_t adcPercentPotsLUT[4096];
 
 

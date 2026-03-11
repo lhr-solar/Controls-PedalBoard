@@ -1,5 +1,4 @@
 #include "FreeRTOS.h"
-#include "Pedals.h"
 #include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 #include "queue.h"
