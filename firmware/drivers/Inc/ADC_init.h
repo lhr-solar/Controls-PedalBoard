@@ -32,8 +32,8 @@ extern QueueHandle_t adc1_brakePotRed_RecvQ;
 
 extern const GPIO_Pin BRAKE_POT;
 extern const GPIO_Pin ACCEL_POT;
-extern const GPIO_Pin BRAKE_FL;
-extern const GPIO_Pin BRAKE_FL_RED;
+extern const GPIO_Pin BRAKE_FL_FRONT;
+extern const GPIO_Pin BRAKE_FL_BACK;
 extern const GPIO_Pin ACCEL_POT_RED;
 extern const GPIO_Pin BRAKE_POT_RED;
 
@@ -42,8 +42,9 @@ extern uint16_t adcPercentPotsLUT[4096];
 
 extern ADC_HandleTypeDef *hadc1;
 
-void adc_GPIO_init();
-adc_status_t adc_start_read(ADC_ChannelConfTypeDef *adcPin);
-adc_status_t pedals_adc_init();
+void adc_GPIO_init();                                            //Initializes GPIO properties for ADC pins
+adc_status_t adc_start_read(ADC_ChannelConfTypeDef *adcPin);     //reads a specific adcPin for data
+adc_status_t pedals_adc_init();                                  //initializes all ADC channels on pedals
 void Error_Handler(void);
-void readAll_ADCs_task(void *argument);
+
+void readAll_ADCs_task(void *argument);                          //task for reading all ADCs at once
