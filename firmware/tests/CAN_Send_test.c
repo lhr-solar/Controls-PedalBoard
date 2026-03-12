@@ -53,8 +53,6 @@ void pedals_CAN_Send_test(void *argument) {
 	Status_LEDs_Init();
 	adc_GPIO_init();
 
-	toggle_LED(BRAKE_FL_LED);
-
 	printf("init done");
 
 	if (pedals_CAN_init() != PEDALS_OK) {
@@ -67,7 +65,7 @@ void pedals_CAN_Send_test(void *argument) {
 
 	while (1) {
 
-		if (pedals_CAN_send_PotsP(test_data, portMAX_DELAY) != PEDALS_OK) {
+		if (pedals_CAN_send_PotsPercent(test_data, portMAX_DELAY) != PEDALS_OK) {
 			printf("mayne CAN send failed");
 			CAN_Error_Handler();
 		} else {

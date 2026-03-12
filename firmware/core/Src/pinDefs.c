@@ -14,3 +14,7 @@ const GPIO_Pin BRAKE_POT_LED   = {GPIOB, GPIO_PIN_12};
 const GPIO_Pin ACCEL_POT_LED   = {GPIOB, GPIO_PIN_7};
 const GPIO_Pin BRAKE_FL_LED    = {GPIOB, GPIO_PIN_6};
 const GPIO_Pin PSOM_HB         = {GPIOA, GPIO_PIN_7};
+
+/* -------- CAN --------*/
+const GPIO_Pin PEDALS_CAN_RX = {GPIOB, GPIO_PIN_8};
+const GPIO_Pin PEDALS_CAN_TX = {GPIOB, GPIO_PIN_9};

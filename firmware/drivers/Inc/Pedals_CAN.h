@@ -9,12 +9,19 @@
 	CAN_ID_BRAKE_PRESSURE // raw adc val (2 bytes) + fixed point voltage (mV) (2
 						  // bytes)
 
+#define POTS_PERCENT_QUEUE_SIZE     5
+#define POTS_VOLTAGE_QUEUE_SIZE     5
+#define BRAKE_FL_QUEUE_SIZE         5
+
+
 #define POTS_P_MSG_DLC (5) // size of payload in bytes
 #define POTS_V_MSG_DLC (8)
 #define BRAKE_FL_MSG_DLC (8)
 
-extern GPIO_Pin PEDALS_CAN_TX;
-extern GPIO_Pin PEDALS_CAN_RX;
+#define CAN_TX_ITEM_SIZE sizeof(can_tx_payload_t)
+#define CAN_TX_QUEUE_LENGTH 20
+extern QueueHandle_t can_tx_queue;
+
 extern CAN_HandleTypeDef *hcan1;
 
 /* --------------------------------------------------
@@ -70,6 +77,6 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan);
 PedalsStatus pedals_CAN_init();
 PedalsStatus pedals_CAN_start();
 PedalsStatus pedals_CAN_stop();
-PedalsStatus pedals_CAN_send_PotsP(PedalsMsg msg, TickType_t delayTicks);
-PedalsStatus pedals_CAN_send_PotsV(PedalsMsg msg, TickType_t delayTicks);
+PedalsStatus pedals_CAN_send_PotsPercent(PedalsMsg msg, TickType_t delayTicks);
+PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t delayTicks);
 PedalsStatus pedals_CAN_send_BrakeFL(PedalsMsg msg, TickType_t delayTicks);

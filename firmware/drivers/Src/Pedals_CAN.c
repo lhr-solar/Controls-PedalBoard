@@ -1,7 +1,8 @@
 #include "Pedals_CAN.h"
 
-GPIO_Pin PEDALS_CAN_RX = {GPIOB, GPIO_PIN_8};
-GPIO_Pin PEDALS_CAN_TX = {GPIOB, GPIO_PIN_9};
+QueueHandle_t can_tx_queue;
+uint8_t can_tx_qStorage[CAN_TX_QUEUE_LENGTH * CAN_TX_ITEM_SIZE];
+static StaticQueue_t xStaticQueue_can_tx;
 
 PedalsMsg pedals_msg = {
 	/* -------------- Data -------------- */
@@ -37,6 +38,13 @@ PedalsMsg pedals_msg = {
 */
 
 static bool MX_CAN_Init() {
+
+	/* Initialize queue */
+	can_tx_queue = xQueueCreateStatic(CAN_TX_QUEUE_LENGTH, CAN_TX_ITEM_SIZE,
+									  can_tx_qStorage, &xStaticQueue_can_tx);
+	if (can_tx_queue == NULL)
+		return false;
+
 	/* Create CAN filter */
 	/* For production, reject all incoming IDs */
 	CAN_FilterTypeDef sFilterConfig;
@@ -55,18 +63,17 @@ static bool MX_CAN_Init() {
 	sFilterConfig.FilterActivation = ENABLE;
 	sFilterConfig.SlaveStartFilterBank = 14;
 
-	/* CAN1 Init Struct */
-	// Baud rate is 250 kbit/s
+	/* USER CODE END CAN1_Init 1 */
 	hcan1->Instance = CAN1;
 	hcan1->Init.Prescaler = 20;
+	hcan1->Init.Mode = CAN_MODE_NORMAL;
 	hcan1->Init.SyncJumpWidth = CAN_SJW_1TQ;
 	hcan1->Init.TimeSeg1 = CAN_BS1_13TQ;
 	hcan1->Init.TimeSeg2 = CAN_BS2_2TQ;
-	hcan1->Init.Mode = CAN_MODE_NORMAL; // TODO: change for testing
 	hcan1->Init.TimeTriggeredMode = DISABLE;
 	hcan1->Init.AutoBusOff = DISABLE;
 	hcan1->Init.AutoWakeUp = DISABLE;
-	hcan1->Init.AutoRetransmission = DISABLE;
+	hcan1->Init.AutoRetransmission = ENABLE; // switched from disable
 	hcan1->Init.ReceiveFifoLocked = DISABLE;
 
 	// If TransmitFifoPriority is disabled, the hardware selects the mailbox
@@ -132,14 +139,14 @@ PedalsStatus pedals_CAN_start() {
 	return PEDALS_OK;
 }
 
-static void potsP_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+static void potsPercent_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
 	tx_data[0] = (uint8_t)msg.accelPot;
 	tx_data[1] = (uint8_t)msg.accelPot_Redundant;
 	tx_data[2] = (uint8_t)msg.brakePot;
 	tx_data[3] = (uint8_t)msg.faults;
 }
 
-static void potsV_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+static void potsVoltage_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
 	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
 	// is 1st byte)
 	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
@@ -171,7 +178,7 @@ static void brakeFL_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
 	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
 }
 
-PedalsStatus pedals_CAN_send_PotsP(PedalsMsg msg, TickType_t delayTicks) {
+PedalsStatus pedals_CAN_send_PotsPercent(PedalsMsg msg, TickType_t delayTicks) {
 	// Create CAN payload - test only for pots
 	CAN_TxHeaderTypeDef tx_header = {0};
 	tx_header.StdId = POTS_P_MSG_ID;
@@ -181,7 +188,7 @@ PedalsStatus pedals_CAN_send_PotsP(PedalsMsg msg, TickType_t delayTicks) {
 	tx_header.TransmitGlobalTime = DISABLE;
 
 	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
-	potsP_FillPayload(tx_data, msg);
+	potsPercent_FillPayload(tx_data, msg);
 
 	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
@@ -189,7 +196,7 @@ PedalsStatus pedals_CAN_send_PotsP(PedalsMsg msg, TickType_t delayTicks) {
 	return PEDALS_OK;
 }
 
-PedalsStatus pedals_CAN_send_PotsV(PedalsMsg msg, TickType_t delayTicks) {
+PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t delayTicks) {
 	// Create CAN payload - test only for pots
 	CAN_TxHeaderTypeDef tx_header = {0};
 	tx_header.StdId = POTS_V_MSG_ID;
@@ -199,7 +206,7 @@ PedalsStatus pedals_CAN_send_PotsV(PedalsMsg msg, TickType_t delayTicks) {
 	tx_header.TransmitGlobalTime = DISABLE;
 
 	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
-	potsV_FillPayload(tx_data, msg);
+	potsVoltage_FillPayload(tx_data, msg);
 
 	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
