@@ -61,6 +61,9 @@ typedef enum PedalsStatus {
 	FL_BRAKE_POT_OK = 1,
 	FL_BRAKE_POT_FAIL = 0,
 
+	ADC_READ_FAIL,
+	ADC_READ_JOLLY,
+
 	// General Status
 	PEDALS_CAN_START_FAIL,
 	PEDALS_CAN_INIT_FAIL,
