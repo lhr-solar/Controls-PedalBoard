@@ -1,6 +1,6 @@
 #include "CAN.h"
-#include "Pedals.h"
 #include "CarCAN_can_msgs.h"
+#include "Pedals.h"
 
 #define POTS_P_MSG_ID CAN_ID_ACCEL_BRAKE_POSITION // Percent value 1 byte data
 #define POTS_V_MSG_ID                                                          \
@@ -9,10 +9,11 @@
 	CAN_ID_BRAKE_PRESSURE // raw adc val (2 bytes) + fixed point voltage (mV) (2
 						  // bytes)
 
-#define POTS_PERCENT_QUEUE_SIZE     5
-#define POTS_VOLTAGE_QUEUE_SIZE     5
-#define BRAKE_FL_QUEUE_SIZE         5
+#define CAN_INTERRUPT_PRIO configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY
 
+#define POTS_PERCENT_QUEUE_SIZE 5
+#define POTS_VOLTAGE_QUEUE_SIZE 5
+#define BRAKE_FL_QUEUE_SIZE 5
 
 #define POTS_P_MSG_DLC (5) // size of payload in bytes
 #define POTS_V_MSG_DLC (8)
@@ -23,6 +24,14 @@
 extern QueueHandle_t can_tx_queue;
 
 extern CAN_HandleTypeDef *hcan1;
+
+// returned by MX_CAN_Init()
+typedef enum CarCAN_Status {
+    CAN_INIT_FAIL,
+    CAN_INIT_OK,
+    CAN_SEND_FAIL,
+    CAN_SEND_OK,
+} CarCAN_Status_t;
 
 /* --------------------------------------------------
 	Pedals CAN Packet
@@ -61,8 +70,7 @@ typedef struct PedalsMsg {
 			7 - TBD
 
 	   -------------- ------ -------------- */
-	int8_t faults; 
-	
+	int8_t faults;
 
 } PedalsMsg;
 
@@ -77,6 +85,5 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan);
 PedalsStatus pedals_CAN_init();
 PedalsStatus pedals_CAN_start();
 PedalsStatus pedals_CAN_stop();
-PedalsStatus pedals_CAN_send_PotsPercent(PedalsMsg msg, TickType_t delayTicks);
-PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t delayTicks);
-PedalsStatus pedals_CAN_send_BrakeFL(PedalsMsg msg, TickType_t delayTicks);
+void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header);
+PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef* tx_header, PedalsMsg* msg, uint8_t tx_data[8]);

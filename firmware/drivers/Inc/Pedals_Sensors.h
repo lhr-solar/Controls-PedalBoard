@@ -26,7 +26,7 @@ void readAll_ADCs_task(void *argument);
 adc_status_t adc_start_read(ADC_ChannelConfTypeDef *adcPin);
 adc_status_t pedals_adc_init();
 void adc_GPIO_init();
-void Error_Handler(void);
+void ADC_Error_Handler(void);
 
 
 

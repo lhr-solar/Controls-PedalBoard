@@ -43,42 +43,40 @@ int main() {
 
 	vTaskStartScheduler();
 
-	while (1) {
-	}
+	while (1) {}
 	return 67;
 }
+
 
 void pedals_CAN_Send_test(void *argument) {
 	initPrintf();
 	Status_LEDs_Init();
 	adc_GPIO_init();
 
-	printf("init done");
+	printf("init done\n\r");
 
 	if (pedals_CAN_init() != PEDALS_OK) {
 		printf("you are dum - init failed\n\r");
+		CAN_Error_Handler();
 	}
 
-	if (pedals_CAN_start() != PEDALS_OK) {
-		printf("you are quite dum - start failed\n\r");
-	}
+	
+  	CAN_TxHeaderTypeDef tx_header = {0};   
+	uint8_t tx_data[8];
+  	PackPotsPercentCANHeader(&tx_header);
 
 	while (1) {
-
-		if (pedals_CAN_send_PotsPercent(test_data, portMAX_DELAY) != PEDALS_OK) {
-			printf("mayne CAN send failed");
+		if(pedals_CAN_send_PotsPercent(&tx_header, &test_data, tx_data) != PEDALS_OK) {
 			CAN_Error_Handler();
-		} else {
-			printf("can sent!\n\r");
 		}
 
-		printf("shuopu");
+		printf("shuopu\n\r");
 
-		toggle_LED(PSOM_HB);
-		vTaskDelay(pdMS_TO_TICKS(500));
-
+		test_data.brakePot += 100;
+		HeartBeat();
 	}
 }
+
 
 void CAN_Error_Handler() {
 	printf("CAN failed :(");

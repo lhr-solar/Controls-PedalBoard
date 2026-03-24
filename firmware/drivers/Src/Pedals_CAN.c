@@ -2,7 +2,7 @@
 
 QueueHandle_t can_tx_queue;
 uint8_t can_tx_qStorage[CAN_TX_QUEUE_LENGTH * CAN_TX_ITEM_SIZE];
-static StaticQueue_t xStaticQueue_can_tx;
+StaticQueue_t xStaticQueue_can_tx;
 
 PedalsMsg pedals_msg = {
 	/* -------------- Data -------------- */
@@ -37,21 +37,21 @@ PedalsMsg pedals_msg = {
 	--------------  --------------  --------------
 */
 
-static bool MX_CAN_Init() {
-
+PedalsStatus MX_CAN_Init(void) {
+	// taken from cubemx
+	/* USER CODE BEGIN CAN1_Init 0 */
 	/* Initialize queue */
 	can_tx_queue = xQueueCreateStatic(CAN_TX_QUEUE_LENGTH, CAN_TX_ITEM_SIZE,
 									  can_tx_qStorage, &xStaticQueue_can_tx);
 	if (can_tx_queue == NULL)
-		return false;
+		return CAN_INIT_FAIL;
 
-	/* Create CAN filter */
-	/* For production, reject all incoming IDs */
+	/* USER CODE END CAN1_Init 0 */
+
+	/* USER CODE BEGIN CAN1_Init 1 */
+
+	// create filter
 	CAN_FilterTypeDef sFilterConfig;
-	sFilterConfig.FilterBank = 0;
-	sFilterConfig.FilterActivation = DISABLE;
-
-	/* For testing: accept all incoming IDs */
 	sFilterConfig.FilterBank = 0;
 	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
 	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
@@ -73,20 +73,19 @@ static bool MX_CAN_Init() {
 	hcan1->Init.TimeTriggeredMode = DISABLE;
 	hcan1->Init.AutoBusOff = DISABLE;
 	hcan1->Init.AutoWakeUp = DISABLE;
-	hcan1->Init.AutoRetransmission = ENABLE; // switched from disable
+	hcan1->Init.AutoRetransmission = DISABLE; // switched from disable
 	hcan1->Init.ReceiveFifoLocked = DISABLE;
-
-	// If TransmitFifoPriority is disabled, the hardware selects the mailbox
-	// based on the message ID priority. If enabled, the hardware uses a FIFO
-	// mechanism to select the mailbox based on the order of transmission
-	// requests.
 	hcan1->Init.TransmitFifoPriority = ENABLE;
+	if (can_init(hcan1, &sFilterConfig) != CAN_OK) {
+		return PEDALS_CAN_INIT_FAIL;
+	}
+	/* USER CODE BEGIN CAN1_Init 2 */
+	if (can_start(hcan1) != CAN_OK) {
+		return PEDALS_CAN_INIT_FAIL;
+	}
 
-	/* Initialize CAN1 */
-	if (can_init(hcan1, &sFilterConfig) != CAN_OK)
-		return false;
-
-	return true;
+	/* USER CODE END CAN1_Init 2 */
+	return PEDALS_OK;
 }
 
 /**
@@ -105,20 +104,35 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan) {
 		PB8     ------> CAN1_RX
 		PB9     ------> CAN1_TX
 		*/
-		GPIO_InitStruct.Pin = PEDALS_CAN_RX.pin | PEDALS_CAN_TX.pin;
+		GPIO_InitStruct.Pin = GPIO_PIN_8 | GPIO_PIN_9;
 		GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
 		GPIO_InitStruct.Alternate = GPIO_AF9_CAN1;
-		HAL_GPIO_Init(PEDALS_CAN_RX.port, &GPIO_InitStruct);
+		HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 		/* CAN1 interrupt Init */
-		HAL_NVIC_SetPriority(CAN1_TX_IRQn,
-							 configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY, 0);
+		HAL_NVIC_SetPriority(CAN1_TX_IRQn, CAN_INTERRUPT_PRIO, 0);
 		HAL_NVIC_EnableIRQ(CAN1_TX_IRQn);
-		HAL_NVIC_SetPriority(CAN1_RX0_IRQn,
-							 configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY, 0);
+		HAL_NVIC_SetPriority(CAN1_RX0_IRQn, CAN_INTERRUPT_PRIO, 0);
 		HAL_NVIC_EnableIRQ(CAN1_RX0_IRQn);
+	}
+}
+
+void HAL_CAN_MspDeInit(CAN_HandleTypeDef *hcan) {
+	if (hcan->Instance == CAN1) {
+		/* Peripheral clock disable */
+		__HAL_RCC_CAN1_CLK_DISABLE();
+
+		/**CAN1 GPIO Configuration
+		PB8     ------> CAN1_RX
+		PB9     ------> CAN1_TX
+		*/
+		HAL_GPIO_DeInit(GPIOB, GPIO_PIN_8 | GPIO_PIN_9);
+
+		/* CAN1 interrupt DeInit */
+		HAL_NVIC_DisableIRQ(CAN1_TX_IRQn);
+		HAL_NVIC_DisableIRQ(CAN1_RX0_IRQn);
 	}
 }
 
@@ -127,110 +141,108 @@ void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan) {
 -------------------------------------------------- */
 
 PedalsStatus pedals_CAN_init() {
-	if (!MX_CAN_Init())
+	if (MX_CAN_Init() != PEDALS_OK)
 		return PEDALS_CAN_INIT_FAIL;
 	else
 		return PEDALS_OK;
 }
 
-PedalsStatus pedals_CAN_start() {
-	if (can_start(hcan1) != CAN_OK)
-		return PEDALS_CAN_START_FAIL;
-	return PEDALS_OK;
+void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header) {
+	tx_header->StdId = POTS_P_MSG_ID;
+	tx_header->RTR = CAN_RTR_DATA;
+	tx_header->IDE = CAN_ID_STD;
+	tx_header->DLC = POTS_P_MSG_DLC;
+	tx_header->TransmitGlobalTime = DISABLE;
 }
 
-static void potsPercent_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
-	tx_data[0] = (uint8_t)msg.accelPot;
-	tx_data[1] = (uint8_t)msg.accelPot_Redundant;
-	tx_data[2] = (uint8_t)msg.brakePot;
-	tx_data[3] = (uint8_t)msg.faults;
-}
+PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
+										 PedalsMsg *msg, uint8_t tx_data[8]) {
+	PackPotsPercentCANHeader(tx_header);
+	 tx_data[0] = (uint8_t)msg->accelPot;
+	 tx_data[1] = (uint8_t)msg->accelPot_Redundant;
+	 tx_data[2] = (uint8_t)msg->brakePot;
+	 tx_data[3] = (uint8_t)msg->faults;
 
-static void potsVoltage_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
-	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
-	// is 1st byte)
-	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
-	tx_data[1] = (uint8_t)((msg.accelPot_Voltage >> 8) & 0xFF);
-
-	tx_data[2] = (uint8_t)(msg.accelPot_Redundant_Voltage & 0xFF);
-	tx_data[3] = (uint8_t)((msg.accelPot_Redundant_Voltage >> 8) & 0xFF);
-
-	tx_data[4] = (uint8_t)(msg.brakePot_Voltage & 0xFF);
-	tx_data[5] = (uint8_t)((msg.brakePot_Voltage >> 8) & 0xFF);
-
-	tx_data[6] = (uint8_t)(msg.brakePot_Redundant_Voltage & 0xFF);
-	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
-}
-
-static void brakeFL_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
-	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
-	// is 1st byte)
-	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
-	tx_data[1] = (uint8_t)((msg.accelPot_Voltage >> 8) & 0xFF);
-
-	tx_data[2] = (uint8_t)(msg.accelPot_Redundant_Voltage & 0xFF);
-	tx_data[3] = (uint8_t)((msg.accelPot_Redundant_Voltage >> 8) & 0xFF);
-
-	tx_data[4] = (uint8_t)(msg.brakePot_Voltage & 0xFF);
-	tx_data[5] = (uint8_t)((msg.brakePot_Voltage >> 8) & 0xFF);
-
-	tx_data[6] = (uint8_t)(msg.brakePot_Redundant_Voltage & 0xFF);
-	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
-}
-
-PedalsStatus pedals_CAN_send_PotsPercent(PedalsMsg msg, TickType_t delayTicks) {
-	// Create CAN payload - test only for pots
-	CAN_TxHeaderTypeDef tx_header = {0};
-	tx_header.StdId = POTS_P_MSG_ID;
-	tx_header.RTR = CAN_RTR_DATA;
-	tx_header.IDE = CAN_ID_STD;
-	tx_header.DLC = POTS_P_MSG_DLC;
-	tx_header.TransmitGlobalTime = DISABLE;
-
-	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
-	potsPercent_FillPayload(tx_data, msg);
-
-	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
+	if (can_send(hcan1, tx_header, tx_data, pdMS_TO_TICKS(100)) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
-
 	return PEDALS_OK;
 }
 
-PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t delayTicks) {
-	// Create CAN payload - test only for pots
-	CAN_TxHeaderTypeDef tx_header = {0};
-	tx_header.StdId = POTS_V_MSG_ID;
-	tx_header.RTR = CAN_RTR_DATA;
-	tx_header.IDE = CAN_ID_STD;
-	tx_header.DLC = POTS_V_MSG_DLC;
-	tx_header.TransmitGlobalTime = DISABLE;
+// static void potsPercent_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+//	tx_data[0] = (uint8_t)msg.accelPot;
+//	tx_data[1] = (uint8_t)msg.accelPot_Redundant;
+//	tx_data[2] = (uint8_t)msg.brakePot;
+//	tx_data[3] = (uint8_t)msg.faults;
+// }
 
-	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
-	potsVoltage_FillPayload(tx_data, msg);
+// static void potsVoltage_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+//	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
+//	// is 1st byte)
+//	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
+//	tx_data[1] = (uint8_t)((msg.accelPot_Voltage >> 8) & 0xFF);
 
-	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
-		return PEDALS_CAN_SEND_FAIL;
+//	tx_data[2] = (uint8_t)(msg.accelPot_Redundant_Voltage & 0xFF);
+//	tx_data[3] = (uint8_t)((msg.accelPot_Redundant_Voltage >> 8) & 0xFF);
 
-	return PEDALS_OK;
-}
+//	tx_data[4] = (uint8_t)(msg.brakePot_Voltage & 0xFF);
+//	tx_data[5] = (uint8_t)((msg.brakePot_Voltage >> 8) & 0xFF);
 
-PedalsStatus pedals_CAN_send_BrakeFL(PedalsMsg msg, TickType_t delayTicks) {
-	// Create CAN payload - test only for pots
-	CAN_TxHeaderTypeDef tx_header = {0};
-	tx_header.StdId = BRAKE_FL_MSG_ID;
-	tx_header.RTR = CAN_RTR_DATA;
-	tx_header.IDE = CAN_ID_STD;
-	tx_header.DLC = BRAKE_FL_MSG_DLC;
-	tx_header.TransmitGlobalTime = DISABLE;
+//	tx_data[6] = (uint8_t)(msg.brakePot_Redundant_Voltage & 0xFF);
+//	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
+//}
 
-	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
-	brakeFL_FillPayload(tx_data, msg);
+// static void brakeFL_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+//	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
+//	// is 1st byte)
+//	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
+//	tx_data[1] = (uint8_t)((msg.accelPot_Voltage >> 8) & 0xFF);
 
-	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
-		return PEDALS_CAN_SEND_FAIL;
+//	tx_data[2] = (uint8_t)(msg.accelPot_Redundant_Voltage & 0xFF);
+//	tx_data[3] = (uint8_t)((msg.accelPot_Redundant_Voltage >> 8) & 0xFF);
 
-	return PEDALS_OK;
-}
+//	tx_data[4] = (uint8_t)(msg.brakePot_Voltage & 0xFF);
+//	tx_data[5] = (uint8_t)((msg.brakePot_Voltage >> 8) & 0xFF);
+
+//	tx_data[6] = (uint8_t)(msg.brakePot_Redundant_Voltage & 0xFF);
+//	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
+//}
+
+// PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t
+// delayTicks) {
+//	// Create CAN payload - test only for pots
+//	CAN_TxHeaderTypeDef tx_header = {0};
+//	tx_header.StdId = POTS_V_MSG_ID;
+//	tx_header.RTR = CAN_RTR_DATA;
+//	tx_header.IDE = CAN_ID_STD;
+//	tx_header.DLC = POTS_V_MSG_DLC;
+//	tx_header.TransmitGlobalTime = DISABLE;
+
+//	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
+//	potsVoltage_FillPayload(tx_data, msg);
+
+//	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
+//		return PEDALS_CAN_SEND_FAIL;
+
+//	return PEDALS_OK;
+//}
+
+// PedalsStatus pedals_CAN_send_BrakeFL(PedalsMsg msg, TickType_t delayTicks) {
+//	// Create CAN payload - test only for pots
+//	CAN_TxHeaderTypeDef tx_header = {0};
+//	tx_header.StdId = BRAKE_FL_MSG_ID;
+//	tx_header.RTR = CAN_RTR_DATA;
+//	tx_header.IDE = CAN_ID_STD;
+//	tx_header.DLC = BRAKE_FL_MSG_DLC;
+//	tx_header.TransmitGlobalTime = DISABLE;
+
+//	uint8_t tx_data[POTS_P_MSG_DLC] = {0};
+//	brakeFL_FillPayload(tx_data, msg);
+
+//	if (can_send(hcan1, &tx_header, tx_data, delayTicks) != CAN_OK)
+//		return PEDALS_CAN_SEND_FAIL;
+
+//	return PEDALS_OK;
+//}
 
 PedalsStatus pedals_CAN_stop() {
 	return can_stop(hcan1) == CAN_OK ? PEDALS_OK : PEDALS_CAN_STOP_FAIL;

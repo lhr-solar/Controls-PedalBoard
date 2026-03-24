@@ -81,7 +81,7 @@ ADC_ChannelConfTypeDef brakePotRed_buff = {.Channel = ADC_CHANNEL_15, // PB0
 
 PedalsStatus readADC(ADCInput adc) {
 	if (pedals_adc_init() != ADC_OK)
-		Error_Handler();
+		ADC_Error_Handler();
 	uint32_t brakePot_buff_val = 0;
 	uint32_t accelPot_buff_val = 0;
 	switch (adc) {
@@ -135,7 +135,7 @@ PedalsStatus readADC(ADCInput adc) {
 
 void readAll_ADCs_task(void *argument) {
 	if (pedals_adc_init() != ADC_OK)
-		Error_Handler();
+		ADC_Error_Handler();
 	while (1) {
 		printf("\033[2J");
 
@@ -359,7 +359,7 @@ void adc_GPIO_init() {
 		PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
 		if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
 			printf("ravi is dum\n\r");
-			Error_Handler();
+			ADC_Error_Handler();
 		}
 
 		/* ADC1 clock enable */
@@ -391,7 +391,7 @@ void adc_GPIO_init() {
 	}
 }
 
-void Error_Handler(void) {
+void ADC_Error_Handler(void) {
 	__disable_irq();
 	printf("Error Handler: ADC initialization failed\n\r");
 	while (1) {
