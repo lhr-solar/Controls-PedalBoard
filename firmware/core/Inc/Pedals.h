@@ -1,5 +1,4 @@
-#ifndef PEDALS_H
-#define PEDALS_H
+#pragma once
 
 #include "ADC.h"
 #include "Debugging.h"
@@ -80,5 +79,3 @@ void initAll_Task(void *argument);
 void SystemClock_Config(void);
 
 void HeartBeat();
-
-#endif
