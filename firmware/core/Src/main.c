@@ -8,7 +8,7 @@ StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
 int main() {
 
-	xTaskCreateStatic(initAll_Task, "Initialization", INIT_TASK_STACK_SIZE,
+	xTaskCreateStatic(Task_InitAll, "Initialization", INIT_TASK_STACK_SIZE,
 					  NULL, INIT_TASK_PRIORITY, INIT_TASK_Stack_Array,
 					  &INIT_TASK_TCB
 
@@ -22,7 +22,7 @@ int main() {
 	return 0;
 }
 
-void initAll_Task(void *argument) {
+void Task_InitAll(void *argument) {
 	HAL_Init();
 	SystemClock_Config();
 	initPrintf();

@@ -13,7 +13,7 @@ int main() {
 	initPrintf();
 	adc_GPIO_init();
 	Status_LEDs_Init();
-
+ 
 	xTaskCreateStatic(readAll_ADCs_task, "Multi ADC testing", ADC_TASK_STACK_SIZE,
 					  NULL, ADC_TASK_PRIORITY, ADC_TASK_Stack_Array,
 					  &ADC_TASK_TCB);

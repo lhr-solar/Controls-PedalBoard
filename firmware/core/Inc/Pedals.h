@@ -7,7 +7,7 @@
 #include "config.h"
 
 /* Task used for initializing all other tasks on Pedals Board */
-#define INIT_TASK_PRIORITY configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY 
+#define INIT_TASK_PRIORITY tskIDLE_PRIORITY + 5
 #define INIT_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
 extern StaticTask_t INIT_TASK_TCB;
 extern StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
@@ -53,11 +53,19 @@ typedef enum Pedals_Status_t {
 /* -------------------------------------------------- */
 
 
-/* --------------------------------------------------
-	Pedals ADC Channels
--------------------------------------------------- */
-
-typedef enum Pedals_ADC_Channel{
+/**
+ * @brief Maps ADC channels to their physical pins and sensor names.
+ *
+ * | Channel        | Pin  | Name                |
+ * |----------------|------|---------------------|
+ * | ADC_CHANNEL_7  | PA2  | Brake Pot           |
+ * | ADC_CHANNEL_5  | PA0  | Accel Pot           |
+ * | ADC_CHANNEL_9  | PA4  | Brake FL Front      |
+ * | ADC_CHANNEL_10 | PA5  | Brake FL Back       |
+ * | ADC_CHANNEL_11 | PA6  | Accel Pot Redundant |
+ * | ADC_CHANNEL_15 | PB0  | Brake Pot Redundant |
+ */
+typedef enum {
     BRAKE_POT_BUFF_CHANNEL      = ADC_CHANNEL_7,  // PA2
     ACCEL_POT_BUFF_CHANNEL      = ADC_CHANNEL_5,  // PA0
     BRAKE_FL_FRONT_BUFF_CHANNEL = ADC_CHANNEL_9,  // PA4
@@ -76,7 +84,7 @@ typedef enum Pedals_ADC_Channel{
  *
  * @attention - this task deletes itself after called
  */
-void initAll_Task(void *argument);
+void Task_InitAll(void *argument);
 
 /**
  * @brief Function used to catch errors in init code

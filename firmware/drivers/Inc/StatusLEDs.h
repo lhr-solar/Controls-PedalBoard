@@ -12,18 +12,13 @@ void Status_LEDs_Init(void);
 
 /**
  * @brief Set state of a specific LED
- *
- * This function allows for the user to set a specific LED
- * to a specific state.
- * 
- * GPIO_PIN_SET (0) - LED ON
- * GPIO_PIN_RESET (1) - LED OFF
  * 
  * @attention - the user can use ON and OFF macros above
  *
  * @param	port		choose a specific LED port
  * @param	pin         choose a specific LED pin
- * @param   state 		ON/OFF as described above
+ * @param   state 		GPIO_PIN_SET (0) = LED ON, 
+ *                      GPIO_PIN_RESET (1) = LED OFF
  * 
  * 
  */
