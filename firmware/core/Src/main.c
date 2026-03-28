@@ -8,7 +8,6 @@ StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
 int main() {
 
-
 	xTaskCreateStatic(initAll_Task, "Initialization", INIT_TASK_STACK_SIZE,
 					  NULL, INIT_TASK_PRIORITY, INIT_TASK_Stack_Array,
 					  &INIT_TASK_TCB
@@ -30,8 +29,8 @@ void initAll_Task(void *argument) {
 	adc_GPIO_init();
 	Status_LEDs_Init();
 
-	//init all teh other tasks
+	// init all teh other tasks
 
 	// CAN init
-	vTaskDelete(NULL); //delete itself when done
+	vTaskDelete(NULL); // delete itself when done
 }

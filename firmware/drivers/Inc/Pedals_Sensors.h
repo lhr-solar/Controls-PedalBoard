@@ -83,13 +83,4 @@ adc_status_t pedals_adc_init();
  */
 Pedals_Status_t adc_receive(ADC_Input_t adc_input, uint32_t *val);
 
-/**
- * @brief Function used to catch errors in init code
- *
- * Flashes all software LEDs on board when called
- * 
- * @attention - requires board to be reset to go back to
- * 				its normal function
- * 
- */
-void Error_Handler(void);
+

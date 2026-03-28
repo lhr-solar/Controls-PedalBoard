@@ -2,8 +2,8 @@
 
 #include "Pedals.h"
 
-#define ON GPIO_PIN_SET
-#define OFF GPIO_PIN_RESET
+#define LED_ON GPIO_PIN_SET
+#define LED_OFF GPIO_PIN_RESET
 
 /**
  * @brief Init GPIO for all firmware LEDs
@@ -45,7 +45,7 @@ void toggle_LED(GPIO_TypeDef *port, uint16_t pin);
  * Inspired by Phoenix from Valorant. Flashes the user by toggling
  * all LEDs at a rate specified by the delay
  *
- * @param	dealy 	rate at which to Flash! user
+ * @param	delay 	rate at which to Flash! user
  * 
  */
 void flashThem(uint16_t delay);

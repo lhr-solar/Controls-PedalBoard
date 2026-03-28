@@ -59,23 +59,31 @@ void readAll_ADCs_task(void *argument) {
 			POTS Queue Receives
 		  -------------------------------------------------- */
 		adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
+		if (ENABLE_DEBUG) printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val, adcPercentPotsLUT[brakePot_buff_val]);
 		adc_receive(ADC_INPUT_ACCEL_POT, &accelPot_buff_val);
+		if (ENABLE_DEBUG) printf("Accel Pot: %lu  |  LUT (%%): %u%%\n\r", accelPot_buff_val, adcPercentPotsLUT[accelPot_buff_val]);
 
 		/* --------------------------------------------------
 			POTS Redundant Queue Receives
 		  -------------------------------------------------- */
 		adc_receive(ADC_INPUT_BRAKE_POT_RED, &brakePotRed_buff_val);
+		if (ENABLE_DEBUG) printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", brakePotRed_buff_val, adcPercentPotsLUT[brakePotRed_buff_val]);
 		adc_receive(ADC_INPUT_ACCEL_POT_RED, &accelPotRed_buff_val);
+		if (ENABLE_DEBUG) printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", accelPotRed_buff_val, adcPercentPotsLUT[accelPotRed_buff_val]);
 
 		/* --------------------------------------------------
-			CALIBRATE A NEW LUT FOR BRAKE_FL1
+			CALIBRATE A NEW LUT FOR BRAKE_FL_Front
 		   -------------------------------------------------- */
 		adc_receive(ADC_INPUT_BRAKE_FL_FRONT, &brakeFL_front_buff_val);
+		//if (ENABLE_DEBUG) printf("Brake FL Front: %lu  |  LUT (%%): %u%%\n\r", brakeFL_front_buff_val, adcPercentPotsLUT[brakeFL_front_buff_val]);
 
 		/* --------------------------------------------------
-			CALIBRATE A NEW LUT FOR BRAKE_FL2
+			CALIBRATE A NEW LUT FOR BRAKE_FL_Back
 		  -------------------------------------------------- */
 		adc_receive(ADC_INPUT_BRAKE_FL_BACK, &brakeFL_back_buff_val);
+		//if (ENABLE_DEBUG) printf("Brake FL Back: %lu  |  LUT (%%): %u%%\n\r", brakeFL_back_buff_val, adcPercentPotsLUT[brakeFL_back_buff_val]);
+
+
 
 		/* --------------------------------------------------
 			Input Status LEDs toggle (processing data into array)

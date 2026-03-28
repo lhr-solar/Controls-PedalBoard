@@ -77,3 +77,14 @@ typedef enum Pedals_ADC_Channel{
  * @attention - this task deletes itself after called
  */
 void initAll_Task(void *argument);
+
+/**
+ * @brief Function used to catch errors in init code
+ *
+ * Flashes all software LEDs on board when called
+ * 
+ * @attention - requires board to be reset to go back to
+ * 				its normal function
+ * 
+ */
+void Error_Handler(void);

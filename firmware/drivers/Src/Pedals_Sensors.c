@@ -56,6 +56,8 @@ adc_status_t adc_start_read(Pedals_ADC_Channel channel) {
 		return ADC_CHANNEL_CONFIG_FAIL;
 	}
 
+	if (targetQueue == NULL) return ADC_INIT_FAIL;
+
 	ADC_ChannelConfTypeDef cfg = {.Channel = channel,
 								  .SamplingTime = PEDALS_ADC_SAMPLING_TIME,
 								  .SingleDiff = ADC_SINGLE_ENDED,
@@ -246,7 +248,6 @@ Pedals_Status_t adc_receive(ADC_Input_t adc_input, uint32_t *val) {
 	if (tempRecvQ == NULL) return fail;
 
 	if (xQueueReceive(tempRecvQ, val, pdMS_TO_TICKS(PEDALS_ADC_SAMPLING_MS)) == pdPASS) {
-		if(ENABLE_DEBUG) printf("%s: %lu  |  %s (%%): %u%%\n\r", name, *val, name, adcPercentPotsLUT[*val]);
 		return success;
 	} else {
 		if(ENABLE_DEBUG) printf("Failed to receive %s ADC value from queue\n\r", name);
