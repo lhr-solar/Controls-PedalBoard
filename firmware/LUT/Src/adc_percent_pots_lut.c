@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include "ADC_init.h"
+#include "Pedals_Sensors.h"
 
 /* --------------------------------------------------
     LUT for Pots

@@ -46,5 +46,6 @@ void flashThem(uint16_t delay) {
   toggle_LED(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN);
   toggle_LED(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN);
   toggle_LED(BRAKE_FL_LED_PORT,  BRAKE_FL_LED_PIN);
-  vTaskDelay(pdMS_TO_TICKS(delay));
+  //vTaskDelay(pdMS_TO_TICKS(delay));
+  HAL_Delay(delay); // use for the GET_FLASHED TEST
 }

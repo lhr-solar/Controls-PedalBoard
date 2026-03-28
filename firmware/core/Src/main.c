@@ -6,8 +6,6 @@
 StaticTask_t INIT_TASK_TCB;
 StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
-uint32_t enable_debug = 0;
-
 int main() {
 
 

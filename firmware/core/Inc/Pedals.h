@@ -12,8 +12,13 @@
 extern StaticTask_t INIT_TASK_TCB;
 extern StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
- /* set to 1 to enable all printfs */
-extern uint32_t enable_debug;
+/*
+*
+* 0 - disable printfs
+* 1 - enable printfs
+*
+*/
+#define ENABLE_DEBUG 0
 
 /* --------------------------------------------------
 	Pedals Status

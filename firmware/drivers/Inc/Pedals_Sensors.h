@@ -13,7 +13,7 @@
 #define PEDALS_ADC_SAMPLING_TIME ADC_SAMPLETIME_2CYCLES_5 // for config
 #define PEDALS_ADC_SAMPLING_MS 10						  // for user implementation
 
-extern uint16_t adcPercentPotsLUT[4096];
+extern const uint16_t adcPercentPotsLUT[4096];
 extern ADC_HandleTypeDef *hadc1;
 
 
