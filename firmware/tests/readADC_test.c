@@ -1,4 +1,5 @@
 #include "FreeRTOS.h"
+#include "readADC_task.h"
 #include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
 #include "queue.h"
@@ -142,6 +143,67 @@ void adc_GPIO_init_test() {
 		HAL_NVIC_EnableIRQ(ADC1_IRQn);
 
 		printf("GPIO-ADC initialized successfully\n\r");
+	}
+}
+
+
+void readAll_ADCs_task(void *argument) {
+	if (pedals_adc_init() != ADC_OK) {
+		if (enable_debug) printf("ADC_Init Failed");
+		return;
+	}
+	while (1) {
+		if (enable_debug) printf("\033[2J");
+
+		if (adc_start_read(BRAKE_POT_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Brake Pot ADC read failed\n\r");
+		if (adc_start_read(ACCEL_POT_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Accel Pot ADC read failed\n\r");
+		if (adc_start_read(BRAKE_FL_FRONT_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Brake FL Front ADC read failed\n\r");
+		if (adc_start_read(BRAKE_FL_BACK_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Brake FL Back ADC read failed\n\r");
+		if (adc_start_read(ACCEL_POT_RED_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Accel Pot Redundant ADC read failed\n\r");
+		if (adc_start_read(BRAKE_POT_RED_BUFF_CHANNEL) != ADC_OK)
+			if (enable_debug) printf("Brake Pot Redundant ADC read failed\n\r");
+
+		uint32_t brakePot_buff_val = 0;
+		uint32_t accelPot_buff_val = 0;
+		uint32_t brakeFL_front_buff_val = 0;
+		uint32_t brakeFL_back_buff_val = 0;
+		uint32_t accelPotRed_buff_val = 0;
+		uint32_t brakePotRed_buff_val = 0;
+
+		/* --------------------------------------------------
+			POTS Queue Receives
+		  -------------------------------------------------- */
+		adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
+		adc_receive(ADC_INPUT_ACCEL_POT, &accelPot_buff_val);
+
+		/* --------------------------------------------------
+			POTS Redundant Queue Receives
+		  -------------------------------------------------- */
+		adc_receive(ADC_INPUT_BRAKE_POT_RED, &brakePotRed_buff_val);
+		adc_receive(ADC_INPUT_ACCEL_POT_RED, &accelPotRed_buff_val);
+
+		/* --------------------------------------------------
+			CALIBRATE A NEW LUT FOR BRAKE_FL1
+		   -------------------------------------------------- */
+		adc_receive(ADC_INPUT_BRAKE_FL_FRONT, &brakeFL_front_buff_val);
+
+		/* --------------------------------------------------
+			CALIBRATE A NEW LUT FOR BRAKE_FL2
+		  -------------------------------------------------- */
+		adc_receive(ADC_INPUT_BRAKE_FL_BACK, &brakeFL_back_buff_val);
+
+		/* --------------------------------------------------
+			Input Status LEDs toggle (processing data into array)
+		  -------------------------------------------------- */
+		set_LED(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN, adcPercentPotsLUT[brakePot_buff_val]      > 50 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+		set_LED(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN, adcPercentPotsLUT[accelPot_buff_val]      > 50 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+		set_LED(BRAKE_FL_LED_PORT,  BRAKE_FL_LED_PIN,  adcPercentPotsLUT[brakeFL_front_buff_val] > 50 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
 	}
 }
 

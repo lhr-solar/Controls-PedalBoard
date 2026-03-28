@@ -1,4 +1,3 @@
-#include "ADC_init.h"
 #include "Pedals.h"
 #include "Pedals_Sensors.h"
 #include "StatusLEDs.h"
@@ -39,17 +38,17 @@ void multiADC_task(void *argument) {
 			printf("\033[2J");
 		}
 
-		if (adc_start_read(&brakePot_buff) != ADC_OK)
+		if (adc_start_read(BRAKE_POT_BUFF_CHANNEL) != ADC_OK)
 			printf("Brake ADC read failed\n\r");
-		if (adc_start_read(&accelPot_buff) != ADC_OK)
+		if (adc_start_read(ACCEL_POT_BUFF_CHANNEL) != ADC_OK)
 			printf("Accel ADC read failed\n\r");
-		if (adc_start_read(&brakeFL_buff) != ADC_OK)
+		if (adc_start_read(BRAKE_FL_FRONT_BUFF_CHANNEL) != ADC_OK)
 			printf("Brake FL ADC read failed\n\r");
-		if (adc_start_read(&brakeFLRed_buff) != ADC_OK)
+		if (adc_start_read(BRAKE_FL_BACK_BUFF_CHANNEL) != ADC_OK)
 			printf("Brake FL Redundant ADC read failed\n\r");
-		if (adc_start_read(&accelPotRed_buff) != ADC_OK)
+		if (adc_start_read(ACCEL_POT_RED_BUFF_CHANNEL) != ADC_OK)
 			printf("Accel Pot Redundant ADC read failed\n\r");
-		if (adc_start_read(&brakePotRed_buff) != ADC_OK)
+		if (adc_start_read(BRAKE_POT_RED_BUFF_CHANNEL) != ADC_OK)
 			printf("Brake Pot Redundant ADC read failed\n\r");
 
 		uint32_t brakePot_buff_val = 0;

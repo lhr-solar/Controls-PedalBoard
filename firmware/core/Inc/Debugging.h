@@ -4,10 +4,15 @@
 #include <stdio.h>
 #include "UART.h"
 #include "printf.h"
+#include "pinDefs.h"
 
-#define USART_PORT GPIOA
-#define USART_TX_PIN GPIO_PIN_9
-#define USART_RX_PIN GPIO_PIN_10
+/**
+ * @brief Initialize PrintF 
+ *
+ * This function initializes the printf() function, mostly used for debugging\
+ * 
+ * @attention IMPORTANT - only call initPrintf() AND use printf() in a RTOS task
+ * 
+ */
 
-extern UART_HandleTypeDef* husart1;
 void initPrintf();

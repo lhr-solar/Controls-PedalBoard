@@ -15,4 +15,3 @@
 
 // can_status_t pedals_CAN_init() {
 //     return CAN_OK;
-// }

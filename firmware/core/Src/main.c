@@ -6,7 +6,10 @@
 StaticTask_t INIT_TASK_TCB;
 StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
+uint32_t enable_debug = 0;
+
 int main() {
+
 
 	xTaskCreateStatic(initAll_Task, "Initialization", INIT_TASK_STACK_SIZE,
 					  NULL, INIT_TASK_PRIORITY, INIT_TASK_Stack_Array,
@@ -17,7 +20,6 @@ int main() {
 	vTaskStartScheduler();
 
 	while (1) {
-		printf("YOU are dumb asf\n\r");
 	}
 
 	return 0;
@@ -35,5 +37,3 @@ void initAll_Task(void *argument) {
 	// CAN init
 	vTaskDelete(NULL); //delete itself when done
 }
-
-extern void ADC_Task(void *argument);
