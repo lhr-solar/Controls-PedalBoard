@@ -36,7 +36,7 @@ def compute_percent(i, min_low, min_high, max_low, max_high):
 
 with open("Src/adc_percent_pots_lut.c", "w") as f:
 
-    f.write("#include <stdint.h>\n#include \"ADC_init.h\"\n\n")
+    f.write("#include <stdint.h>\n\n")
     f.write("/* --------------------------------------------------\n")
     f.write("    LUTs for Brake and Accel Pots\n")
     f.write("   -------------------------------------------------- */\n\n")

@@ -6,5 +6,13 @@
 #include "printf.h"
 #include "pinDefs.h"
 
-extern UART_HandleTypeDef* husart1;
+/**
+ * @brief Initialize PrintF 
+ *
+ * This function initializes the printf() function, mostly used for debugging\
+ * 
+ * @attention IMPORTANT - only call initPrintf() AND use printf() in a RTOS task
+ * 
+ */
+
 void initPrintf();

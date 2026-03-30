@@ -6,9 +6,11 @@
 StaticTask_t INIT_TASK_TCB;
 StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
+
+
 int main() {
 
-	xTaskCreateStatic(initAll_Task, "Initialization", INIT_TASK_STACK_SIZE,
+	xTaskCreateStatic(Task_InitAll, "Initialization", INIT_TASK_STACK_SIZE,
 					  NULL, INIT_TASK_PRIORITY, INIT_TASK_Stack_Array,
 					  &INIT_TASK_TCB
 
@@ -17,23 +19,20 @@ int main() {
 	vTaskStartScheduler();
 
 	while (1) {
-		printf("YOU are dumb asf\n\r");
 	}
 
 	return 0;
 }
 
-void initAll_Task(void *argument) {
+void Task_InitAll(void *argument) {
 	HAL_Init();
 	SystemClock_Config();
 	initPrintf();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
 
-	//init all teh other tasks
+	// init all teh other tasks
 
 	// CAN init
-	vTaskDelete(NULL); //delete itself when done
+	vTaskDelete(NULL); // delete itself when done
 }
-
-extern void ADC_Task(void *argument);

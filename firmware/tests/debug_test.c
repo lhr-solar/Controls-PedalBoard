@@ -10,12 +10,12 @@ StackType_t TEST_TASK_Stack_Array[TEST_TASK_STACK_SIZE];
 
 void DebugTask(void *argument) {
 	while (1) {
-		set_LED(BRAKE_POT_LED, GPIO_PIN_SET);
-		vTaskDelay(pdMS_TO_TICKS(500));
-		set_LED(BRAKE_POT_LED, GPIO_PIN_RESET);
-		vTaskDelay(pdMS_TO_TICKS(500));
+		printf("\033[2J");
+		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
+		vTaskDelay(pdMS_TO_TICKS(100));
 
-		printf("Mika Sucks Balls\n");
+		printf("Mika Sucks Balls\n\r");
+		vTaskDelay(pdMS_TO_TICKS(10));
 	}
 }
 
@@ -24,7 +24,7 @@ int main(void) {
 	SystemClock_Config();
 	initPrintf();
 	Status_LEDs_Init();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 	if (pedals_adc_init() != ADC_OK)
 		Error_Handler();
 

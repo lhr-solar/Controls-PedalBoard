@@ -4,7 +4,7 @@ QueueHandle_t can_tx_queue;
 uint8_t can_tx_qStorage[CAN_TX_QUEUE_LENGTH * CAN_TX_ITEM_SIZE];
 StaticQueue_t xStaticQueue_can_tx;
 
-PedalsMsg pedals_msg = {
+Pedals_Msg_t pedals_msg = {
 	/* -------------- Data -------------- */
 	.brakePot = 0,
 	.brakePot_Voltage = 0,
@@ -37,14 +37,14 @@ PedalsMsg pedals_msg = {
 	--------------  --------------  --------------
 */
 
-PedalsStatus MX_CAN_Init(void) {
+Pedals_Status_t MX_CAN_Init(void) {
 	// taken from cubemx
 	/* USER CODE BEGIN CAN1_Init 0 */
 	/* Initialize queue */
 	can_tx_queue = xQueueCreateStatic(CAN_TX_QUEUE_LENGTH, CAN_TX_ITEM_SIZE,
 									  can_tx_qStorage, &xStaticQueue_can_tx);
 	if (can_tx_queue == NULL)
-		return CAN_INIT_FAIL;
+		return PEDALS_CAN_INIT_FAIL;
 
 	/* USER CODE END CAN1_Init 0 */
 
@@ -140,7 +140,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef *hcan) {
 	Pedals CAN functions
 -------------------------------------------------- */
 
-PedalsStatus pedals_CAN_init() {
+Pedals_Status_t pedals_CAN_init() {
 	if (MX_CAN_Init() != PEDALS_OK)
 		return PEDALS_CAN_INIT_FAIL;
 	else
@@ -155,8 +155,8 @@ void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header) {
 	tx_header->TransmitGlobalTime = DISABLE;
 }
 
-PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
-										 PedalsMsg *msg, uint8_t tx_data[8]) {
+Pedals_Status_t pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
+										 Pedals_Msg_t *msg, uint8_t tx_data[8]) {
 	PackPotsPercentCANHeader(tx_header);
 	 tx_data[0] = (uint8_t)msg->accelPot;
 	 tx_data[1] = (uint8_t)msg->accelPot_Redundant;
@@ -168,14 +168,14 @@ PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
 	return PEDALS_OK;
 }
 
-// static void potsPercent_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+// static void potsPercent_FillPayload(uint8_t *tx_data, Pedals_Msg_t msg) {
 //	tx_data[0] = (uint8_t)msg.accelPot;
 //	tx_data[1] = (uint8_t)msg.accelPot_Redundant;
 //	tx_data[2] = (uint8_t)msg.brakePot;
 //	tx_data[3] = (uint8_t)msg.faults;
 // }
 
-// static void potsVoltage_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+// static void potsVoltage_FillPayload(uint8_t *tx_data, Pedals_Msg_t msg) {
 //	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
 //	// is 1st byte)
 //	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
@@ -191,7 +191,7 @@ PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
 //	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
 //}
 
-// static void brakeFL_FillPayload(uint8_t *tx_data, PedalsMsg msg) {
+// static void brakeFL_FillPayload(uint8_t *tx_data, Pedals_Msg_t msg) {
 //	// split 16 bit fixed point mV values to two 8 bit vals (little endian - LSB
 //	// is 1st byte)
 //	tx_data[0] = (uint8_t)(msg.accelPot_Voltage & 0xFF);
@@ -207,7 +207,7 @@ PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
 //	tx_data[7] = (uint8_t)((msg.brakePot_Redundant_Voltage >> 8) & 0xFF);
 //}
 
-// PedalsStatus pedals_CAN_send_PotsVoltage(PedalsMsg msg, TickType_t
+// PedalsStatus pedals_CAN_send_PotsVoltage(Pedals_Msg_t msg, TickType_t
 // delayTicks) {
 //	// Create CAN payload - test only for pots
 //	CAN_TxHeaderTypeDef tx_header = {0};
@@ -226,7 +226,7 @@ PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
 //	return PEDALS_OK;
 //}
 
-// PedalsStatus pedals_CAN_send_BrakeFL(PedalsMsg msg, TickType_t delayTicks) {
+// PedalsStatus pedals_CAN_send_BrakeFL(Pedals_Msg_t msg, TickType_t delayTicks) {
 //	// Create CAN payload - test only for pots
 //	CAN_TxHeaderTypeDef tx_header = {0};
 //	tx_header.StdId = BRAKE_FL_MSG_ID;
@@ -244,6 +244,6 @@ PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef *tx_header,
 //	return PEDALS_OK;
 //}
 
-PedalsStatus pedals_CAN_stop() {
+Pedals_Status_t pedals_CAN_stop() {
 	return can_stop(hcan1) == CAN_OK ? PEDALS_OK : PEDALS_CAN_STOP_FAIL;
 }

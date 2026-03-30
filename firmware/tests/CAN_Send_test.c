@@ -11,7 +11,7 @@ StackType_t CAN_TASK_Stack_Array[CAN_TASK_STACK_SIZE];
 void pedals_CAN_Send_test(void *argument);
 void CAN_Error_Handler();
 
-PedalsMsg test_data = {
+Pedals_Msg_t test_data = {
 	/* -------------- Data -------------- */
 	.brakePot = 100,
 	.brakePot_Voltage = 90,
@@ -51,7 +51,7 @@ int main() {
 void pedals_CAN_Send_test(void *argument) {
 	initPrintf();
 	Status_LEDs_Init();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 
 	printf("init done\n\r");
 
@@ -70,10 +70,9 @@ void pedals_CAN_Send_test(void *argument) {
 			CAN_Error_Handler();
 		}
 
-		printf("shuopu\n\r");
-
 		test_data.brakePot += 100;
-		HeartBeat();
+		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
+		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 }
 

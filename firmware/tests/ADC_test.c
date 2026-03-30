@@ -42,7 +42,7 @@ void ADC_Task(void *argument) {
 	HAL_Init();
 	SystemClock_Config();
 	initPrintf();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
 	
 	if (pedals_adc_init_test() != ADC_OK)

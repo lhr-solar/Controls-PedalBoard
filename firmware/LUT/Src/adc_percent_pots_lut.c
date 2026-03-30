@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include "ADC_init.h"
 
 /* --------------------------------------------------
     LUTs for Brake and Accel Pots

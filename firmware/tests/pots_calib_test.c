@@ -13,7 +13,7 @@ void calibration_test(void *argument);
 int main() {
 	HAL_Init();
 	SystemClock_Config();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
 
 	xTaskCreateStatic(calibration_test, "Calibrating Pots", ADC_TASK_STACK_SIZE,

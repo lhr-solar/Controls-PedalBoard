@@ -3,79 +3,96 @@
 #include "ADC.h"
 #include "Debugging.h"
 #include "stm32xx_hal.h"
+#include "pinDefs.h"
+#include "config.h"
 
-#define INIT_TASK_PRIORITY (5)
+/* Task used for initializing all other tasks on Pedals Board */
+#define INIT_TASK_PRIORITY tskIDLE_PRIORITY + 5
 #define INIT_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
 extern StaticTask_t INIT_TASK_TCB;
 extern StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
 
-typedef struct {
-	GPIO_TypeDef *port;
-	uint16_t pin;
-} GPIO_Pin;
-
-
-/* --------------------------------------------------
-	GPIO/ADC PinDefs
--------------------------------------------------- */
-
-
-/* -------- ADC --------*/
-
-extern const GPIO_Pin BRAKE_POT;
-extern const GPIO_Pin ACCEL_POT;
-extern const GPIO_Pin BRAKE_FL_FRONT;
-extern const GPIO_Pin BRAKE_FL_BACK;
-extern const GPIO_Pin ACCEL_POT_RED;
-extern const GPIO_Pin BRAKE_POT_RED;
-
-
-/* -------- Status LEDS --------*/
-
-//Port B - out
-extern const GPIO_Pin BRAKE_POT_LED;
-extern const GPIO_Pin ACCEL_POT_LED;
-extern const GPIO_Pin BRAKE_FL_LED;
-
-//port A - out
-extern const GPIO_Pin PSOM_HB;
-
-/* -------- CAN -------- */
-extern const GPIO_Pin PEDALS_CAN_RX;
-extern const GPIO_Pin PEDALS_CAN_TX;
-
-
-
+/*
+*
+* 0 - disable printfs
+* 1 - enable printfs
+*
+*/
+#define ENABLE_DEBUG 0
 
 /* --------------------------------------------------
 	Pedals Status
 -------------------------------------------------- */
 
-typedef enum PedalsStatus {
+typedef enum Pedals_Status_t {
 	// Faults
-	BRAKE_POT_OK = 1,
-	BRAKE_POT_FAIL = 0,
-	ACCEL_POT_OK = 1,
-	ACCEL_POT_FAIL = 0,
-	FL_BRAKE_POT_OK = 1,
-	FL_BRAKE_POT_FAIL = 0,
+	BRAKE_POT_OK,
+	BRAKE_POT_FAIL,
+	BRAKE_POT_RED_OK,
+	BRAKE_POT_RED_FAIL,
+	ACCEL_POT_OK,
+	ACCEL_POT_FAIL,
+	ACCEL_POT_RED_OK,
+	ACCEL_POT_RED_FAIL,
+	FL_BRAKE_POT_FRONT_OK,
+	FL_BRAKE_POT_FRONT_FAIL,
+	FL_BRAKE_POT_BACK_OK,
+	FL_BRAKE_POT_BACK_FAIL,
 
-	ADC_READ_FAIL,
-	ADC_READ_JOLLY,
 
 	// General Status
+	PEDALS_ADC_INIT_FAIL,
 	PEDALS_CAN_START_FAIL,
 	PEDALS_CAN_INIT_FAIL,
 	PEDALS_CAN_SEND_FAIL,
 	PEDALS_CAN_STOP_FAIL,
 	PEDALS_OK
 
-} PedalsStatus;
+} Pedals_Status_t;
 
 /* -------------------------------------------------- */
 
-void initAll_Task(void *argument);
 
-void SystemClock_Config(void);
+/**
+ * @brief Maps ADC channels to their physical pins and sensor names.
+ *
+ * | Channel        | Pin  | Name                |
+ * |----------------|------|---------------------|
+ * | ADC_CHANNEL_7  | PA2  | Brake Pot           |
+ * | ADC_CHANNEL_5  | PA0  | Accel Pot           |
+ * | ADC_CHANNEL_9  | PA4  | Brake FL Front      |
+ * | ADC_CHANNEL_10 | PA5  | Brake FL Back       |
+ * | ADC_CHANNEL_11 | PA6  | Accel Pot Redundant |
+ * | ADC_CHANNEL_15 | PB0  | Brake Pot Redundant |
+ */
+typedef enum {
+    BRAKE_POT_BUFF_CHANNEL      = ADC_CHANNEL_7,  // PA2
+    ACCEL_POT_BUFF_CHANNEL      = ADC_CHANNEL_5,  // PA0
+    BRAKE_FL_FRONT_BUFF_CHANNEL = ADC_CHANNEL_9,  // PA4
+    BRAKE_FL_BACK_BUFF_CHANNEL  = ADC_CHANNEL_10, // PA5
+    ACCEL_POT_RED_BUFF_CHANNEL  = ADC_CHANNEL_11, // PA6
+    BRAKE_POT_RED_BUFF_CHANNEL  = ADC_CHANNEL_15, // PB0
+} Pedals_ADC_Channel;
 
-void HeartBeat();
+/* -------------------------------------------------- */
+
+/**
+ * @brief Initializes peripherals and all other critial tasks.
+ *
+ * This function initializes all the the GPIO, ADC, and UART (printfs) peripherals
+ * and other cirital RTOS tasks that run on the main thread
+ *
+ * @attention - this task deletes itself after called
+ */
+void Task_InitAll(void *argument);
+
+/**
+ * @brief Function used to catch errors in init code
+ *
+ * Flashes all software LEDs on board when called
+ * 
+ * @attention - requires board to be reset to go back to
+ * 				its normal function
+ * 
+ */
+void Error_Handler(void);

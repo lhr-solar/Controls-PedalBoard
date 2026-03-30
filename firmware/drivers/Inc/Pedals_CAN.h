@@ -2,6 +2,7 @@
 #include "CarCAN_can_msgs.h"
 #include "Pedals.h"
 
+
 #define POTS_P_MSG_ID CAN_ID_ACCEL_BRAKE_POSITION // Percent value 1 byte data
 #define POTS_V_MSG_ID                                                          \
 	CAN_ID_ACCEL_BRAKE_POSITION_VOLTAGE // Fixed point Voltage (mV) 2 byte data
@@ -25,14 +26,6 @@ extern QueueHandle_t can_tx_queue;
 
 extern CAN_HandleTypeDef *hcan1;
 
-// returned by MX_CAN_Init()
-typedef enum CarCAN_Status {
-    CAN_INIT_FAIL,
-    CAN_INIT_OK,
-    CAN_SEND_FAIL,
-    CAN_SEND_OK,
-} CarCAN_Status_t;
-
 /* --------------------------------------------------
 	Pedals CAN Packet
 	Brake = 48b
@@ -41,7 +34,7 @@ typedef enum CarCAN_Status {
 	Faults = 6 bits
 -------------------------------------------------- */
 
-typedef struct PedalsMsg {
+typedef struct Pedals_Msg_t {
 	/* -------------- Data -------------- */
 	int8_t brakePot;
 	int16_t brakePot_Voltage;
@@ -72,18 +65,65 @@ typedef struct PedalsMsg {
 	   -------------- ------ -------------- */
 	int8_t faults;
 
-} PedalsMsg;
+} Pedals_Msg_t;
 
-extern PedalsMsg pedals_msg;
+extern Pedals_Msg_t pedals_msg;
 
 /* --------------------------------------------------
 	Pedals CAN functions
 -------------------------------------------------- */
 
+/**
+ * @brief Init HAL CAN properties
+ *
+ * Configs ADC channel queue and puts the ADC value read onto the queue
+ *
+ * @param hcan       pointer to hcan handle from Embedded Sharepoint
+ * 
+ *
+ */
 void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan);
 
-PedalsStatus pedals_CAN_init();
-PedalsStatus pedals_CAN_start();
-PedalsStatus pedals_CAN_stop();
+/**
+ * @brief Calls Cube_MX CAN init functions
+ *
+ * Purpose is to create a wrapper function for CAN init
+ * error handling
+ *
+ * @return Pedals_Status_t  return PEDALS_OK if all is jolly, else get to debugging boi
+ * 
+ */
+Pedals_Status_t pedals_CAN_init();
+
+/**
+ * @brief Wrapper function for can_stop(), custom error handling.
+ *
+ * @return Pedals_Status_t  return PEDALS_OK if all is jolly, else get to debugging boi
+ * 
+ */
+Pedals_Status_t pedals_CAN_stop();
+
+/**
+ * @brief Initialize CAN Payload Header
+ *
+ * Configs ADC channel queue and puts the ADC value read onto the queue
+ *
+ * @param tx_header      pointer to payload's header for initialization
+ * 
+ *
+ */
 void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header);
-PedalsStatus pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef* tx_header, PedalsMsg* msg, uint8_t tx_data[8]);
+
+/**
+ * @brief Packs Payload with Data from Pedals_Msg_t
+ *
+ *
+ * @param tx_header      pointer to payload's header for accessing byte values on payload
+ * @param msg            pointer to Pedals_Msg_t with all data to be transmitted
+ * @param tx_data 		 array on call stack that acts as temporary payload, popped after CAN transmission
+ *
+ * @return Pedals_Status_t  return PEDALS_OK if all is jolly, else get to debugging boi
+ * 
+ *
+ */
+Pedals_Status_t pedals_CAN_send_PotsPercent(CAN_TxHeaderTypeDef* tx_header, Pedals_Msg_t* msg, uint8_t tx_data[8]);

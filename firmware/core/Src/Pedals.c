@@ -45,6 +45,6 @@ void SystemClock_Config(void) {
 }
 
 void HeartBeat() {
-	toggle_LED(PSOM_HB);
+	toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
 	vTaskDelay(pdMS_TO_TICKS(500));
 }
