@@ -1,0 +1,16 @@
+#include "Pedals_Sensors.h"
+#include "StatusLEDs.h"
+
+int main(){
+    HAL_Init();
+    Status_LEDs_Init();
+
+    while(1){
+        set_LED(BRAKE_POT_LED, GPIO_PIN_SET);
+        HAL_Delay(500);
+        set_LED(BRAKE_POT_LED, GPIO_PIN_RESET);
+        HAL_Delay(500);
+    }
+
+    return 0;
+}
