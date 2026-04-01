@@ -89,5 +89,9 @@ with open("Src/adc_percent_pots_lut.c", "w") as f:
 
     f.write("\n};\n")
 
+<<<<<<< HEAD
 
 print("Lookup tables written to adc_percent_pots_lut.c")
+=======
+print("Lookup table written to adc_percent_pots_lut.c")
+>>>>>>> main
