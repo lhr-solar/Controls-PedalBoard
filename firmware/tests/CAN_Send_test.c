@@ -63,7 +63,6 @@ void pedals_CAN_Send_test(void *argument) {
 	
   	CAN_TxHeaderTypeDef tx_header = {0};   
 	uint8_t tx_data[8];
-  	PackPotsPercentCANHeader(&tx_header);
 
 	while (1) {
 		if(pedals_CAN_send_PotsPercent(&tx_header, &test_data, tx_data) != PEDALS_OK) {

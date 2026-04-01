@@ -10,8 +10,8 @@
 #define ADC_ITEM_SIZE sizeof(uint32_t)
 
 /* ADC Sampling Macros for config and user implementations */
-#define PEDALS_ADC_SAMPLING_TIME ADC_SAMPLETIME_2CYCLES_5 // for config
-#define PEDALS_ADC_SAMPLING_MS 10						  // for user implementation
+#define PEDALS_READ_ADC_SAMPLING_TIME ADC_SAMPLETIME_2CYCLES_5 // for config
+#define PEDALS_RECEIVE_ADC_SAMPLING_MS 10						  // for user implementation
 
 extern const uint16_t adcPercentBrakeLUT[4096];
 extern const uint16_t adcPercentAccelLUT[4096];
@@ -27,9 +27,9 @@ typedef enum {
 	ADC_INPUT_ACCEL_POT = 0,	  // ACCEL_POT_READ
 	ADC_INPUT_BRAKE_POT = 1,	  // BRAKE_POT_READ
 	ADC_INPUT_BRAKE_FL_FRONT = 2, // BRAKE_FL_READ
-	ADC_INPUT_BRAKE_FL_BACK = 3,  // BRAKE_FL_RED_READ
-	ADC_INPUT_ACCEL_POT_RED = 4,  // ACCEL_POT_RED_READ
-	ADC_INPUT_BRAKE_POT_RED = 5,  // BRAKE_POT_RED_READ
+	ADC_INPUT_BRAKE_FL_BACK = 3,  // BRAKE_FL_REDUNDANT_READ
+	ADC_INPUT_ACCEL_POT_REDUNDANT = 4,  // ACCEL_POT_REDUNDANT_READ
+	ADC_INPUT_BRAKE_POT_REDUNDANT = 5,  // BRAKE_POT_REDUNDANT_READ
 
 	ADC_INPUT_COUNT
 } Sensors_ADC_Input_t;

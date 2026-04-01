@@ -9,8 +9,8 @@
 /* Task used for initializing all other tasks on Pedals Board */
 #define INIT_TASK_PRIORITY tskIDLE_PRIORITY + 5
 #define INIT_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
-extern StaticTask_t INIT_TASK_TCB;
-extern StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
+extern StaticTask_t Init_Task_TCB;
+extern StackType_t Init_Task_Stack_Array[INIT_TASK_STACK_SIZE];
 
 /*
 *
@@ -28,12 +28,12 @@ typedef enum Pedals_Status_t {
 	// Faults
 	BRAKE_POT_OK,
 	BRAKE_POT_FAIL,
-	BRAKE_POT_RED_OK,
-	BRAKE_POT_RED_FAIL,
+	BRAKE_POT_REDUNDANT_OK,
+	BRAKE_POT_REDUNDANT_FAIL,
 	ACCEL_POT_OK,
 	ACCEL_POT_FAIL,
-	ACCEL_POT_RED_OK,
-	ACCEL_POT_RED_FAIL,
+	ACCEL_POT_REDUNDANT_OK,
+	ACCEL_POT_REDUNDANT_FAIL,
 	FL_BRAKE_POT_FRONT_OK,
 	FL_BRAKE_POT_FRONT_FAIL,
 	FL_BRAKE_POT_BACK_OK,
@@ -70,8 +70,8 @@ typedef enum {
     ACCEL_POT_BUFF_CHANNEL      = ADC_CHANNEL_5,  // PA0
     BRAKE_FL_FRONT_BUFF_CHANNEL = ADC_CHANNEL_9,  // PA4
     BRAKE_FL_BACK_BUFF_CHANNEL  = ADC_CHANNEL_10, // PA5
-    ACCEL_POT_RED_BUFF_CHANNEL  = ADC_CHANNEL_11, // PA6
-    BRAKE_POT_RED_BUFF_CHANNEL  = ADC_CHANNEL_15, // PB0
+    ACCEL_POT_REDUNDANT_BUFF_CHANNEL  = ADC_CHANNEL_11, // PA6
+    BRAKE_POT_REDUNDANT_BUFF_CHANNEL  = ADC_CHANNEL_15, // PB0
 } Pedals_ADC_Channel;
 
 /* -------------------------------------------------- */

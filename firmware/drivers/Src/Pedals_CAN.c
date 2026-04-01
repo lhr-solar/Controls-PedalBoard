@@ -4,26 +4,7 @@ QueueHandle_t can_tx_queue;
 uint8_t can_tx_qStorage[CAN_TX_QUEUE_LENGTH * CAN_TX_ITEM_SIZE];
 StaticQueue_t xStaticQueue_can_tx;
 
-Pedals_Msg_t pedals_msg = {
-	/* -------------- Data -------------- */
-	.brakePot = 0,
-	.brakePot_Voltage = 0,
-	.brakePot_Redundant = 0,
-	.brakePot_Redundant_Voltage = 0,
-
-	.accelPot = 0,
-	.accelPot_Voltage = 0,
-	.accelPot_Redundant = 0,
-	.accelPot_Redundant_Voltage = 0,
-
-	.brakeFL_front = 0,
-	.brakeFL_front_Voltage = 0,
-	.brakeFL_back = 0,
-	.brakeFL_back_Voltage = 0,
-
-	/* -------------- Faults -------------- */
-	.faults = 63 // all faults set to 1
-};
+int8_t Pedals_Faults_t = 0b00000000;
 
 /*
 	-------------- CAN status types --------------
@@ -147,7 +128,7 @@ Pedals_Status_t pedals_CAN_init() {
 		return PEDALS_OK;
 }
 
-void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header) {
+static void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header) {
 	tx_header->StdId = POTS_P_MSG_ID;
 	tx_header->RTR = CAN_RTR_DATA;
 	tx_header->IDE = CAN_ID_STD;

@@ -34,40 +34,25 @@ extern CAN_HandleTypeDef *hcan1;
 	Faults = 6 bits
 -------------------------------------------------- */
 
-typedef struct Pedals_Msg_t {
-	/* -------------- Data -------------- */
-	int8_t brakePot;
-	int16_t brakePot_Voltage;
-	int8_t brakePot_Redundant;
-	int16_t brakePot_Redundant_Voltage;
 
-	int8_t accelPot;
-	int16_t accelPot_Voltage;
-	int8_t accelPot_Redundant;
-	int16_t accelPot_Redundant_Voltage;
+/* -------------- Faults --------------
 
-	int8_t brakeFL_front;
-	int16_t brakeFL_front_Voltage;
-	int8_t brakeFL_back;
-	int16_t brakeFL_back_Voltage;
+	Bit map
+		0 - Accel_pot
+		1 - Accel_pot_redundant
+		2 - Brake_pot
+		3 - brake_pot_redundant
+		4 - Brake_FL
+		5 - Brake_FL_redundant
+		6 - TBD
+		7 - TBD
 
-	/* -------------- Faults --------------
-		Bit map
-			0 - Accel_pot
-			1 - Accel_pot_redundant
-			2 - Brake_pot
-			3 - brake_pot_redundant
-			4 - Brake_FL
-			5 - Brake_FL_redundant
-			6 - TBD
-			7 - TBD
+------------------------------------ */
+extern int8_t Pedals_Pots_Faults_t;
+extern accel_brake_position_t Pedals_Accel_Brake_Percent_Msg;
+extern accel_brake_position_voltage_t Pedals_Accel_brake_Voltage_Msg;
+extern brake_pressure_t Pedals_Brake_FL_Msg; 
 
-	   -------------- ------ -------------- */
-	int8_t faults;
-
-} Pedals_Msg_t;
-
-extern Pedals_Msg_t pedals_msg;
 
 /* --------------------------------------------------
 	Pedals CAN functions
@@ -103,16 +88,6 @@ Pedals_Status_t pedals_CAN_init();
  */
 Pedals_Status_t pedals_CAN_stop();
 
-/**
- * @brief Initialize CAN Payload Header
- *
- * Configs ADC channel queue and puts the ADC value read onto the queue
- *
- * @param tx_header      pointer to payload's header for initialization
- * 
- *
- */
-void PackPotsPercentCANHeader(CAN_TxHeaderTypeDef *tx_header);
 
 /**
  * @brief Packs Payload with Data from Pedals_Msg_t

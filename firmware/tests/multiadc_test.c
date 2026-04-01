@@ -4,8 +4,8 @@
 
 #define ADC_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 #define ADC_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
-StaticTask_t ADC_TASK_TCB;
-StackType_t ADC_TASK_Stack_Array[ADC_TASK_STACK_SIZE];
+StaticTask_t ADC_Task_TCB;
+StackType_t ADC_Task_Stack_Array[ADC_TASK_STACK_SIZE];
 
 int main() {
 	HAL_Init();
@@ -14,9 +14,13 @@ int main() {
 	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
  
-	xTaskCreateStatic(readAll_ADCs_task, "Multi ADC testing", ADC_TASK_STACK_SIZE,
-					  NULL, ADC_TASK_PRIORITY, ADC_TASK_Stack_Array,
-					  &ADC_TASK_TCB);
+	xTaskCreateStatic(readAll_ADCs_task, 
+					  "Multi ADC testing", 
+					  ADC_TASK_STACK_SIZE,
+					  NULL, ADC_TASK_PRIORITY, 
+					  ADC_Task_Stack_Array,
+					  &ADC_Task_TCB
+	);
 
 	vTaskStartScheduler();
 

@@ -46,10 +46,10 @@ adc_status_t sensors_adc_start_read(Pedals_ADC_Channel channel) {
 	case BRAKE_FL_BACK_BUFF_CHANNEL:
 		targetQueue = adc1_brakeFL_back_RecvQ;
 		break;
-	case ACCEL_POT_RED_BUFF_CHANNEL:
+	case ACCEL_POT_REDUNDANT_BUFF_CHANNEL:
 		targetQueue = adc1_accelPotRed_RecvQ;
 		break;
-	case BRAKE_POT_RED_BUFF_CHANNEL:
+	case BRAKE_POT_REDUNDANT_BUFF_CHANNEL:
 		targetQueue = adc1_brakePotRed_RecvQ;
 		break;
 	default:
@@ -59,7 +59,7 @@ adc_status_t sensors_adc_start_read(Pedals_ADC_Channel channel) {
 	if (targetQueue == NULL) return ADC_INIT_FAIL;
 
 	ADC_ChannelConfTypeDef cfg = {.Channel = channel,
-								  .SamplingTime = PEDALS_ADC_SAMPLING_TIME,
+								  .SamplingTime = PEDALS_READ_ADC_SAMPLING_TIME,
 								  .SingleDiff = ADC_SINGLE_ENDED,
 								  .OffsetNumber = ADC_OFFSET_NONE,
 								  .Offset = 0};
@@ -183,15 +183,15 @@ void sensors_adc_GPIO_init() {
 		*/
 		GPIO_InitStruct.Pin = BRAKE_POT_PIN | ACCEL_POT_PIN |
 							  BRAKE_FL_FRONT_PIN | BRAKE_FL_BACK_PIN |
-							  ACCEL_POT_RED_PIN;
+							  ACCEL_POT_REDUNDANT_PIN;
 		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
 		HAL_GPIO_Init(BRAKE_POT_PORT, &GPIO_InitStruct);
 
-		GPIO_InitStruct.Pin = BRAKE_POT_RED_PIN;
+		GPIO_InitStruct.Pin = BRAKE_POT_REDUNDANT_PIN;
 		GPIO_InitStruct.Mode = GPIO_MODE_ANALOG_ADC_CONTROL;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
-		HAL_GPIO_Init(BRAKE_POT_RED_PORT, &GPIO_InitStruct);
+		HAL_GPIO_Init(BRAKE_POT_REDUNDANT_PORT, &GPIO_InitStruct);
 
 		/* ADC1 interrupt Init */
 		HAL_NVIC_SetPriority(ADC1_IRQn, PEDALS_ADC1_PRIO, 0);
@@ -222,15 +222,15 @@ static QueueHandle_t sensors_adc_get_queue(Sensors_ADC_Input_t adc_input, const 
 		*success = FL_BRAKE_POT_BACK_OK;
 		*fail = FL_BRAKE_POT_BACK_FAIL;
 		return adc1_brakeFL_back_RecvQ;
-	case ADC_INPUT_ACCEL_POT_RED:
+	case ADC_INPUT_ACCEL_POT_REDUNDANT:
 		*name = "Accel Pot Redundant";
-		*success = ACCEL_POT_RED_OK;
-		*fail = ACCEL_POT_RED_FAIL;
+		*success = ACCEL_POT_REDUNDANT_OK;
+		*fail = ACCEL_POT_REDUNDANT_FAIL;
 		return adc1_accelPotRed_RecvQ;
-	case ADC_INPUT_BRAKE_POT_RED:
+	case ADC_INPUT_BRAKE_POT_REDUNDANT:
 		*name = "Brake Pot Redundant";
-		*success = BRAKE_POT_RED_OK;
-		*fail = BRAKE_POT_RED_FAIL;
+		*success = BRAKE_POT_REDUNDANT_OK;
+		*fail = BRAKE_POT_REDUNDANT_FAIL;
 		return adc1_brakePotRed_RecvQ;
 	default:
 		*name = "Unknown";
@@ -247,7 +247,7 @@ Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input, uint32_t *val
 		sensors_adc_get_queue(adc_input, &name, &success, &fail);
 	if (tempRecvQ == NULL) return fail;
 
-	if (xQueueReceive(tempRecvQ, val, pdMS_TO_TICKS(PEDALS_ADC_SAMPLING_MS)) == pdPASS) {
+	if (xQueueReceive(tempRecvQ, val, pdMS_TO_TICKS(PEDALS_RECEIVE_ADC_SAMPLING_MS)) == pdPASS) {
 		return success;
 	} else {
 		if(ENABLE_DEBUG) printf("Failed to receive %s ADC value from queue\n\r", name);

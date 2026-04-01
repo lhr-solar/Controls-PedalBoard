@@ -3,7 +3,7 @@
 #include "stm32xx_hal.h"
 
 /**
- * @brief Cnfigs System Clock
+ * @brief Configs System Clock
  *
  * From CubeMX
  *
