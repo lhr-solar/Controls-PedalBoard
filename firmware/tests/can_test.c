@@ -3,8 +3,8 @@
 
 #define CAN_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 #define CAN_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
-StaticTask_t CAN_TASK_TCB;
-StackType_t CAN_TASK_Stack_Array[CAN_TASK_STACK_SIZE];
+StaticTask_t CAN_Task_TCB;
+StackType_t CAN_Task_Stack_Array[CAN_TASK_STACK_SIZE];
 
 int main() {
   HAL_Init();
@@ -13,7 +13,7 @@ int main() {
   pedals_CAN_init();
 
   xTaskCreateStatic(pedals_CAN_test, "CAN testing", CAN_TASK_STACK_SIZE, NULL,
-                    CAN_TASK_PRIORITY, CAN_TASK_Stack_Array, &CAN_TASK_TCB);
+                    CAN_TASK_PRIORITY, CAN_Task_Stack_Array, &CAN_Task_TCB);
 
   vTaskStartScheduler();
 

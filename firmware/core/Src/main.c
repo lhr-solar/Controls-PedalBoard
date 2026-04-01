@@ -3,14 +3,18 @@
 #include "StatusLEDs.h"
 #include "stm32xx_hal.h"
 
-StaticTask_t INIT_TASK_TCB;
-StackType_t INIT_TASK_Stack_Array[INIT_TASK_STACK_SIZE];
+StaticTask_t Init_Task_TCB;
+StackType_t Init_Task_Stack_Array[INIT_TASK_STACK_SIZE];
 
 int main() {
 
-	xTaskCreateStatic(Task_InitAll, "Initialization", INIT_TASK_STACK_SIZE,
-					  NULL, INIT_TASK_PRIORITY, INIT_TASK_Stack_Array,
-					  &INIT_TASK_TCB
+	xTaskCreateStatic(Task_InitAll, 
+					"Initialization", 
+					INIT_TASK_STACK_SIZE,
+					NULL, 
+					INIT_TASK_PRIORITY, 
+					Init_Task_Stack_Array,
+					&Init_Task_TCB
 
 	);
 

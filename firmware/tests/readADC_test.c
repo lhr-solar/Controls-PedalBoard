@@ -10,8 +10,8 @@ extern ADC_HandleTypeDef *hadc1;
 
 #define PRINT_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 #define PRINT_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
-StaticTask_t PRINT_TASK_TCB;
-StackType_t PRINT_TASK_Stack_Array[PRINT_TASK_STACK_SIZE];
+StaticTask_t Print_Task_TCB;
+StackType_t Print_Task_Stack_Array[PRINT_TASK_STACK_SIZE];
 
 uint8_t adc1Queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
 StaticQueue_t adc1QueueBuffer;
@@ -26,9 +26,13 @@ void ADC_Task(void *argument);
 
 int main() {
 
-	xTaskCreateStatic(ADC_Task, "ADC testing", PRINT_TASK_STACK_SIZE, NULL,
-					  PRINT_TASK_PRIORITY, PRINT_TASK_Stack_Array,
-					  &PRINT_TASK_TCB
+	xTaskCreateStatic(ADC_Task, 
+					 "ADC testing", 
+					 PRINT_TASK_STACK_SIZE,
+					 NULL,
+					 PRINT_TASK_PRIORITY,
+					 Print_Task_Stack_Array,
+					 &Print_Task_TCB
 
 	);
 

@@ -1,6 +1,6 @@
 #include "Debugging.h"
 
-void initPrintf(void) {
+bool initPrintf(void) {
 	// First, initialize the UART hardware (GPIO, clocks, etc.)
 	// UART init
 	GPIO_InitTypeDef InitStruct = {0};
@@ -40,5 +40,5 @@ void initPrintf(void) {
 
 	//setvbuf(stdout, NULL, _IONBF, 0);
 
-	printf_init(husart1);
+	return printf_init(husart1);
 }

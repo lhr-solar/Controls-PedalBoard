@@ -13,6 +13,8 @@
  * 
  * @attention IMPORTANT - only call initPrintf() AND use printf() in a RTOS task
  * 
+ * @return bool     success (True) / fail (False) flag
+ * 
  */
 
-void initPrintf();
+bool initPrintf();
