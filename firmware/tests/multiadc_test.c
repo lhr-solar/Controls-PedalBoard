@@ -47,9 +47,9 @@ void readAll_ADCs_task(void *argument) {
 			if (ENABLE_DEBUG) printf("Brake FL Front ADC read failed\n\r");
 		if (adc_start_read(BRAKE_FL_BACK_BUFF_CHANNEL) != ADC_OK)
 			if (ENABLE_DEBUG) printf("Brake FL Back ADC read failed\n\r");
-		if (adc_start_read(ACCEL_POT_RED_BUFF_CHANNEL) != ADC_OK)
+		if (adc_start_read(ACCEL_POT_REDUNDANT_BUFF_CHANNEL) != ADC_OK)
 			if (ENABLE_DEBUG) printf("Accel Pot Redundant ADC read failed\n\r");
-		if (adc_start_read(BRAKE_POT_RED_BUFF_CHANNEL) != ADC_OK)
+		if (adc_start_read(BRAKE_POT_REDUNDANT_BUFF_CHANNEL) != ADC_OK)
 			if (ENABLE_DEBUG) printf("Brake Pot Redundant ADC read failed\n\r");
 
 		uint32_t brakePot_buff_val = 0;
@@ -70,9 +70,9 @@ void readAll_ADCs_task(void *argument) {
 		/* --------------------------------------------------
 			POTS Redundant Queue Receives
 		  -------------------------------------------------- */
-		adc_receive(ADC_INPUT_BRAKE_POT_RED, &brakePotRed_buff_val);
+		adc_receive(ADC_INPUT_BRAKE_POT_REDUNDANT, &brakePotRed_buff_val);
 		if (ENABLE_DEBUG) printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", brakePotRed_buff_val, adcPercentPotsLUT[brakePotRed_buff_val]);
-		adc_receive(ADC_INPUT_ACCEL_POT_RED, &accelPotRed_buff_val);
+		adc_receive(ADC_INPUT_ACCEL_POT_REDUNDANT, &accelPotRed_buff_val);
 		if (ENABLE_DEBUG) printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", accelPotRed_buff_val, adcPercentPotsLUT[accelPotRed_buff_val]);
 
 		/* --------------------------------------------------
