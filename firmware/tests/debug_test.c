@@ -11,11 +11,11 @@ StackType_t Test_Task_Stack_Array[TEST_TASK_STACK_SIZE];
 void DebugTask(void *argument) {
 	while (1) {
 		printf("\033[2J");
-		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
-		vTaskDelay(pdMS_TO_TICKS(100));
+		led_toggle(PSOM_HB_PORT, PSOM_HB_PIN);
+
 
 		printf("Mika Sucks Balls\n\r");
-		vTaskDelay(pdMS_TO_TICKS(10));
+		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 }
 
@@ -25,7 +25,7 @@ int main(void) {
 	initPrintf();
 	Status_LEDs_Init();
 	sensors_adc_GPIO_init();
-	if (pedals_adc_init() != ADC_OK)
+	if (sensors_adc_init() != ADC_OK)
 		Error_Handler();
 
 

@@ -3,6 +3,7 @@
 #include "FreeRTOS.h"
 #include "Pedals.h"
 #include "queue.h"
+#include "CarCAN_can_msgs.h"
 
 /* ADC Config Macros */
 #define PEDALS_ADC1_PRIO 5
@@ -10,26 +11,29 @@
 #define ADC_ITEM_SIZE sizeof(uint32_t)
 
 /* ADC Sampling Macros for config and user implementations */
-#define PEDALS_READ_ADC_SAMPLING_TIME ADC_SAMPLETIME_2CYCLES_5 // for config
+#define PEDALS_READ_ADC_SAMPLING_TIME  ADC_SAMPLETIME_2CYCLES_5 // for config
 #define PEDALS_RECEIVE_ADC_SAMPLING_MS 10						  // for user implementation
 
-extern const uint16_t adcPercentBrakeLUT[4096];
-extern const uint16_t adcPercentAccelLUT[4096];
+extern const uint8_t adcPercentBrakeLUT[4096];
+extern const uint8_t adcPercentAccelLUT[4096];
+extern const uint8_t adcPercentBrakePressure1LUT[4096];
+extern const uint8_t adcPercentBrakePressure2LUT[4096];
+
+extern uint32_t raw_vals[6];
 
 extern ADC_HandleTypeDef *hadc1;
-
 
 /* 
 	Sensors_ADC_Input_t is used to differentiate between the 6 different
 	ADC inputs in the adc_receive(...) function
 */
 typedef enum {
-	ADC_INPUT_ACCEL_POT = 0,	  // ACCEL_POT_READ
-	ADC_INPUT_BRAKE_POT = 1,	  // BRAKE_POT_READ
-	ADC_INPUT_BRAKE_FL_FRONT = 2, // BRAKE_FL_READ
-	ADC_INPUT_BRAKE_FL_BACK = 3,  // BRAKE_FL_REDUNDANT_READ
-	ADC_INPUT_ACCEL_POT_REDUNDANT = 4,  // ACCEL_POT_REDUNDANT_READ
-	ADC_INPUT_BRAKE_POT_REDUNDANT = 5,  // BRAKE_POT_REDUNDANT_READ
+	ADC_INPUT_ACCEL_POT,	  // ACCEL_POT_READ
+	ADC_INPUT_BRAKE_POT,	  // BRAKE_POT_READ
+	ADC_INPUT_BRAKE_FL_FRONT, // BRAKE_FL_READ
+	ADC_INPUT_BRAKE_FL_BACK,  // BRAKE_FL_REDUNDANT_READ
+	ADC_INPUT_ACCEL_POT_REDUNDANT,  // ACCEL_POT_REDUNDANT_READ
+	ADC_INPUT_BRAKE_POT_REDUNDANT,  // BRAKE_POT_REDUNDANT_READ
 
 	ADC_INPUT_COUNT
 } Sensors_ADC_Input_t;
@@ -55,7 +59,7 @@ void sensors_adc_GPIO_init();
  * 
  *
  */
-adc_status_t sensors_adc_start_read(Pedals_ADC_Channel channel); // reads a specific adcPin for data
+adc_status_t sensors_adc_start_read(Pedals_ADC_Channel channel);
 
 /**
  * @brief Initializes all ADC channels on Pedals Board
@@ -71,7 +75,7 @@ adc_status_t sensors_adc_init();
 /**
  * @brief Reads specific ADC values from its queue
  *
- * This function reads the ADC values pushed to the queue by adc_start_read().
+ * This function reads the ADC values pushed to the queue by sensors_adc_start_read().
  * The user can input a specific type of ADC (BrakePot, AccelPot, etc.) to
  * read from a specific queue.
  *
@@ -85,4 +89,14 @@ adc_status_t sensors_adc_init();
  */
 Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input, uint32_t *val);
 
+void readAll_ADCs(); // continuously reads all ADC channels and updates global structs
+
+pedal_brake_rawv_t read_brake_raw_voltage();
+pedal_accel_rawv_t read_accel_raw_voltage();
+brake_pressure_1_t read_brakeFL_1_raw_voltage();
+brake_pressure_2_t read_brakeFL_2_raw_voltage();
+
+pedal_status_t read_main_positions_and_faults();
+
+void ADC_Error_Handler(void);
 

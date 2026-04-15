@@ -9,28 +9,12 @@ StaticTask_t CAN_TASK_TCB;
 StackType_t CAN_TASK_Stack_Array[CAN_TASK_STACK_SIZE];
 
 void pedals_CAN_Send_test(void *argument);
+void CAN_Error_Handler_Brake_Voltage();
+void CAN_Error_Handler_Accel_Voltage();
+void CAN_Error_Handler_Brake_Pressure_1_Voltage();
+void CAN_Error_Handler_Brake_Pressure_2_Voltage();
+void CAN_Error_Handler_Pedals_Status();
 void CAN_Error_Handler();
-
-Pedals_Msg_t test_data = {
-	/* -------------- Data -------------- */
-	.brakePot = 100,
-	.brakePot_Voltage = 90,
-	.brakePot_Redundant = 80,
-	.brakePot_Redundant_Voltage = 70,
-
-	.accelPot = 60,
-	.accelPot_Voltage = 40,
-	.accelPot_Redundant = 30,
-	.accelPot_Redundant_Voltage = 2000,
-
-	.brakeFL_front = 10,
-	.brakeFL_front_Voltage = 200,
-	.brakeFL_back = 67,
-	.brakeFL_back_Voltage = 400,
-
-	/* -------------- Faults -------------- */
-	.faults = 0 // clear faults
-};
 
 int main() {
 
@@ -43,41 +27,82 @@ int main() {
 
 	vTaskStartScheduler();
 
-	while (1) {}
+	while (1) {
+	}
 	return 67;
 }
 
-
 void pedals_CAN_Send_test(void *argument) {
 	initPrintf();
-	Status_LEDs_Init();
 	sensors_adc_GPIO_init();
+	Status_LEDs_Init();
 
 	printf("init done\n\r");
+
+	if (sensors_adc_init() != ADC_OK) {
+		if (ENABLE_DEBUG)
+			printf("ADC_Init Failed");
+		return;
+	}
 
 	if (pedals_CAN_init() != PEDALS_OK) {
 		printf("you are dum - init failed\n\r");
 		CAN_Error_Handler();
 	}
 
-	
-  	CAN_TxHeaderTypeDef tx_header = {0};   
-	uint8_t tx_data[8];
+	CAN_TxHeaderTypeDef tx_header = {0};
 
 	while (1) {
-		if(pedals_CAN_send_PotsPercent(&tx_header, &test_data, tx_data) != PEDALS_OK) {
-			CAN_Error_Handler();
-		}
+		readAll_ADCs();
+		pedal_brake_rawv_t brake_payload = read_brake_raw_voltage();
+		pedal_accel_rawv_t accel_payload = read_accel_raw_voltage();
+		brake_pressure_1_t brake_pressure_1_payload = read_brakeFL_1_raw_voltage();
+		brake_pressure_2_t brake_pressure_2_payload = read_brakeFL_2_raw_voltage();
 
-		test_data.brakePot += 100;
-		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
+		pedal_status_t pedals_status_payload = read_main_positions_and_faults();
+		
+		if (pedals_CAN_send_brake_voltage(&tx_header, brake_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Voltage();
+		if (pedals_CAN_send_accel_voltage(&tx_header, accel_payload) != PEDALS_OK) CAN_Error_Handler_Accel_Voltage();
+		if (pedals_CAN_send_brake_pressure_1_voltage(&tx_header, brake_pressure_1_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Pressure_1_Voltage();
+		if (pedals_CAN_send_brake_pressure_2_voltage(&tx_header, brake_pressure_2_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Pressure_2_Voltage();
+		if (pedals_CAN_send_pedals_status(&tx_header, pedals_status_payload) != PEDALS_OK) CAN_Error_Handler_Pedals_Status();
+		printf("%ld\n\r", tx_header.DLC);
+
+		if(ENABLE_DEBUG) pedals_print_payload();
+
+		led_toggle(PSOM_HB_PORT, PSOM_HB_PIN);
 		vTaskDelay(pdMS_TO_TICKS(250));
 	}
 }
 
+void CAN_Error_Handler_Brake_Voltage() {
+	printf("CAN failed to send brake voltage :(");
+	while (1);
+	
+}
+
+void CAN_Error_Handler_Accel_Voltage() {
+	printf("CAN failed to send accel voltage :(");
+	while (1);
+}
+
+void CAN_Error_Handler_Brake_Pressure_1_Voltage() {
+	printf("CAN failed to send brake pressure 1 voltage :(");
+	while (1);
+}
+
+void CAN_Error_Handler_Brake_Pressure_2_Voltage() {
+	printf("CAN failed to send brake pressure 2 voltage :(");
+	while (1);
+}
+
+void CAN_Error_Handler_Pedals_Status() {
+	printf("CAN failed to send pedals status :(");
+	while (1);
+}
 
 void CAN_Error_Handler() {
-	printf("CAN failed :(");
-	while (1) {
-	}
+	printf("CAN initialization failed :(");
+	while(1);
 }
+

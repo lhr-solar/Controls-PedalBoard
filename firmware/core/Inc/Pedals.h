@@ -4,7 +4,6 @@
 #include "Debugging.h"
 #include "stm32xx_hal.h"
 #include "pinDefs.h"
-#include "config.h"
 
 /* Task used for initializing all other tasks on Pedals Board */
 #define INIT_TASK_PRIORITY tskIDLE_PRIORITY + 5
@@ -18,7 +17,9 @@ extern StackType_t Init_Task_Stack_Array[INIT_TASK_STACK_SIZE];
 * 1 - enable printfs
 *
 */
-#define ENABLE_DEBUG 0
+#define ENABLE_DEBUG		 	1
+
+#define ERROR_HANDLER_DELAY		pdMS_TO_TICKS(250)
 
 /* --------------------------------------------------
 	Pedals Status
@@ -77,6 +78,14 @@ typedef enum {
 /* -------------------------------------------------- */
 
 /**
+ * @brief Configs System Clock
+ *
+ * From CubeMX
+ *
+ */
+void SystemClock_Config(void);
+
+/**
  * @brief Initializes peripherals and all other critial tasks.
  *
  * This function initializes all the the GPIO, ADC, and UART (printfs) peripherals
@@ -95,4 +104,4 @@ void Task_InitAll(void *argument);
  * 				its normal function
  * 
  */
-void Error_Handler(void);
+void Pedals_Error_Handler(void);

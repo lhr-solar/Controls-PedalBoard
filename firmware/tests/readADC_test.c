@@ -17,9 +17,6 @@ uint8_t adc1Queue[ADC1_QUEUE_LENGTH * ADC_ITEM_SIZE];
 StaticQueue_t adc1QueueBuffer;
 QueueHandle_t adc1RecvQ;
 
-void adc_GPIO_init_test();
-adc_status_t adc_start_read_test(ADC_ChannelConfTypeDef *adcPin);
-adc_status_t pedals_adc_init_test();
 void Error_Handler_test(void);
 
 void ADC_Task(void *argument);
@@ -48,20 +45,20 @@ void ADC_Task(void *argument) {
 	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
 	
-	if (pedals_adc_init() != ADC_OK)
+	if (sensors_adc_init() != ADC_OK)
 		Error_Handler_test();
 
 	while (1) {
 		if(ENABLE_DEBUG) printf("\033[2J"); //clear printf screen
 
-		if (adc_start_read(BRAKE_POT_BUFF_CHANNEL) != ADC_OK)
+		if (sensors_adc_start_read(BRAKE_POT_BUFF_CHANNEL) != ADC_OK)
 			printf("ADC read failed\n\r");
 
 		uint32_t brakePot = 0;
-		adc_receive(ADC_INPUT_BRAKE_POT, &brakePot);
+		sensors_adc_receive(ADC_INPUT_BRAKE_POT, &brakePot);
 
 
-		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
+		led_toggle(PSOM_HB_PORT, PSOM_HB_PIN);
 		vTaskDelay(pdMS_TO_TICKS(100));
 	}
 }

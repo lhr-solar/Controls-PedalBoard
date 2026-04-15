@@ -1,5 +1,6 @@
 #include "Pedals.h"
 #include "StatusLEDs.h"
+#include "Debugging.h"
 
 void SystemClock_Config(void) {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -44,7 +45,10 @@ void SystemClock_Config(void) {
   }
 }
 
-void HeartBeat() {
-	toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
-	vTaskDelay(pdMS_TO_TICKS(500));
+void Pedals_Error_Handler() {
+	printf("Errored out :(");
+	while(1) {
+		flashThem();
+		vTaskDelay(ERROR_HANDLER_DELAY);
+	}
 }

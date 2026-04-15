@@ -2,6 +2,28 @@
 #include "Pedals.h"
 #include "StatusLEDs.h"
 
+/* -------------- Faults --------------
+
+	Pedals_Status_Msg[2]
+		0 - Brake_pot
+		1 - Brake_pot_redundant
+		2 - Accel_pot
+		3 - Accel_pot_redundant
+		4 - Brake_FL_Front
+		5 - Brake_FL_Back
+		6 - TBD
+		7 - TBD
+
+------------------------------------ */
+static pedal_status_t Pedals_Status_Msg = {0};
+static pedal_brake_rawv_t Pedals_Brake_Voltage_Msg = {0};
+static pedal_accel_rawv_t Pedals_Accel_Voltage_Msg = {0};
+static brake_pressure_1_t Pedals_Brake_FL_Front_Msg = {0};
+static brake_pressure_2_t Pedals_Brake_FL_Back_Msg = {0};
+static uint8_t Pedals_FrameID = 0;
+
+uint32_t raw_vals[6] = {0};
+
 /* --------------------------------------------------
 	  ADC Queue Declarations and GPIO Pin Configurations
    -------------------------------------------------- */
@@ -56,7 +78,8 @@ adc_status_t sensors_adc_start_read(Pedals_ADC_Channel channel) {
 		return ADC_CHANNEL_CONFIG_FAIL;
 	}
 
-	if (targetQueue == NULL) return ADC_INIT_FAIL;
+	if (targetQueue == NULL)
+		return ADC_INIT_FAIL;
 
 	ADC_ChannelConfTypeDef cfg = {.Channel = channel,
 								  .SamplingTime = PEDALS_READ_ADC_SAMPLING_TIME,
@@ -95,7 +118,8 @@ adc_status_t sensors_adc_init() {
 		xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE,
 						   adc1_brakePot_queue, &adc1_brakePot_queueBuffer);
 	if (adc1_brakePot_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create BrakePot ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create BrakePot ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
@@ -103,7 +127,8 @@ adc_status_t sensors_adc_init() {
 		xQueueCreateStatic(ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE,
 						   adc1_accelPot_queue, &adc1_accelPot_queue_buffer);
 	if (adc1_accelPot_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create AccelPot ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create AccelPot ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
@@ -111,7 +136,8 @@ adc_status_t sensors_adc_init() {
 		ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_brakeFL_front_queue,
 		&adc1_brakeFL_front_queueBuffer);
 	if (adc1_brakeFL_front_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create BrakeFL ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create BrakeFL ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
@@ -119,7 +145,8 @@ adc_status_t sensors_adc_init() {
 		ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_brakeFL_back_queue,
 		&adc1_brakeFL_back_queueBuffer);
 	if (adc1_brakeFL_back_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create BrakeFLRed ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create BrakeFLRed ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
@@ -127,7 +154,8 @@ adc_status_t sensors_adc_init() {
 		ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_accelPotRed_queue,
 		&adc1_accelPotRed_queue_buffer);
 	if (adc1_accelPotRed_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create AccelPotRed ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create AccelPotRed ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
@@ -135,13 +163,15 @@ adc_status_t sensors_adc_init() {
 		ADC1_QUEUE_LENGTH, ADC_ITEM_SIZE, adc1_brakePotRed_queue,
 		&adc1_brakePotRed_queue_buffer);
 	if (adc1_brakePotRed_RecvQ == NULL) {
-		if (ENABLE_DEBUG) printf("Failed to create BrakePotRed ADC queue\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to create BrakePotRed ADC queue\n\r");
 		return ADC_INIT_FAIL;
 	}
 
 	volatile adc_status_t s = adc_init(&adc_init_1, hadc1);
 	if (s != ADC_OK) {
-		if (ENABLE_DEBUG) printf("Failed to initialize ADC1\n\r");
+		if (ENABLE_DEBUG)
+			printf("Failed to initialize ADC1\n\r");
 		return ADC_INIT_FAIL;
 	}
 	return ADC_OK;
@@ -166,7 +196,8 @@ void sensors_adc_GPIO_init() {
 		PeriphClkInit.PLLSAI1.PLLSAI1R = RCC_PLLR_DIV2;
 		PeriphClkInit.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_ADC1CLK;
 		if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
-			if (ENABLE_DEBUG) printf("ravi is dum\n\r");
+			if (ENABLE_DEBUG)
+				printf("ravi is dum\n\r");
 			Error_Handler();
 		}
 
@@ -199,8 +230,10 @@ void sensors_adc_GPIO_init() {
 	}
 }
 
-static QueueHandle_t sensors_adc_get_queue(Sensors_ADC_Input_t adc_input, const char **name,
-								   Pedals_Status_t *success, Pedals_Status_t *fail) {
+static QueueHandle_t sensors_adc_get_queue(Sensors_ADC_Input_t adc_input,
+										   const char **name,
+										   Pedals_Status_t *success,
+										   Pedals_Status_t *fail) {
 	switch (adc_input) {
 	case ADC_INPUT_BRAKE_POT:
 		*name = "Brake Pot";
@@ -240,25 +273,149 @@ static QueueHandle_t sensors_adc_get_queue(Sensors_ADC_Input_t adc_input, const 
 	}
 }
 
-Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input, uint32_t *val) {
+Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input,
+									uint32_t *val) {
 	const char *name;
 	Pedals_Status_t success, fail;
 	QueueHandle_t tempRecvQ =
 		sensors_adc_get_queue(adc_input, &name, &success, &fail);
-	if (tempRecvQ == NULL) return fail;
-
+	if (tempRecvQ == NULL)
+		return fail;
 	if (xQueueReceive(tempRecvQ, val, pdMS_TO_TICKS(PEDALS_RECEIVE_ADC_SAMPLING_MS)) == pdPASS) {
+		raw_vals[adc_input] = *val;
 		return success;
 	} else {
-		if(ENABLE_DEBUG) printf("Failed to receive %s ADC value from queue\n\r", name);
+		if (ENABLE_DEBUG)
+			printf("Failed to receive %s ADC value from queue\n\r", name);
 		return fail;
 	}
 }
 
-void Error_Handler(void) {
-	if (ENABLE_DEBUG) printf("Error Handler: ADC initialization failed\n\r");
+void readAll_ADCs() {
+	if (sensors_adc_init() != ADC_OK) {
+		if (ENABLE_DEBUG)
+			printf("ADC_Init Failed");
+		return;
+	}
+	if (ENABLE_DEBUG)
+		printf("\033[2J");
+
+	if (sensors_adc_start_read(BRAKE_POT_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Brake Pot ADC read failed\n\r");
+	if (sensors_adc_start_read(ACCEL_POT_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Accel Pot ADC read failed\n\r");
+	if (sensors_adc_start_read(BRAKE_FL_FRONT_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Brake FL Front ADC read failed\n\r");
+	if (sensors_adc_start_read(BRAKE_FL_BACK_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Brake FL Back ADC read failed\n\r");
+	if (sensors_adc_start_read(ACCEL_POT_REDUNDANT_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Accel Pot Redundant ADC read failed\n\r");
+	if (sensors_adc_start_read(BRAKE_POT_REDUNDANT_BUFF_CHANNEL) != ADC_OK)
+		if (ENABLE_DEBUG)
+			printf("Brake Pot Redundant ADC read failed\n\r");
+
+	uint32_t brakePot_buff_val = 0;
+	uint32_t accelPot_buff_val = 0;
+	uint32_t brakeFL_front_buff_val = 0;
+	uint32_t brakeFL_back_buff_val = 0;
+	uint32_t accelPotRed_buff_val = 0;
+	uint32_t brakePotRed_buff_val = 0;
+
+	sensors_adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
+	if (ENABLE_DEBUG)
+		printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val,
+			   adcPercentBrakeLUT[brakePot_buff_val]);
+	sensors_adc_receive(ADC_INPUT_ACCEL_POT, &accelPot_buff_val);
+	if (ENABLE_DEBUG)
+		printf("Accel Pot: %lu  |  LUT (%%): %u%%\n\r", accelPot_buff_val,
+			   adcPercentAccelLUT[accelPot_buff_val]);
+	sensors_adc_receive(ADC_INPUT_BRAKE_POT_REDUNDANT, &brakePotRed_buff_val);
+	if (ENABLE_DEBUG)
+		printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
+			   brakePotRed_buff_val, adcPercentBrakeLUT[brakePotRed_buff_val]);
+	sensors_adc_receive(ADC_INPUT_ACCEL_POT_REDUNDANT, &accelPotRed_buff_val);
+	if (ENABLE_DEBUG)
+		printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
+			   accelPotRed_buff_val, adcPercentAccelLUT[accelPotRed_buff_val]);
+	sensors_adc_receive(ADC_INPUT_BRAKE_FL_FRONT, &brakeFL_front_buff_val);
+	if (ENABLE_DEBUG)
+		printf("Brake FL Front: %lu\n\r", brakeFL_front_buff_val);
+	sensors_adc_receive(ADC_INPUT_BRAKE_FL_BACK, &brakeFL_back_buff_val);
+
+	// pack into structs
+	Pedals_Brake_Voltage_Msg.BrakePedal_Main_RawV =
+		((brakePot_buff_val * 3300)/4096 ) + 50;
+	Pedals_Brake_Voltage_Msg.BrakePedal_Redundant_RawV =
+		((brakePotRed_buff_val * 3300)/4096) + 50;
+
+	Pedals_Accel_Voltage_Msg.AccelPedal_Main_RawV =
+		((accelPot_buff_val * 3300)/4096) + 50;
+	Pedals_Accel_Voltage_Msg.AccelPedal_Redundant_RawV =
+		((accelPotRed_buff_val * 3300)/4096) + 50;
+
+	Pedals_Brake_FL_Front_Msg.Brake_Pressure =
+		((brakeFL_front_buff_val * 3300)/4096) + 50;
+	Pedals_Brake_FL_Back_Msg.Brake_Pressure =
+		((brakeFL_back_buff_val * 3300)/4096) + 50;
+
+	Pedals_Status_Msg.BrakePedal_Main_Pos =
+		adcPercentBrakeLUT[brakePot_buff_val];
+	Pedals_Status_Msg.BrakePedal_Redundant_Pos =
+		adcPercentBrakeLUT[brakePotRed_buff_val];
+	Pedals_Status_Msg.AccelPedal_Main_Pos =
+		adcPercentAccelLUT[accelPot_buff_val];
+	Pedals_Status_Msg.AccelPedal_Redundant_Pos =
+		adcPercentAccelLUT[accelPotRed_buff_val];
+
+	// update frame ID
+	Pedals_FrameID = (Pedals_FrameID + 1) % 255;
+	Pedals_Status_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Brake_Voltage_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Accel_Voltage_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Brake_FL_Front_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Brake_FL_Back_Msg.FrameID_Pedals = Pedals_FrameID;
+
+	led_set(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN,
+			adcPercentBrakeLUT[brakePot_buff_val] > 50 ? LED_ON
+													   : LED_OFF);
+	led_set(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN,
+			adcPercentAccelLUT[accelPot_buff_val] > 50 ? LED_ON
+													   : LED_OFF);
+}
+
+pedal_brake_rawv_t read_brake_raw_voltage() { return Pedals_Brake_Voltage_Msg; }
+pedal_accel_rawv_t read_accel_raw_voltage() { return Pedals_Accel_Voltage_Msg; }
+brake_pressure_1_t read_brakeFL_1_raw_voltage() { return Pedals_Brake_FL_Front_Msg; }
+brake_pressure_2_t read_brakeFL_2_raw_voltage() { return Pedals_Brake_FL_Back_Msg; }
+
+pedal_status_t read_main_positions_and_faults() {
+	pedal_status_t message;
+
+	message.AccelPedal_Main_Pos = adcPercentAccelLUT[raw_vals[ADC_INPUT_ACCEL_POT]];
+	message.AccelPedal_Redundant_Pos = adcPercentAccelLUT[raw_vals[ADC_INPUT_ACCEL_POT_REDUNDANT]];
+	message.BrakePedal_Main_Pos = adcPercentBrakeLUT[raw_vals[ADC_INPUT_BRAKE_POT]];
+	message.BrakePedal_Redundant_Pos = adcPercentBrakeLUT[raw_vals[ADC_INPUT_BRAKE_POT_REDUNDANT]];
+	message.AccelPedal_Main_Fault = 0;
+	message.AccelPedal_Redundant_Fault = 0;
+	message.BrakePedal_Main_Fault = 0;
+	message.BrakePedal_Redundant_Fault = 0;
+	message.Brake_Pressure_1_Fault = 0;
+	message.Brake_Pressure_2_Fault = 0;
+	message.FrameID_Pedals = Pedals_FrameID;
+
+	return message;
+}
+
+void ADC_Error_Handler(void) {
+	if (ENABLE_DEBUG)
+		printf("Error Handler: ADC initialization failed\n\r");
 	while (1) {
 		flashThem();
-		vTaskDelay(pdMS_TO_TICKS(100));
+		vTaskDelay(ERROR_HANDLER_DELAY);
 	}
 }

@@ -41,7 +41,7 @@ void calibration_test(void *argument) {
 			printf("ADC brake pot read failed!!");
 		}
 
-		toggle_LED(PSOM_HB);
+		led_toggle(PSOM_HB);
 		vTaskDelay(pdMS_TO_TICKS(10));
 
 	}

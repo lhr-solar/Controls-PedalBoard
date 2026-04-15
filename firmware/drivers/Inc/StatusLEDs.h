@@ -22,7 +22,7 @@ void Status_LEDs_Init(void);
  * 
  * 
  */
-void set_LED(GPIO_TypeDef *port, uint16_t pin, GPIO_PinState state);
+void led_set(GPIO_TypeDef *port, uint16_t pin, GPIO_PinState state);
 
 /**
  * @brief Toggles the state of an LED
@@ -32,7 +32,7 @@ void set_LED(GPIO_TypeDef *port, uint16_t pin, GPIO_PinState state);
  * 
  * 
  */
-void toggle_LED(GPIO_TypeDef *port, uint16_t pin);
+void led_toggle(GPIO_TypeDef *port, uint16_t pin);
 
 /**
  * @brief Toggles PSOM Heartbeat LED
