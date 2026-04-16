@@ -13,6 +13,7 @@
 /* ADC Sampling Macros for config and user implementations */
 #define PEDALS_READ_ADC_SAMPLING_TIME  ADC_SAMPLETIME_2CYCLES_5 // for config
 #define PEDALS_RECEIVE_ADC_SAMPLING_MS 10						  // for user implementation
+#define MX_ADC_RAW_VAL 				   4095
 
 extern const uint8_t adcPercentBrakeLUT[4096];
 extern const uint8_t adcPercentAccelLUT[4096];

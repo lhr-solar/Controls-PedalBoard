@@ -326,6 +326,7 @@ void readAll_ADCs() {
 	uint32_t accelPotRed_buff_val = 0;
 	uint32_t brakePotRed_buff_val = 0;
 
+
 	sensors_adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val,
@@ -347,16 +348,19 @@ void readAll_ADCs() {
 		printf("Brake FL Front: %lu\n\r", brakeFL_front_buff_val);
 	sensors_adc_receive(ADC_INPUT_BRAKE_FL_BACK, &brakeFL_back_buff_val);
 
+	uint32_t max_adc_brake_val = (brakePotRed_buff_val > 0) ? MX_ADC_RAW_VAL : 0;
+	uint32_t max_adc_accel_val = (accelPotRed_buff_val > 0) ? MX_ADC_RAW_VAL : 0;
+
 	// pack into structs
 	Pedals_Brake_Voltage_Msg.BrakePedal_Main_RawV =
 		((brakePot_buff_val * 3300)/4096 ) + 50;
 	Pedals_Brake_Voltage_Msg.BrakePedal_Redundant_RawV =
-		((brakePotRed_buff_val * 3300)/4096) + 50;
+		(((max_adc_brake_val - brakePotRed_buff_val) * 3300)/4096) + 50;
 
 	Pedals_Accel_Voltage_Msg.AccelPedal_Main_RawV =
 		((accelPot_buff_val * 3300)/4096) + 50;
 	Pedals_Accel_Voltage_Msg.AccelPedal_Redundant_RawV =
-		((accelPotRed_buff_val * 3300)/4096) + 50;
+		(((max_adc_accel_val - accelPotRed_buff_val) * 3300)/4096) + 50;
 
 	Pedals_Brake_FL_Front_Msg.Brake_Pressure =
 		((brakeFL_front_buff_val * 3300)/4096) + 50;
