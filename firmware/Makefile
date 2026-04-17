@@ -90,7 +90,7 @@ ifneq ($(TEST), main)
 else
 	@echo -e "Making ${PURPLE}$(PROJECT_TARGET)${NC}build with ${ORANGE}no test.${NC}"
 endif
-	$(BEAR_PREFIX) $(MAKE) -C $(BUILD_MAKEFILE_DIR) all -j
+	$(BEAR_PREFIX) $(MAKE) -C $(BUILD_MAKEFILE_DIR) all -j$(shell nproc)
 	@echo -e "${BLUE}Compiled! Splendid! Jolly Good!!${NC}"
 #---------------------------------
 

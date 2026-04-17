@@ -6,6 +6,7 @@
 StaticTask_t Init_Task_TCB;
 StackType_t Init_Task_Stack_Array[INIT_TASK_STACK_SIZE];
 
+
 int main() {
 
 	xTaskCreateStatic(Task_InitAll, 
@@ -30,11 +31,10 @@ void Task_InitAll(void *argument) {
 	HAL_Init();
 	SystemClock_Config();
 	initPrintf();
-	adc_GPIO_init();
+	sensors_adc_GPIO_init();
 	Status_LEDs_Init();
 
-	// init all teh other tasks
+	// init all the other tasks
 
-	// CAN init
 	vTaskDelete(NULL); // delete itself when done
 }
