@@ -1,4 +1,5 @@
 #include "Pedals.h"
+#include "LUT.h"
 #include "StatusLEDs.h"
 #include "readAllADCs.h"
 
@@ -59,19 +60,33 @@ void readAll_ADCs_task(void *argument) {
 		uint32_t brakePotRed_buff_val = 0;
 
 		sensors_adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
-		if (ENABLE_DEBUG) printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val, adcPercentBrakeLUT[brakePot_buff_val]);
+		if (ENABLE_DEBUG)
+			printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val,
+				   adcPercentBrakeMainLUT[brakePot_buff_val]);
 		sensors_adc_receive(ADC_INPUT_ACCEL_POT, &accelPot_buff_val);
-		if (ENABLE_DEBUG) printf("Accel Pot: %lu  |  LUT (%%): %u%%\n\r", accelPot_buff_val, adcPercentAccelLUT[accelPot_buff_val]);
+		if (ENABLE_DEBUG)
+			printf("Accel Pot: %lu  |  LUT (%%): %u%%\n\r", accelPot_buff_val,
+				   adcPercentAccelMainLUT[accelPot_buff_val]);
 		sensors_adc_receive(ADC_INPUT_BRAKE_POT_REDUNDANT, &brakePotRed_buff_val);
-		if (ENABLE_DEBUG) printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", brakePotRed_buff_val, adcPercentBrakeLUT[brakePotRed_buff_val]);
+		if (ENABLE_DEBUG)
+			printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
+				   brakePotRed_buff_val,
+				   adcPercentBrakeRedundantLUT[brakePotRed_buff_val]);
 		sensors_adc_receive(ADC_INPUT_ACCEL_POT_REDUNDANT, &accelPotRed_buff_val);
-		if (ENABLE_DEBUG) printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r", accelPotRed_buff_val, adcPercentAccelLUT[accelPotRed_buff_val]);
+		if (ENABLE_DEBUG)
+			printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
+				   accelPotRed_buff_val,
+				   adcPercentAccelRedundantLUT[accelPotRed_buff_val]);
 		sensors_adc_receive(ADC_INPUT_BRAKE_FL_FRONT, &brakeFL_front_buff_val);
 		if (ENABLE_DEBUG) printf("Brake FL Front: %lu\n\r", brakeFL_front_buff_val);
 		sensors_adc_receive(ADC_INPUT_BRAKE_FL_BACK, &brakeFL_back_buff_val);
 
-		led_set(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN, adcPercentBrakeLUT[brakePot_buff_val] > 50 ? GPIO_PIN_SET : GPIO_PIN_RESET);
-		led_set(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN, adcPercentAccelLUT[accelPot_buff_val] > 50 ? GPIO_PIN_SET : GPIO_PIN_RESET);
+		led_set(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN,
+				adcPercentBrakeMainLUT[brakePot_buff_val] > 50 ? GPIO_PIN_SET
+																 : GPIO_PIN_RESET);
+		led_set(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN,
+				adcPercentAccelMainLUT[accelPot_buff_val] > 50 ? GPIO_PIN_SET
+															   : GPIO_PIN_RESET);
 
 		vTaskDelay(pdMS_TO_TICKS(250));
 	}

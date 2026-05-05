@@ -1,6 +1,7 @@
 #include "Pedals_Sensors.h"
 #include "Pedals.h"
 #include "StatusLEDs.h"
+#include "LUT.h"
 
 /* -------------- Faults --------------
 
@@ -16,8 +17,8 @@
 
 ------------------------------------ */
 static pedal_status_t Pedals_Status_Msg = {0};
-static pedal_brake_rawv_t Pedals_Brake_Voltage_Msg = {0};
-static pedal_accel_rawv_t Pedals_Accel_Voltage_Msg = {0};
+static pedal_brake_adc_t Pedals_Brake_ADC_Msg = {0};
+static pedal_accel_adc_t Pedals_Accel_ADC_Msg = {0};
 static brake_pressure_1_t Pedals_Brake_FL_Front_Msg = {0};
 static brake_pressure_2_t Pedals_Brake_FL_Back_Msg = {0};
 static uint8_t Pedals_FrameID = 0;
@@ -291,12 +292,13 @@ Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input,
 	}
 }
 
-void readAll_ADCs() {
-	if (sensors_adc_init() != ADC_OK) {
-		if (ENABLE_DEBUG)
-			printf("ADC_Init Failed");
-		return;
-	}
+static uint16_t clamp_adc_index(uint32_t raw) {
+	if (raw > MX_ADC_RAW_VAL)
+		return (uint16_t)MX_ADC_RAW_VAL;
+	return (uint16_t)raw;
+}
+
+void readAll_ADCs(void) {
 	if (ENABLE_DEBUG)
 		printf("\033[2J");
 
@@ -330,19 +332,21 @@ void readAll_ADCs() {
 	sensors_adc_receive(ADC_INPUT_BRAKE_POT, &brakePot_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Brake Pot: %lu  |  LUT (%%): %u%%\n\r", brakePot_buff_val,
-			   adcPercentBrakeLUT[brakePot_buff_val]);
+			   adcPercentBrakeMainLUT[brakePot_buff_val]);
 	sensors_adc_receive(ADC_INPUT_ACCEL_POT, &accelPot_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Accel Pot: %lu  |  LUT (%%): %u%%\n\r", accelPot_buff_val,
-			   adcPercentAccelLUT[accelPot_buff_val]);
+			   adcPercentAccelMainLUT[accelPot_buff_val]);
 	sensors_adc_receive(ADC_INPUT_BRAKE_POT_REDUNDANT, &brakePotRed_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Brake Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
-			   brakePotRed_buff_val, adcPercentBrakeLUT[brakePotRed_buff_val]);
+			   brakePotRed_buff_val,
+			   adcPercentBrakeRedundantLUT[brakePotRed_buff_val]);
 	sensors_adc_receive(ADC_INPUT_ACCEL_POT_REDUNDANT, &accelPotRed_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Accel Pot Redundant: %lu  |  LUT (%%): %u%%\n\r",
-			   accelPotRed_buff_val, adcPercentAccelLUT[accelPotRed_buff_val]);
+			   accelPotRed_buff_val,
+			   adcPercentAccelRedundantLUT[accelPotRed_buff_val]);
 	sensors_adc_receive(ADC_INPUT_BRAKE_FL_FRONT, &brakeFL_front_buff_val);
 	if (ENABLE_DEBUG)
 		printf("Brake FL Front: %lu\n\r", brakeFL_front_buff_val);
@@ -352,58 +356,65 @@ void readAll_ADCs() {
 	uint32_t max_adc_accel_val = (accelPotRed_buff_val > 0) ? MX_ADC_RAW_VAL : 0;
 
 	// pack into structs
-	Pedals_Brake_Voltage_Msg.BrakePedal_Main_RawV =
-		((brakePot_buff_val * 3300)/4096 ) + 50;
-	Pedals_Brake_Voltage_Msg.BrakePedal_Redundant_RawV =
-		(((max_adc_brake_val - brakePotRed_buff_val) * 3300)/4096) + 50;
+	Pedals_Brake_ADC_Msg.BrakePedal_Main_ADC = clamp_adc_index(brakePot_buff_val);
+	Pedals_Brake_ADC_Msg.BrakePedal_Redundant_ADC =
+		(uint16_t)(((max_adc_brake_val - brakePotRed_buff_val) * 3300u) / 4096u + 50u);
 
-	Pedals_Accel_Voltage_Msg.AccelPedal_Main_RawV =
-		((accelPot_buff_val * 3300)/4096) + 50;
-	Pedals_Accel_Voltage_Msg.AccelPedal_Redundant_RawV =
-		(((max_adc_accel_val - accelPotRed_buff_val) * 3300)/4096) + 50;
+	Pedals_Accel_ADC_Msg.AccelPedal_Main_ADC = clamp_adc_index(accelPot_buff_val);
+	Pedals_Accel_ADC_Msg.AccelPedal_Redundant_ADC =
+		clamp_adc_index(max_adc_accel_val - accelPotRed_buff_val);
 
-	Pedals_Brake_FL_Front_Msg.Brake_Pressure =
-		((brakeFL_front_buff_val * 3300)/4096) + 50;
-	Pedals_Brake_FL_Back_Msg.Brake_Pressure =
-		((brakeFL_back_buff_val * 3300)/4096) + 50;
+	{
+		uint16_t idx_front = clamp_adc_index(brakeFL_front_buff_val);
+		uint16_t idx_back = clamp_adc_index(brakeFL_back_buff_val);
+		Pedals_Brake_FL_Front_Msg.Brake_Pressure = brakePressurePsiTenthsLUT[idx_front];
+		Pedals_Brake_FL_Front_Msg.Brake_Pressure_ADC = idx_front;
+		Pedals_Brake_FL_Back_Msg.Brake_Pressure = brakePressurePsiTenthsLUT[idx_back];
+		Pedals_Brake_FL_Back_Msg.Brake_Pressure_ADC = idx_back;
+	}
 
 	Pedals_Status_Msg.BrakePedal_Main_Pos =
-		adcPercentBrakeLUT[brakePot_buff_val];
+		adcPercentBrakeMainLUT[brakePot_buff_val];
 	Pedals_Status_Msg.BrakePedal_Redundant_Pos =
-		adcPercentBrakeLUT[brakePotRed_buff_val];
+		adcPercentBrakeRedundantLUT[brakePotRed_buff_val];
 	Pedals_Status_Msg.AccelPedal_Main_Pos =
-		adcPercentAccelLUT[accelPot_buff_val];
+		adcPercentAccelMainLUT[accelPot_buff_val];
 	Pedals_Status_Msg.AccelPedal_Redundant_Pos =
-		adcPercentAccelLUT[accelPotRed_buff_val];
+		adcPercentAccelRedundantLUT[accelPotRed_buff_val];
 
 	// update frame ID
 	Pedals_FrameID = (Pedals_FrameID + 1) % 255;
 	Pedals_Status_Msg.FrameID_Pedals = Pedals_FrameID;
-	Pedals_Brake_Voltage_Msg.FrameID_Pedals = Pedals_FrameID;
-	Pedals_Accel_Voltage_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Brake_ADC_Msg.FrameID_Pedals = Pedals_FrameID;
+	Pedals_Accel_ADC_Msg.FrameID_Pedals = Pedals_FrameID;
 	Pedals_Brake_FL_Front_Msg.FrameID_Pedals = Pedals_FrameID;
 	Pedals_Brake_FL_Back_Msg.FrameID_Pedals = Pedals_FrameID;
 
 	led_set(BRAKE_POT_LED_PORT, BRAKE_POT_LED_PIN,
-			adcPercentBrakeLUT[brakePot_buff_val] > 50 ? LED_ON
-													   : LED_OFF);
+			adcPercentBrakeMainLUT[brakePot_buff_val] > 50 ? LED_ON
+															 : LED_OFF);
 	led_set(ACCEL_POT_LED_PORT, ACCEL_POT_LED_PIN,
-			adcPercentAccelLUT[accelPot_buff_val] > 50 ? LED_ON
-													   : LED_OFF);
+			adcPercentAccelMainLUT[accelPot_buff_val] > 50 ? LED_ON
+															 : LED_OFF);
 }
 
-pedal_brake_rawv_t read_brake_raw_voltage() { return Pedals_Brake_Voltage_Msg; }
-pedal_accel_rawv_t read_accel_raw_voltage() { return Pedals_Accel_Voltage_Msg; }
+pedal_brake_adc_t read_pedal_brake_adc(void) { return Pedals_Brake_ADC_Msg; }
+
+pedal_accel_adc_t read_pedal_accel_adc(void) { return Pedals_Accel_ADC_Msg; }
 brake_pressure_1_t read_brakeFL_1_raw_voltage() { return Pedals_Brake_FL_Front_Msg; }
 brake_pressure_2_t read_brakeFL_2_raw_voltage() { return Pedals_Brake_FL_Back_Msg; }
 
 pedal_status_t read_main_positions_and_faults() {
 	pedal_status_t message;
 
-	message.AccelPedal_Main_Pos = adcPercentAccelLUT[raw_vals[ADC_INPUT_ACCEL_POT]];
-	message.AccelPedal_Redundant_Pos = adcPercentAccelLUT[raw_vals[ADC_INPUT_ACCEL_POT_REDUNDANT]];
-	message.BrakePedal_Main_Pos = adcPercentBrakeLUT[raw_vals[ADC_INPUT_BRAKE_POT]];
-	message.BrakePedal_Redundant_Pos = adcPercentBrakeLUT[raw_vals[ADC_INPUT_BRAKE_POT_REDUNDANT]];
+	message.AccelPedal_Main_Pos =
+		adcPercentAccelMainLUT[raw_vals[ADC_INPUT_ACCEL_POT]];
+	message.AccelPedal_Redundant_Pos =
+		adcPercentAccelRedundantLUT[raw_vals[ADC_INPUT_ACCEL_POT_REDUNDANT]];
+	message.BrakePedal_Main_Pos =
+		adcPercentBrakeMainLUT[raw_vals[ADC_INPUT_BRAKE_POT]];
+	message.BrakePedal_Redundant_Pos =
+		adcPercentBrakeRedundantLUT[raw_vals[ADC_INPUT_BRAKE_POT_REDUNDANT]];
 	message.AccelPedal_Main_Fault = 0;
 	message.AccelPedal_Redundant_Fault = 0;
 	message.BrakePedal_Main_Fault = 0;

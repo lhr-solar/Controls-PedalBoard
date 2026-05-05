@@ -15,8 +15,10 @@
 #define PEDALS_RECEIVE_ADC_SAMPLING_MS 10						  // for user implementation
 #define MX_ADC_RAW_VAL 				   4095
 
-extern const uint8_t adcPercentBrakeLUT[4096];
-extern const uint8_t adcPercentAccelLUT[4096];
+extern const uint8_t adcPercentBrakeMainLUT[4096];
+extern const uint8_t adcPercentBrakeRedundantLUT[4096];
+extern const uint8_t adcPercentAccelMainLUT[4096];
+extern const uint8_t adcPercentAccelRedundantLUT[4096];
 extern const uint8_t adcPercentBrakePressure1LUT[4096];
 extern const uint8_t adcPercentBrakePressure2LUT[4096];
 
@@ -92,8 +94,8 @@ Pedals_Status_t sensors_adc_receive(Sensors_ADC_Input_t adc_input, uint32_t *val
 
 void readAll_ADCs(); // continuously reads all ADC channels and updates global structs
 
-pedal_brake_rawv_t read_brake_raw_voltage();
-pedal_accel_rawv_t read_accel_raw_voltage();
+pedal_brake_adc_t read_pedal_brake_adc(void);
+pedal_accel_adc_t read_pedal_accel_adc(void);
 brake_pressure_1_t read_brakeFL_1_raw_voltage();
 brake_pressure_2_t read_brakeFL_2_raw_voltage();
 

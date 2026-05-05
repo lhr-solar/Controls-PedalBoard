@@ -1,6 +1,5 @@
 #include "Pedals_CAN.h"
 #include "Pedals_Sensors.h"
-#include "LUT.h"
 
 QueueHandle_t can_tx_queue;
 uint8_t can_tx_qStorage[CAN_TX_QUEUE_LENGTH * CAN_TX_ITEM_SIZE];
@@ -54,7 +53,7 @@ Pedals_Status_t MX_CAN_Init(void) {
 	hcan1->Init.TimeSeg1 = CAN_BS1_13TQ;
 	hcan1->Init.TimeSeg2 = CAN_BS2_2TQ;
 	hcan1->Init.TimeTriggeredMode = DISABLE;
-	hcan1->Init.AutoBusOff = DISABLE;
+	hcan1->Init.AutoBusOff = ENABLE;
 	hcan1->Init.AutoWakeUp = DISABLE;
 	hcan1->Init.AutoRetransmission = ENABLE;
 	hcan1->Init.ReceiveFifoLocked = DISABLE;
@@ -113,19 +112,19 @@ Pedals_Status_t pedals_CAN_init() {
 		return PEDALS_OK;
 }
 
-static void Pack_Brake_Voltage_CANHeader(CAN_TxHeaderTypeDef *tx_header) {
-	tx_header->StdId = CAN_ID_PEDAL_BRAKE_RAWV;
+static void Pack_Pedal_Brake_ADC_CANHeader(CAN_TxHeaderTypeDef *tx_header) {
+	tx_header->StdId = CAN_ID_PEDAL_BRAKE_ADC;
 	tx_header->RTR = CAN_RTR_DATA;
 	tx_header->IDE = CAN_ID_STD;
-	tx_header->DLC = CAN_DLC_PEDAL_BRAKE_RAWV;
+	tx_header->DLC = CAN_DLC_PEDAL_BRAKE_ADC;
 	tx_header->TransmitGlobalTime = DISABLE;
 }
 
-static void Pack_Accel_Voltage_CANHeader(CAN_TxHeaderTypeDef *tx_header) {
-	tx_header->StdId = CAN_ID_PEDAL_ACCEL_RAWV;
+static void Pack_Pedal_Accel_ADC_CANHeader(CAN_TxHeaderTypeDef *tx_header) {
+	tx_header->StdId = CAN_ID_PEDAL_ACCEL_ADC;
 	tx_header->RTR = CAN_RTR_DATA;
 	tx_header->IDE = CAN_ID_STD;
-	tx_header->DLC = CAN_DLC_PEDAL_ACCEL_RAWV;
+	tx_header->DLC = CAN_DLC_PEDAL_ACCEL_ADC;
 	tx_header->TransmitGlobalTime = DISABLE;
 }
 
@@ -153,32 +152,38 @@ static void Pack_Pedals_Status_CANHeader(CAN_TxHeaderTypeDef *tx_header) {
 	tx_header->TransmitGlobalTime = DISABLE;
 }
 
-Pedals_Status_t pedals_CAN_send_brake_voltage(CAN_TxHeaderTypeDef *tx_header,
-											  pedal_brake_rawv_t payload) {
-	Pack_Brake_Voltage_CANHeader(tx_header);
+Pedals_Status_t pedals_CAN_send_pedal_brake_adc(CAN_TxHeaderTypeDef *tx_header,
+												pedal_brake_adc_t payload) {
+	Pack_Pedal_Brake_ADC_CANHeader(tx_header);
 	uint8_t tx_data[tx_header->DLC];
 
-	tx_data[0] = (payload.BrakePedal_Main_RawV) & 0xFF;
-	tx_data[1] = (payload.BrakePedal_Main_RawV >> 8) & 0xFF;
-	tx_data[2] = (payload.BrakePedal_Redundant_RawV) & 0xFF;
-	tx_data[3] = (payload.BrakePedal_Redundant_RawV >> 8) & 0xFF;
-	tx_data[4] = (payload.FrameID_Pedals);
+	uint16_t main_adc = payload.BrakePedal_Main_ADC & (uint16_t)0x0FFF;
+	uint16_t red_mv = payload.BrakePedal_Redundant_ADC;
+
+	tx_data[0] = (uint8_t)(main_adc & 0xFFu);
+	tx_data[1] = (uint8_t)((main_adc >> 8) & 0x0Fu);
+	tx_data[2] = (uint8_t)(red_mv & 0xFFu);
+	tx_data[3] = (uint8_t)((red_mv >> 8) & 0xFFu);
+	tx_data[4] = payload.FrameID_Pedals;
 
 	if (can_send(hcan1, tx_header, tx_data, CAR_CAN_TIMEOUT_TICKS) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
 	return PEDALS_OK;
 }
 
-Pedals_Status_t pedals_CAN_send_accel_voltage(CAN_TxHeaderTypeDef *tx_header,
-											  pedal_accel_rawv_t payload) {
-	Pack_Accel_Voltage_CANHeader(tx_header);
+Pedals_Status_t pedals_CAN_send_pedal_accel_adc(CAN_TxHeaderTypeDef *tx_header,
+												pedal_accel_adc_t payload) {
+	Pack_Pedal_Accel_ADC_CANHeader(tx_header);
 	uint8_t tx_data[tx_header->DLC];
 
-	tx_data[0] = (payload.AccelPedal_Main_RawV) & 0xFF;
-	tx_data[1] = (payload.AccelPedal_Main_RawV >> 8) & 0xFF;
-	tx_data[2] = (payload.AccelPedal_Redundant_RawV) & 0xFF;
-	tx_data[3] = (payload.AccelPedal_Redundant_RawV >> 8) & 0xFF;
-	tx_data[4] = (payload.FrameID_Pedals);
+	uint16_t main_adc = payload.AccelPedal_Main_ADC & (uint16_t)0x0FFF;
+	uint16_t red_adc = payload.AccelPedal_Redundant_ADC & (uint16_t)0x0FFF;
+
+	tx_data[0] = (uint8_t)(main_adc & 0xFFu);
+	tx_data[1] = (uint8_t)((main_adc >> 8) & 0x0Fu);
+	tx_data[2] = (uint8_t)(red_adc & 0xFFu);
+	tx_data[3] = (uint8_t)((red_adc >> 8) & 0x0Fu);
+	tx_data[4] = payload.FrameID_Pedals;
 
 	if (can_send(hcan1, tx_header, tx_data, CAR_CAN_TIMEOUT_TICKS) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
@@ -187,15 +192,18 @@ Pedals_Status_t pedals_CAN_send_accel_voltage(CAN_TxHeaderTypeDef *tx_header,
 
 
 Pedals_Status_t pedals_CAN_send_brake_pressure_1_voltage(CAN_TxHeaderTypeDef *tx_header,
-											  brake_pressure_1_t payload) {
+														 brake_pressure_1_t payload) {
 	Pack_Brake_Pressure_1_CANHeader(tx_header);
 	uint8_t tx_data[tx_header->DLC];
 
-	tx_data[0] = (payload.Brake_Pressure) & 0xFF;
-	tx_data[1] = (payload.Brake_Pressure >> 8) & 0xFF;
-	tx_data[2] = (payload.Brake_Pressure_RawV) & 0xFF;
-	tx_data[3] = (payload.Brake_Pressure_RawV >> 8) & 0xFF;
-	tx_data[4] = (payload.FrameID_Pedals);
+	uint16_t psi_raw = payload.Brake_Pressure;
+	uint16_t adc12 = payload.Brake_Pressure_ADC & (uint16_t)0x0FFF;
+
+	tx_data[0] = (uint8_t)(psi_raw & 0xFFu);
+	tx_data[1] = (uint8_t)((psi_raw >> 8) & 0xFFu);
+	tx_data[2] = (uint8_t)(adc12 & 0xFFu);
+	tx_data[3] = (uint8_t)((adc12 >> 8) & 0x0Fu);
+	tx_data[4] = payload.FrameID_Pedals;
 
 	if (can_send(hcan1, tx_header, tx_data, CAR_CAN_TIMEOUT_TICKS) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
@@ -204,15 +212,18 @@ Pedals_Status_t pedals_CAN_send_brake_pressure_1_voltage(CAN_TxHeaderTypeDef *tx
 
 
 Pedals_Status_t pedals_CAN_send_brake_pressure_2_voltage(CAN_TxHeaderTypeDef *tx_header,
-											  brake_pressure_2_t payload) {
+														 brake_pressure_2_t payload) {
 	Pack_Brake_Pressure_2_CANHeader(tx_header);
 	uint8_t tx_data[tx_header->DLC];
 
-	tx_data[0] = (payload.Brake_Pressure) & 0xFF;
-	tx_data[1] = (payload.Brake_Pressure >> 8) & 0xFF;
-	tx_data[2] = (payload.Brake_Pressure_RawV) & 0xFF;
-	tx_data[3] = (payload.Brake_Pressure_RawV >> 8) & 0xFF;
-	tx_data[4] = (payload.FrameID_Pedals);
+	uint16_t psi_raw = payload.Brake_Pressure;
+	uint16_t adc12 = payload.Brake_Pressure_ADC & (uint16_t)0x0FFF;
+
+	tx_data[0] = (uint8_t)(psi_raw & 0xFFu);
+	tx_data[1] = (uint8_t)((psi_raw >> 8) & 0xFFu);
+	tx_data[2] = (uint8_t)(adc12 & 0xFFu);
+	tx_data[3] = (uint8_t)((adc12 >> 8) & 0x0Fu);
+	tx_data[4] = payload.FrameID_Pedals;
 
 	if (can_send(hcan1, tx_header, tx_data, CAR_CAN_TIMEOUT_TICKS) != CAN_OK)
 		return PEDALS_CAN_SEND_FAIL;
@@ -247,16 +258,17 @@ static void print_raw_vals() {
 	printf("Accel Pot Redundant %%: %lu\n\r", raw_vals[5]);
 }
 
-void  pedals_print_payload() {
-	printf("Brake Pedal Main RawV: %u mV  |  Brake Pedal Redundant RawV: %u mV\n\r",
-		   (read_brake_raw_voltage()).BrakePedal_Main_RawV,
-		   (read_brake_raw_voltage()).BrakePedal_Redundant_RawV);
-	printf("Accel Pedal Main RawV: %u mV  |  Accel Pedal Redundant RawV: %u mV\n\r",
-		   (read_accel_raw_voltage()).AccelPedal_Main_RawV,
-		   (read_accel_raw_voltage()).AccelPedal_Redundant_RawV);
-	printf("Brake FL Front Pressure: %u mV  |  Brake FL Back Pressure: %u mV\n\r",
-		   (read_brakeFL_1_raw_voltage()).Brake_Pressure,
-		   (read_brakeFL_2_raw_voltage()).Brake_Pressure);
+void pedals_print_payload(void) {
+	pedal_brake_adc_t b = read_pedal_brake_adc();
+	pedal_accel_adc_t a = read_pedal_accel_adc();
+	printf("Brake ADC: main=%u cnt redundant=%u mV | Accel ADC: main=%u cnt redundant=%u cnt\n\r",
+		   (unsigned)b.BrakePedal_Main_ADC, (unsigned)b.BrakePedal_Redundant_ADC,
+		   (unsigned)a.AccelPedal_Main_ADC, (unsigned)a.AccelPedal_Redundant_ADC);
+	brake_pressure_1_t p1 = read_brakeFL_1_raw_voltage();
+	brake_pressure_2_t p2 = read_brakeFL_2_raw_voltage();
+	printf("Brake pressure CAN raw (0.1 PSI): P1=%u P2=%u | ADC counts: P1=%u P2=%u\n\r",
+		   (unsigned)p1.Brake_Pressure, (unsigned)p2.Brake_Pressure,
+		   (unsigned)p1.Brake_Pressure_ADC, (unsigned)p2.Brake_Pressure_ADC);
 
 	print_raw_vals();
 }

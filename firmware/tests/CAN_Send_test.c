@@ -54,15 +54,17 @@ void pedals_CAN_Send_test(void *argument) {
 
 	while (1) {
 		readAll_ADCs();
-		pedal_brake_rawv_t brake_payload = read_brake_raw_voltage();
-		pedal_accel_rawv_t accel_payload = read_accel_raw_voltage();
+		pedal_brake_adc_t brake_payload = read_pedal_brake_adc();
+		pedal_accel_adc_t accel_payload = read_pedal_accel_adc();
 		brake_pressure_1_t brake_pressure_1_payload = read_brakeFL_1_raw_voltage();
 		brake_pressure_2_t brake_pressure_2_payload = read_brakeFL_2_raw_voltage();
 
 		pedal_status_t pedals_status_payload = read_main_positions_and_faults();
 		
-		if (pedals_CAN_send_brake_voltage(&tx_header, brake_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Voltage();
-		if (pedals_CAN_send_accel_voltage(&tx_header, accel_payload) != PEDALS_OK) CAN_Error_Handler_Accel_Voltage();
+		if (pedals_CAN_send_pedal_brake_adc(&tx_header, brake_payload) != PEDALS_OK)
+			CAN_Error_Handler_Brake_Voltage();
+		if (pedals_CAN_send_pedal_accel_adc(&tx_header, accel_payload) != PEDALS_OK)
+			CAN_Error_Handler_Accel_Voltage();
 		if (pedals_CAN_send_brake_pressure_1_voltage(&tx_header, brake_pressure_1_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Pressure_1_Voltage();
 		if (pedals_CAN_send_brake_pressure_2_voltage(&tx_header, brake_pressure_2_payload) != PEDALS_OK) CAN_Error_Handler_Brake_Pressure_2_Voltage();
 		if (pedals_CAN_send_pedals_status(&tx_header, pedals_status_payload) != PEDALS_OK) CAN_Error_Handler_Pedals_Status();

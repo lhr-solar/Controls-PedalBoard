@@ -5,11 +5,35 @@
 #include "stm32xx_hal.h"
 #include "pinDefs.h"
 
+#include "FreeRTOS.h"
+#include "semphr.h"
+
 /* Task used for initializing all other tasks on Pedals Board */
 #define INIT_TASK_PRIORITY tskIDLE_PRIORITY + 5
-#define INIT_TASK_STACK_SIZE configMINIMAL_STACK_SIZE
+/* Init runs HAL/CAN/ADC setup + create tasks — needs headroom above minimal */
+#define INIT_TASK_STACK_SIZE (configMINIMAL_STACK_SIZE * 4u)
 extern StaticTask_t Init_Task_TCB;
 extern StackType_t Init_Task_Stack_Array[INIT_TASK_STACK_SIZE];
+
+#define HEARTBEAT_TASK_PRIORITY (tskIDLE_PRIORITY + 4)
+#define PEDALS_TASK_PRIORITY		  (tskIDLE_PRIORITY + 3)
+#define BRAKE_PRESSURE_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
+#define HEARTBEAT_TASK_STACK_SIZE	configMINIMAL_STACK_SIZE
+#define PEDALS_TASK_STACK_SIZE		  (configMINIMAL_STACK_SIZE * 4u)
+#define BRAKE_PRESSURE_TASK_STACK_SIZE (configMINIMAL_STACK_SIZE * 4u)
+
+extern StaticTask_t Task_Heartbeat_TCB;
+extern StackType_t Task_Heartbeat_Stack_Array[HEARTBEAT_TASK_STACK_SIZE];
+extern StaticTask_t Task_Pedals_TCB;
+extern StackType_t Task_Pedals_Stack_Array[PEDALS_TASK_STACK_SIZE];
+extern StaticTask_t Task_BrakePressure_TCB;
+extern StackType_t Task_BrakePressure_Stack_Array[BRAKE_PRESSURE_TASK_STACK_SIZE];
+
+extern SemaphoreHandle_t pedals_sample_ready_sem;
+
+void Task_Heartbeat(void *argument);
+void Task_Pedals(void *argument);
+void Task_BrakePressure(void *argument);
 
 /*
 *

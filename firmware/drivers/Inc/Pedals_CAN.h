@@ -52,12 +52,14 @@ Pedals_Status_t pedals_CAN_init();
 Pedals_Status_t pedals_CAN_stop();
 
 
-Pedals_Status_t pedals_CAN_send_brake_voltage(CAN_TxHeaderTypeDef *tx_header, pedal_brake_rawv_t payload);
-Pedals_Status_t pedals_CAN_send_accel_voltage(CAN_TxHeaderTypeDef *tx_header, pedal_accel_rawv_t payload);
+Pedals_Status_t pedals_CAN_send_pedal_brake_adc(CAN_TxHeaderTypeDef *tx_header,
+												pedal_brake_adc_t payload);
+Pedals_Status_t pedals_CAN_send_pedal_accel_adc(CAN_TxHeaderTypeDef *tx_header,
+												pedal_accel_adc_t payload);
 Pedals_Status_t pedals_CAN_send_brake_pressure_1_voltage(CAN_TxHeaderTypeDef *tx_header, brake_pressure_1_t payload);
 Pedals_Status_t pedals_CAN_send_brake_pressure_2_voltage(CAN_TxHeaderTypeDef *tx_header, brake_pressure_2_t payload);
 
 
 Pedals_Status_t pedals_CAN_send_pedals_status(CAN_TxHeaderTypeDef *tx_header, pedal_status_t payload);
 
-void  pedals_print_payload();
+void pedals_print_payload(void);
