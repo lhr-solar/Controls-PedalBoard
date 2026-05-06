@@ -1,10 +1,6 @@
 #include "StatusLEDs.h"
 
-/* --------------------------------------------------
-	  Status LED inits
-   -------------------------------------------------- */
-
-void Status_LEDs_Init(void) {
+void led_init(void) {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 
 	// GPIO Ports Clock Enable
