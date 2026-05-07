@@ -31,10 +31,11 @@ static PedalsStatus_t MX_CAN_Init(void) {
         .FilterBank           = 0,
         .FilterMode           = CAN_FILTERMODE_IDMASK,
         .FilterScale          = CAN_FILTERSCALE_32BIT,
-        .FilterIdHigh         = 0,
-        .FilterIdLow          = 0,
-        .FilterMaskIdHigh     = 0,
-        .FilterMaskIdLow      = 0,
+        /* Match PS-VoltTemp: reject all RX IDs on TX-focused node. */
+        .FilterIdHigh         = 0xFFFFu,
+        .FilterIdLow          = 0xFFFFu,
+        .FilterMaskIdHigh     = 0xFFFFu,
+        .FilterMaskIdLow      = 0xFFFFu,
         .FilterFIFOAssignment = CAN_RX_FIFO0,
         .FilterActivation     = ENABLE,
         .SlaveStartFilterBank = 14
@@ -86,6 +87,10 @@ PedalsStatus_t pedals_can_init(void) { return MX_CAN_Init(); }
 
 PedalsStatus_t pedals_can_stop(void) {
     return (can_stop(hcan1) == CAN_OK) ? PEDALS_OK : PEDALS_CAN_STOP_FAIL;
+}
+
+uint32_t pedals_can_get_error(void) {
+    return HAL_CAN_GetError(hcan1);
 }
 
 /* ===================== SEND FUNCTIONS ===================== */

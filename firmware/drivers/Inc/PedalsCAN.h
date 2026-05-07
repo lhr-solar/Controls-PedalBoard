@@ -15,6 +15,7 @@ extern CAN_HandleTypeDef *hcan1;
 void HAL_CAN_MspInit(CAN_HandleTypeDef *hcan);
 PedalsStatus_t pedals_can_init(void);
 PedalsStatus_t pedals_can_stop(void);
+uint32_t pedals_can_get_error(void);
 
 PedalsStatus_t pedals_can_send_pedal_brake_adc(CAN_TxHeaderTypeDef *tx_header, pedal_brake_adc_t *payload);
 PedalsStatus_t pedals_can_send_pedal_accel_adc(CAN_TxHeaderTypeDef *tx_header, pedal_accel_adc_t *payload);
