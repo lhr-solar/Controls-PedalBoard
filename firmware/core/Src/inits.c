@@ -1,5 +1,8 @@
 #include "inits.h"
 
+/* HSI PLL before scheduler (matches PS-VCU fsm_bootload pattern); avoids tick/CAN skew if HSE
+ * is absent or differs from peripherals still sourced from HSE. Same ~80 MHz as old 8 MHz HSE,
+ * PLLM=1, PLLN=20 → now HSI PLLN=10. */
 void SystemClock_Config(void) {
     RCC_OscInitTypeDef RCC_OscInitStruct = {0};
     RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
@@ -8,12 +11,13 @@ void SystemClock_Config(void) {
         Error_Handler();
     }
 
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.OscillatorType       = RCC_OSCILLATORTYPE_HSI;
+    RCC_OscInitStruct.HSIState             = RCC_HSI_ON;
+    RCC_OscInitStruct.HSICalibrationValue  = RCC_HSICALIBRATION_DEFAULT;
+    RCC_OscInitStruct.PLL.PLLState         = RCC_PLL_ON;
+    RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_HSI;
     RCC_OscInitStruct.PLL.PLLM = 1;
-    RCC_OscInitStruct.PLL.PLLN = 20;
+    RCC_OscInitStruct.PLL.PLLN = 10;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
     RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
     RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;

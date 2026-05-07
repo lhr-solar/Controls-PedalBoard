@@ -1,10 +1,15 @@
 #include "InitTask.h"
+#include "inits.h"
 #include "stm32xx_hal.h"
 
 StaticTask_t InitTaskTCB;
 StackType_t  InitTaskStackArray[INIT_TASK_STACK_SIZE];
 
 int main(void) {
+    /* PS-VCU fsm_bootload: clock init before scheduler so SysTick matches SYSCLK. */
+    HAL_Init();
+    SystemClock_Config();
+
     // Creates the initialization task. This task will initialize hardware,
     // spin up the other RTOS tasks, and then delete itself.
     xTaskCreateStatic(

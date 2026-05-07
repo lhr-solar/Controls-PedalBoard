@@ -96,12 +96,12 @@ PedalsStatus_t pedals_can_send_pedal_brake_adc(CAN_TxHeaderTypeDef *h,
     uint8_t d[h->DLC];
 
     uint16_t main_adc = p->BrakePedal_Main_ADC & 0x0FFFu;
-    uint16_t red_mv   = p->BrakePedal_Redundant_ADC;
+    uint16_t red_adc  = p->BrakePedal_Redundant_ADC & 0x0FFFu;
 
     d[0] = (uint8_t)(main_adc & 0xFFu);
     d[1] = (uint8_t)((main_adc >> 8) & 0x0Fu);
-    d[2] = (uint8_t)(red_mv & 0xFFu);
-    d[3] = (uint8_t)((red_mv >> 8) & 0xFFu);
+    d[2] = (uint8_t)(red_adc & 0xFFu);
+    d[3] = (uint8_t)((red_adc >> 8) & 0x0Fu);
     d[4] = p->FrameID_Pedals;
 
     return send_frame(h, d);
@@ -126,6 +126,10 @@ PedalsStatus_t pedals_can_send_pedal_accel_adc(CAN_TxHeaderTypeDef *h,
 
 PedalsStatus_t pedals_can_send_brake_pressure_1_voltage(CAN_TxHeaderTypeDef *h,
                                                         brake_pressure_1_t *p) {
+    /*
+     * DBC 0x650: bits 0-15 Brake_Pressure (LE uint16 tenths PSI, physical = raw * 0.1);
+     * bits 16-27 Brake_Pressure_ADC raw 0..4095; Shift ops below split into bytes nibbles — not scaling.
+     */
     pack_header(h, CAN_ID_BRAKE_PRESSURE_1, CAN_DLC_BRAKE_PRESSURE_1);
     uint8_t d[h->DLC];
 
@@ -143,6 +147,7 @@ PedalsStatus_t pedals_can_send_brake_pressure_1_voltage(CAN_TxHeaderTypeDef *h,
 
 PedalsStatus_t pedals_can_send_brake_pressure_2_voltage(CAN_TxHeaderTypeDef *h,
                                                         brake_pressure_2_t *p) {
+    /* Same packing as 0x650 — DBC 0x651. */
     pack_header(h, CAN_ID_BRAKE_PRESSURE_2, CAN_DLC_BRAKE_PRESSURE_2);
     uint8_t d[h->DLC];
 
@@ -186,7 +191,7 @@ void pedals_print_payload(void) {
     brake_pressure_1_t p1 = read_brake_FL_1_raw_voltage();
     brake_pressure_2_t p2 = read_brake_FL_2_raw_voltage();
 
-    printf("Brake ADC: main=%u cnt redundant=%u mV | Accel ADC: main=%u cnt redundant=%u cnt\n\r",
+    printf("Brake ADC cnt: main=%u redundant=%u | Accel ADC cnt: main=%u redundant=%u\n\r",
            (unsigned)b.BrakePedal_Main_ADC, (unsigned)b.BrakePedal_Redundant_ADC,
            (unsigned)a.AccelPedal_Main_ADC, (unsigned)a.AccelPedal_Redundant_ADC);
     printf("Brake pressure CAN raw (0.1 PSI): P1=%u P2=%u | ADC counts: P1=%u P2=%u\n\r",

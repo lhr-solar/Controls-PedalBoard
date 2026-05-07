@@ -1,5 +1,4 @@
 #include "InitTask.h"
-#include "inits.h"
 #include "PedalsTask.h"
 #include "PressureTask.h"
 #include "HeartbeatTask.h"
@@ -26,8 +25,6 @@ void PedalsErrorHandler(void) {
 }
 
 void Task_Init(void *args __attribute__((unused))) {
-    HAL_Init();
-    SystemClock_Config();
     initPrintf();
     sensors_adc_GPIO_init();
     led_init();

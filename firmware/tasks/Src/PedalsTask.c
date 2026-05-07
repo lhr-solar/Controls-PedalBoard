@@ -47,7 +47,7 @@ void Task_Pedals(void *args __attribute__((unused))) {
             (unsigned)brake_adc.BrakePedal_Redundant_ADC,
             (unsigned)accel_adc.AccelPedal_Redundant_ADC,
 
-            // pressure (0.1 PSI split into int + decimal)
+            // Brake_Pressure holds tenths-PSI for DBC ×0.1; /10 only for uart display
             (unsigned)(p1.Brake_Pressure / 10u),
             (unsigned)(p1.Brake_Pressure % 10u),
             (unsigned)(p2.Brake_Pressure / 10u),

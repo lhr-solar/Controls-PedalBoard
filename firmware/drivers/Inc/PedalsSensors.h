@@ -15,7 +15,6 @@
 
 #define PEDALS_READ_ADC_SAMPLING_TIME   ADC_SAMPLETIME_2CYCLES_5
 #define PEDALS_RECEIVE_ADC_SAMPLING_MS  10
-#define MX_ADC_RAW_VAL                  4095
 
 #define ENABLE_DEBUG        0
 #define ERROR_HANDLER_DELAY pdMS_TO_TICKS(500)
@@ -48,6 +47,7 @@ typedef enum {
 typedef enum {
     BRAKE_POT_BUFF_CHANNEL           = ADC_CHANNEL_7,
     ACCEL_POT_BUFF_CHANNEL           = ADC_CHANNEL_5,
+    /* IN9/IN10 ↔ PA4/PA5 (STM32L431); maps to brake_pressure_1 / brake_pressure_2 */
     BRAKE_FL_FRONT_BUFF_CHANNEL      = ADC_CHANNEL_9,
     BRAKE_FL_BACK_BUFF_CHANNEL       = ADC_CHANNEL_10,
     ACCEL_POT_REDUNDANT_BUFF_CHANNEL = ADC_CHANNEL_11,

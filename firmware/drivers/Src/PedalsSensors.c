@@ -30,8 +30,9 @@ static const PedalsADCChannel_e ch_map[NUM_ADC_CHANNELS] = {
 
 /* ---------- Helpers ---------- */
 
-static inline uint16_t clamp_adc(uint32_t v) {
-    return (v > MX_ADC_RAW_VAL) ? MX_ADC_RAW_VAL : (uint16_t)v;
+/* DBC Brake_Pressure_*_ADC: counts 0..4095 scale=1 — use bottom 12b of DR (right-aligned). */
+static inline uint16_t adc_raw_counts_12b(uint32_t dr) {
+    return (uint16_t)(dr & 0xFFFu);
 }
 
 /* ---------- ADC ---------- */
@@ -96,9 +97,10 @@ void sensors_adc_GPIO_init(void) {
     if (hadc1->Instance == ADC1) {
         PeriphClkInit.PeriphClockSelection        = RCC_PERIPHCLK_ADC;
         PeriphClkInit.AdcClockSelection           = RCC_ADCCLKSOURCE_PLLSAI1;
-        PeriphClkInit.PLLSAI1.PLLSAI1Source       = RCC_PLLSOURCE_HSE;
+        /* HSE 8 MHz×N/M = HSI 16 MHz×N/M → N=16→8 for same PLLSAI1 VCO vs old HSE ADC path */
+        PeriphClkInit.PLLSAI1.PLLSAI1Source       = RCC_PLLSOURCE_HSI;
         PeriphClkInit.PLLSAI1.PLLSAI1M            = 1;
-        PeriphClkInit.PLLSAI1.PLLSAI1N            = 16;
+        PeriphClkInit.PLLSAI1.PLLSAI1N            = 8;
         PeriphClkInit.PLLSAI1.PLLSAI1P            = RCC_PLLP_DIV7;
         PeriphClkInit.PLLSAI1.PLLSAI1Q            = RCC_PLLQ_DIV2;
         PeriphClkInit.PLLSAI1.PLLSAI1R            = RCC_PLLR_DIV2;
@@ -154,21 +156,26 @@ void readAllADCs(void) {
 
     uint16_t adc[NUM_ADC_CHANNELS];
     for (int i = 0; i < NUM_ADC_CHANNELS; i++)
-        adc[i] = clamp_adc(vals[i]);
+        adc[i] = adc_raw_counts_12b(vals[i]);
 
-    /* Brake ADC message */
-    Pedals_Brake_ADC_Msg.BrakePedal_Main_ADC      = adc[ADC_INPUT_BRAKE_POT];
+    /* Pedal_Brake_ADC (0x753): main + redundant — raw DR counts only, no scaling */
+    Pedals_Brake_ADC_Msg.BrakePedal_Main_ADC = adc[ADC_INPUT_BRAKE_POT];
     Pedals_Brake_ADC_Msg.BrakePedal_Redundant_ADC =
-        adcBrakeRedundantMilliVoltsLUT[adc[ADC_INPUT_BRAKE_POT_REDUNDANT]];
+        adc[ADC_INPUT_BRAKE_POT_REDUNDANT];
 
-    /* Accel ADC message — both raw counts per DBC (msg 1876) */
+    /* Pedal_Accel_ADC (0x754): main + redundant raw counts */
     Pedals_Accel_ADC_Msg.AccelPedal_Main_ADC      = adc[ADC_INPUT_ACCEL_POT];
     Pedals_Accel_ADC_Msg.AccelPedal_Redundant_ADC = adc[ADC_INPUT_ACCEL_POT_REDUNDANT];
 
-    /* Brake pressure messages */
-    Pedals_Brake_FL_Front_Msg.Brake_Pressure     = brakePressurePsiTenthsLUT[adc[ADC_INPUT_BRAKE_FL_FRONT]];
+    /*
+     * 0x650/0x651: Brake_Pressure = DBC scale 0.1 -> uint16 tenths-of-PSI on bus (decoded PSI = field/10).
+     * Brake_Pressure_ADC = raw 12-bit count (LUT / packing use same adc[] values, no divide).
+     */
+    Pedals_Brake_FL_Front_Msg.Brake_Pressure =
+        brakePressurePsiTenthsLUT[adc[ADC_INPUT_BRAKE_FL_FRONT]];
     Pedals_Brake_FL_Front_Msg.Brake_Pressure_ADC = adc[ADC_INPUT_BRAKE_FL_FRONT];
-    Pedals_Brake_FL_Back_Msg.Brake_Pressure      = brakePressurePsiTenthsLUT[adc[ADC_INPUT_BRAKE_FL_BACK]];
+    Pedals_Brake_FL_Back_Msg.Brake_Pressure =
+        brakePressurePsiTenthsLUT[adc[ADC_INPUT_BRAKE_FL_BACK]];
     Pedals_Brake_FL_Back_Msg.Brake_Pressure_ADC  = adc[ADC_INPUT_BRAKE_FL_BACK];
 
     /* Pedal status message — redundant uses inverted LUT (sensor wired backwards) */
