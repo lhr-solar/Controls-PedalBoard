@@ -4,10 +4,10 @@ generate_lut.py
 Generates PedalsLUT.h — ADC-to-percent and ADC-to-PSI lookup tables.
 
 Brake pressure LUT: index = MCU 12-bit count (verbatim CAN `Brake_Pressure_ADC`); CAN `Brake_Pressure`
-= tenths-PSI (DBC × 0.1). Transmitters specify 0.5–4.5 Vo on the usual brake/sensor rail (here 5 V
-reference scale); the MCU converts counts using ADC reference (typically VDDA 3.3 V). LUT:
-V_pin = count × ADC_VREF / 4095, Vo_est = V_pin × Vo_max_at_FS / ADC_VREF (divider maps sensor FS →
-ADC FS volts), PSI from Vo_est over (Vo_min, Vo_max).
+= tenths-PSI (DBC × 0.1). Sensor analog is specified vs **BRAKE_SENSOR_REF_VOLTAGE_V** (typically 5 V
+scale). MCU ADC uses **ADC_VREF_V** (~VDDA, 3.3 V). A resistor divider **R1** (sensor → node) and
+**R2** (node → GND) scales Vo to the ADC pin: `V_pin = Vo * R2/(R1+R2)`, so
+`Vo_est = V_pin * (R1+R2)/R2`. PSI mapping uses Vo_est vs datasheet (Vo_min, Vo_max).
 
 (Pedal redundant positions still use percent LUTs; redundant brake/accel ADC counts go on CAN directly.)
 
@@ -34,26 +34,24 @@ BRAKE_REDUNDANT  = (52,   3500)
 ACCEL_MAIN       = (1490,  1760)
 ACCEL_REDUNDANT  = (390,  100)
 
-# -------- Brake pressure sensor (5 V-scale analog output vs MCU ADC ref) --------
-# Datasheet analog span is absolute volts on the usual 5 V supply/reference context (sensor “5 V scale”).
-# MCU ADC resolves 0 .. ADC_VREF_V (typically VDDA ~3.3 V) → count→volt uses ADC_VREF_V only.
-#
-# Divider / conditioning is assumed roughly linear such that transmitter Vo_max (4.5 V here) aligns with
-# ADC FS volts (≈ ADC_VREF). Then: Vo_est = V_pin × (Vo_max / ADC_VREF). Tune Vo_max / divider or
-# override PIN_VOLTS_TO_SENSOR_OUTPUT_VOLTS_RATIO if BOM differs.
+# -------- Brake pressure sensor (5 V-scale output, divider to 3 V3 ADC) --------
+# Topology: sensor Vo → R1 → ADC node → R2 → GND  ⇒  V_pin = Vo * R2/(R1+R2),  Vo = V_pin * (R1+R2)/R2
 
-BRAKE_SENSOR_REF_VOLTAGE_V = 5.0  # supply / nominal signal reference scale per datasheet wiring
-BRAKE_SENSOR_ANALOG_MIN_V = 0.5   # Vo at 0 PSI (with BRAKE_SENSOR_REF_VOLTAGE_V in spec)
-BRAKE_SENSOR_ANALOG_MAX_V = 4.5  # Vo at rated full scale (≤ BRAKE_SENSOR_REF_VOLTAGE_V typically)
+BRAKE_SENSOR_REF_VOLTAGE_V = 5.0  # datasheet / rail context for the 0.5–4.5 V span
+BRAKE_SENSOR_ANALOG_MIN_V = 0.5   # Vo at 0 PSI
+BRAKE_SENSOR_ANALOG_MAX_V = 4.5   # Vo at full-scale PSI
 
-ADC_VREF_V = 3.3                 # VDDA/Vref+ used in count→V_pin — calibrate vs measured VDDA if needed
+ADC_VREF_V = 3.3  # MCU ADC reference (VDDA); calibrate vs measured VDDA if needed
+
+# Hardware divider — bom (ohms). Change these when schematic changes.
+BRAKE_DIVIDER_R1_OHMS = 5600.0    # from sensor output toward ADC node
+BRAKE_DIVIDER_R2_OHMS = 10000.0   # from ADC node to GND
 
 PSI_AT_RANGE_MIN, PSI_AT_RANGE_MAX = 0.0, 3000.0
 ADC_FULL_SCALE_COUNT = SIZE - 1  # inclusive 4095: V_pin = adc_count × ADC_VREF_V / COUNT
 
-PIN_VOLTS_TO_SENSOR_OUTPUT_VOLTS_RATIO = (
-    BRAKE_SENSOR_ANALOG_MAX_V / ADC_VREF_V
-)  # Vo_est from pin V; use 1.0 if MCU pin volts == Vo (no attenuation toward FS)
+_VDIV = BRAKE_DIVIDER_R1_OHMS + BRAKE_DIVIDER_R2_OHMS
+_PIN_VOLTS_TO_SENSOR_VO_VOLTS = _VDIV / BRAKE_DIVIDER_R2_OHMS  # Vo_est = V_pin * this
 
 
 # ---------- Helpers ----------
@@ -108,7 +106,7 @@ def sensor_voltage_to_psi(volts: float) -> float:
 
 def brake_pressure_psi_tenths_for_adc_count(adc_counts: int) -> int:
     v_pin = adc_count_to_pin_voltage_volts(adc_counts)
-    v_sensor_output = v_pin * PIN_VOLTS_TO_SENSOR_OUTPUT_VOLTS_RATIO
+    v_sensor_output = v_pin * _PIN_VOLTS_TO_SENSOR_VO_VOLTS
     psi = sensor_voltage_to_psi(v_sensor_output)
     return clamp(round(psi * 10), 0, 30000)
 
@@ -121,10 +119,11 @@ def psi_table():
     ]
     vl, vh = BRAKE_SENSOR_ANALOG_MIN_V, BRAKE_SENSOR_ANALOG_MAX_V
     return (
-        f"// Brake pressure PSI: analog {vl:g}-{vh:g} V (sensor ~{BRAKE_SENSOR_REF_VOLTAGE_V:g} V ref scale) "
-        f"->{PSI_AT_RANGE_MIN:.0f}-{PSI_AT_RANGE_MAX:.0f} PSI; ADC ref {ADC_VREF_V:g} V,\n"
-        f"// V_pin=idx*{ADC_VREF_V:g}/{ADC_FULL_SCALE_COUNT}; Vo_est=V_pin*{PIN_VOLTS_TO_SENSOR_OUTPUT_VOLTS_RATIO:.6g}; "
-        "stored = 0.1 PSI\n"
+        f"// Brake pressure PSI: Vo {vl:g}-{vh:g} V (sensor ref scale ~{BRAKE_SENSOR_REF_VOLTAGE_V:g} V) "
+        f"->{PSI_AT_RANGE_MIN:.0f}-{PSI_AT_RANGE_MAX:.0f} PSI; ADC ref {ADC_VREF_V:g} V; "
+        f"divider R1={BRAKE_DIVIDER_R1_OHMS:g} R2={BRAKE_DIVIDER_R2_OHMS:g} Ohm\n"
+        f"// V_pin=idx*{ADC_VREF_V:g}/{ADC_FULL_SCALE_COUNT}; Vo=V_pin*{_PIN_VOLTS_TO_SENSOR_VO_VOLTS:.6g} "
+        f"(R1+R2)/R2; stored = 0.1 PSI\n"
         f"static const uint16_t brakePressurePsiTenthsLUT[{SIZE}] = {{\n"
         + "\n".join(rows) +
         "\n};\n"
@@ -141,9 +140,8 @@ OUT.write_text(
     " *        python3 ../scripts/generate_lut.py (see script docstring)\n"
     " *\n"
     " * Percent tables      : index = 12-bit ADC count (0-4095), value = 0-100 %\n"
-    " * Brake pressure PSI    : transmitter Vo 0.5-4.5 V (vs ~5 V sensor ref scale) -> PSI; counts use\n"
-    " *                       ADC_VREF (MCU) -> V_pin, then Vo_est via Vo_max/ADC_VREF divider model;\n"
-    " *                       CAN tenths PSI (DBC 0.1)\n"
+    " * Brake pressure PSI    : Vo 0.5-4.5 V vs sensor ref scale; V_pin from ADC via ADC_VREF;\n"
+    " *                       Vo from R1/R2 divider (BOM in generate_lut.py); CAN tenths PSI (DBC 0.1)\n"
     " */\n\n"
     "#pragma once\n\n"
     "#include <stdint.h>\n\n"
