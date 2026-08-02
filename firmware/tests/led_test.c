@@ -6,9 +6,7 @@ int main(){
     Status_LEDs_Init();
 
     while(1){
-        set_LED(BRAKE_POT_LED, GPIO_PIN_SET);
-        HAL_Delay(500);
-        set_LED(BRAKE_POT_LED, GPIO_PIN_RESET);
+        led_toggle(BRAKE_FL_BACK_PORT, BRAKE_FL_BACK_PIN);
         HAL_Delay(500);
     }
 

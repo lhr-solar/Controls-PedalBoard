@@ -18,8 +18,9 @@ int main(){
     Status_LEDs_Init();
 
     while(1){
-		toggle_LED(PSOM_HB_PORT, PSOM_HB_PIN);
-        flashThem(DELAY);
+		led_toggle(PSOM_HB_PORT, PSOM_HB_PIN);
+        flashThem();
+		HAL_Delay(DELAY);
     }
 
     return 0;
